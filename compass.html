@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guest Compass | Meraki Studios</title>
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');history.scrollRestoration='manual';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   MERAKI STUDIOS – Unterseiten
+   Raster: Canvas 1600 px, 1rem = 1vw (16 px @1600)
+   Mobile: Canvas 390 px, 1rem = 16 px @390
+   ========================================================= */
+:root{
+  --kalk:#E4E1DA;--beton:#B9B4A9;--olive:#2D3322;--ink:#1D2019;--flechte:#C8B43C;
+  --leaf:#56613F;--sage:#9FA78E;--stem:#5B5140;
+  --line-ink:rgba(29,32,25,.18);--line-kalk:rgba(228,225,218,.28);
+  --font:"Gotham","Gotham SSm","Montserrat",Helvetica,Arial,sans-serif;
+  --pad:3rem;--gap:1rem;
+  --e-out:cubic-bezier(.25,1,.5,1);--e-io:cubic-bezier(.75,0,.25,1);
+}
+html{font-size:1vw;-webkit-text-size-adjust:100%}
+@media (max-width:991px){html{font-size:4.1026vw}:root{--pad:1.25rem;--gap:.75rem}}
+*,*::before,*::after{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--kalk);color:var(--ink);font-family:var(--font);font-weight:400;font-size:.9375rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+p,h1,h2,h3,h4,figure,blockquote,ul,ol,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid var(--flechte);outline-offset:4px}
+
+/* Typo: eine Familie, drei Schnitte */
+.t-display{font-weight:300;line-height:.8;letter-spacing:-.05em;white-space:nowrap;display:inline-block}
+.t-h1{font-size:11rem;font-weight:300;line-height:.86;letter-spacing:-.045em}
+.t-h2{font-size:7rem;font-weight:300;line-height:.9;letter-spacing:-.04em}
+.t-h3{font-size:4rem;font-weight:300;line-height:1;letter-spacing:-.03em}
+.t-h4{font-size:2.5rem;font-weight:300;line-height:1.1;letter-spacing:-.02em}
+.t-body{font-size:.9375rem;line-height:1.6;max-width:38ch}
+.t-label{font-size:.8125rem;font-weight:500;line-height:1.3;letter-spacing:.01em}
+@media (max-width:991px){.t-h1{font-size:3.4rem}.t-h2{font-size:2.6rem}.t-h3{font-size:1.9rem}.t-h4{font-size:1.4rem}}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);padding:0 var(--pad)}
+@media (max-width:991px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.sc{text-transform:lowercase}.sc::first-letter{text-transform:uppercase}
+.cap{text-transform:lowercase;display:inline-block}.cap::first-line{text-transform:capitalize}
+
+/* Reveals */
+html.js [data-reveal]{opacity:0}
+html.rm [data-reveal]{opacity:1!important}
+[data-reveal="h"]{perspective:1200px}
+.ch,.wd{display:inline-block}.ln{display:block}
+
+/* Bild */
+.fig{position:relative;overflow:hidden;background:var(--beton)}
+.fig img{width:100%;height:100%;object-fit:cover}
+.fig[data-par] img{position:absolute;left:0;top:-10%;height:120%}
+
+/* Links */
+.lnk{display:inline-flex;position:relative}
+.lnk-in{display:inline-block;overflow:hidden;position:relative;padding-bottom:.2em}
+.lnk-a,.lnk-b{display:block;transition:transform .7s var(--e-out)}
+.lnk-b{position:absolute;left:0;top:0;transform:translateY(110%)}
+.lnk-in::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform-origin:left;transition:transform .7s var(--e-out)}
+.lnk:hover .lnk-a{transform:translateY(-110%)}
+.lnk:hover .lnk-b{transform:translateY(0)}
+.lnk:hover .lnk-in::after{transform:scaleX(0);transform-origin:right}
+.pill{display:inline-flex;align-items:center;border:1px solid currentColor;border-radius:999px;padding:.75rem 1.25rem;font-size:.8125rem;font-weight:500;transition:background-color .5s var(--e-out),color .5s var(--e-out),border-color .5s var(--e-out)}
+.pill:hover{background:var(--flechte);border-color:var(--flechte);color:var(--ink)}
+.circle-btn{width:9rem;height:9rem;border-radius:50%;border:1px solid currentColor;display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;transition:background-color .5s var(--e-out),color .5s var(--e-out),border-color .5s var(--e-out)}
+.circle-btn span{display:block;font-size:.8125rem;font-weight:500;line-height:1.25}
+.circle-btn:hover{background:var(--flechte);border-color:var(--flechte);color:var(--ink)}
+@media (max-width:991px){.circle-btn{width:7.5rem;height:7.5rem}}
+
+/* Seitenwechsel: das Fenster schließt und öffnet */
+.pt{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden}
+.pt-window{position:absolute;left:50%;top:50%;width:140vw;height:140vh;transform:translate(-50%,-50%);box-shadow:0 0 0 250vmax var(--kalk)}
+html.rm .pt,html.pt-off .pt{display:none}
+html.js:not(.rm) .pt-window{width:0;height:0}
+html.js .pt{animation:ptfail 0s 4s forwards}
+.pt.pt-live{animation:none}
+@keyframes ptfail{to{visibility:hidden}}
+
+/* Header */
+.hdr{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.5rem var(--pad);color:var(--ink);transition:color .5s var(--e-out)}
+.hdr[data-theme="dark"]{color:var(--kalk)}
+.hdr-logo{display:flex;align-items:center;gap:.8rem}
+.hdr-symbol{width:2.25rem;height:2.25rem;display:block}
+.hdr-symbol .cell{fill:var(--flechte)}
+.hdr-word{font-size:.9375rem;font-weight:500;letter-spacing:-.01em}
+.hdr-nav{display:flex;align-items:center;gap:2.25rem;font-size:.8125rem;font-weight:500}
+.hdr-nav .is-current .lnk-in::after{background:var(--flechte);height:2px}
+@media (max-width:991px){.hdr{padding:1rem var(--pad)}.hdr-nav .hide-m{display:none}.hdr-symbol{width:2rem;height:2rem}}
+
+/* Scrollbar */
+.sbar{position:fixed;right:1.25rem;top:50%;height:28vh;transform:translateY(-50%);width:1px;background:var(--line-ink);z-index:40;--p:0;color:var(--ink)}
+.sbar[data-theme="dark"]{color:var(--kalk);background:var(--line-kalk)}
+.sbar-thumb{position:absolute;left:-.35rem;width:calc(.7rem + 1px);height:2.5rem;top:calc(var(--p) * (100% - 2.5rem));display:flex;justify-content:center}
+.sbar-thumb::before{content:"";width:1px;height:100%;background:currentColor}
+.sbar-label{position:absolute;right:1rem;top:calc(var(--p) * (100% - 2.5rem));font-size:.6875rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:2.5rem}
+@media (max-width:991px){.sbar{display:none}}
+
+/* Breadcrumb */
+.crumb{display:flex;gap:.8rem;align-items:center;font-size:.8125rem;font-weight:500}
+.crumb span{opacity:.45}
+
+/* Seitenkopf (Standard) */
+.page-head{padding-top:11rem;padding-bottom:5rem}
+.page-head .crumb{grid-column:1 / -1;margin-bottom:3rem}
+.page-title{grid-column:1 / -1}
+.page-lead{grid-column:1 / span 5;margin-top:3rem}
+@media (max-width:991px){.page-head{padding-top:7rem;padding-bottom:3rem}.page-lead{grid-column:1 / -1;margin-top:1.5rem}.page-head .crumb{margin-bottom:1.5rem}}
+
+/* =========================================================
+   COMPASS
+   ========================================================= */
+.cp-hero{position:relative;height:300vh;background:var(--beton)}
+.cp-screen{position:sticky;top:0;height:100vh;overflow:hidden}
+.cp-fig{position:absolute;inset:0;clip-path:inset(24% 36% 24% 36%)}
+.cp-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.cp-fig img:first-child{opacity:1}
+.cp-shade{position:absolute;inset:0;background:rgba(29,32,25,.42);opacity:0}
+.cp-grid{position:absolute;inset:0;width:100%;height:100%;transform-origin:50% 50%}
+.cp-grid line,.cp-grid rect{stroke:var(--line-ink);stroke-width:1;fill:none;vector-effect:non-scaling-stroke}
+.cp-title-wrap{position:absolute;left:0;right:0;bottom:calc(var(--pad) * .6);padding:0 var(--pad);line-height:0;color:var(--ink)}
+.cp-quote{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;color:var(--kalk);pointer-events:none}
+.cp-quote blockquote{grid-column:3 / span 9}
+.q-l{display:block}
+.q-l:nth-child(2){padding-left:12rem}
+.q-l:nth-child(3){padding-left:4rem}
+.cp-author{grid-column:3 / span 4;margin-top:3rem}
+@media (max-width:991px){.cp-fig{clip-path:inset(28% 18% 28% 18%)}.cp-quote blockquote,.cp-author{grid-column:1 / -1}.q-l:nth-child(2){padding-left:3rem}.q-l:nth-child(3){padding-left:1rem}}
+html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fig{clip-path:none}html.rm .cp-shade{opacity:1}
+
+.cp-intro{padding:12rem 0 8rem}
+.cp-intro p{grid-column:4 / span 8}
+@media (max-width:991px){.cp-intro{padding:6rem 0 4rem}.cp-intro p{grid-column:1 / -1}}
+
+.cats{padding-bottom:12rem;position:relative}
+.cat-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;padding:2.5rem 0 2.2rem;border-top:1px solid var(--line-ink);position:relative}
+.cats ul{padding:0 var(--pad)}
+.cats li:last-child .cat-row{border-bottom:1px solid var(--line-ink)}
+.cat-name{grid-column:1 / span 9;transition:transform .9s var(--e-out)}
+.cat-go{grid-column:11 / span 2;justify-self:end;font-size:.8125rem;font-weight:500;opacity:.5;transition:opacity .5s var(--e-out)}
+.cat-row:hover .cat-name{transform:translateX(2rem)}
+.cat-row:hover .cat-go{opacity:1}
+.cat-thumb{display:none}
+.cat-float{position:fixed;left:0;top:0;width:22rem;aspect-ratio:4 / 3;z-index:30;pointer-events:none;opacity:0;overflow:hidden;transform:translate(-50%,-50%) scale(.85)}
+.cat-float img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+@media (max-width:991px){
+  .cats{padding-bottom:6rem}
+  .cat-row{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:1rem;padding:1.5rem 0}
+  .cat-thumb{display:block;grid-column:1 / -1;aspect-ratio:4 / 3}
+  .cat-name{grid-column:1 / span 3}
+  .cat-go{grid-column:4;opacity:1}
+  .cat-float{display:none}
+}
+
+/* =========================================================
+   GUIDE (Unterseiten des Compass)
+   ========================================================= */
+.gd-note{margin:0 var(--pad) 3rem;padding:1rem 1.25rem;background:var(--flechte);color:var(--ink);font-size:.8125rem;font-weight:500;line-height:1.5}
+.gd-note code{font-family:inherit;font-weight:500;text-decoration:underline}
+.gd{align-items:start;padding-bottom:10rem}
+.gd-media{grid-column:1 / span 6;position:sticky;top:6.5rem;height:calc(100vh - 9.5rem)}
+.gd-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s var(--e-io)}
+.gd-list{grid-column:8 / span 5}
+.gd-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.chip{font-size:.8125rem;font-weight:500;border:1px solid var(--line-ink);border-radius:999px;padding:.55rem 1rem;transition:background-color .4s var(--e-out),border-color .4s var(--e-out)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--kalk)}
+.chip:hover{border-color:var(--ink)}
+.place{border-top:1px solid var(--line-ink);padding:2rem 0 2.4rem}
+.place:last-child{border-bottom:1px solid var(--line-ink)}
+.place-meta{display:flex;gap:1.5rem;margin-bottom:1rem;opacity:.6}
+.place-name{margin-bottom:1rem}
+.place-text{max-width:44ch}
+.place-links{display:flex;gap:1.5rem;margin-top:1.4rem;font-size:.8125rem;font-weight:500}
+.place.is-hidden{display:none}
+.gd-empty{padding:2rem 0;opacity:.6}
+.gd-next{border-top:1px solid var(--line-ink);padding:4rem var(--pad) 6rem;display:flex;justify-content:space-between;align-items:end;gap:2rem}
+.gd-next a{display:block}
+.gd-next .t-label{opacity:.55;margin-bottom:1rem}
+@media (max-width:991px){.gd-media{grid-column:1 / -1;position:relative;top:0;height:70vw;margin-bottom:2.5rem}.gd-list{grid-column:1 / -1}.gd{padding-bottom:5rem}.gd-next{flex-direction:column;align-items:flex-start}}
+
+/* =========================================================
+   FLOORPLAN
+   ========================================================= */
+.fp{padding-bottom:10rem;row-gap:var(--gap)}
+.fp-item{grid-column:span 4;background:#fff;cursor:zoom-in;position:relative;overflow:hidden}
+.fp-item img{width:100%;height:auto;transition:transform 1.2s var(--e-out)}
+.fp-item:hover img{transform:scale(1.03)}
+.fp-item figcaption{position:absolute;left:1rem;bottom:1rem;font-size:.8125rem;font-weight:500;background:var(--kalk);padding:.35rem .7rem;border-radius:999px}
+@media (max-width:991px){.fp-item{grid-column:1 / -1}.fp{padding-bottom:5rem}}
+.lb{position:fixed;inset:0;z-index:90;background:var(--kalk);display:none;overflow:hidden}
+.lb.is-open{display:block}
+.lb-stage{position:absolute;inset:5rem var(--pad) 5.5rem;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in}
+.lb-stage.is-zoomed{cursor:grab}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transform-origin:50% 50%;user-select:none;-webkit-user-drag:none;background:#fff}
+.lb-bar{position:absolute;left:var(--pad);right:var(--pad);bottom:1.6rem;display:flex;justify-content:space-between;align-items:center;font-size:.8125rem;font-weight:500}
+.lb-bar .nav{display:flex;gap:1.5rem}
+.lb-close{position:absolute;right:var(--pad);top:1.5rem;font-size:.8125rem;font-weight:500}
+.lb-count{font-variant-numeric:tabular-nums}
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+.tc{align-items:start;padding-bottom:10rem}
+.tc-toc{grid-column:1 / span 3;position:sticky;top:7rem}
+.tc-toc a{display:block;font-size:.8125rem;font-weight:500;padding:.45rem 0 .45rem 1rem;border-left:1px solid var(--line-ink);opacity:.5;transition:opacity .4s var(--e-out),border-color .4s var(--e-out)}
+.tc-toc a.is-active{opacity:1;border-color:var(--ink)}
+.tc-body{grid-column:5 / span 7}
+.tc-intro{margin-bottom:4rem}
+.tc-intro p + p{margin-top:1.2rem}
+.tc-defs{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--gap);margin-bottom:6rem}
+.tc-def{border-top:1px solid var(--line-ink);padding:1.2rem 0 1.8rem}
+.tc-def h3{font-size:.8125rem;font-weight:500;margin-bottom:.6rem;display:flex;gap:.8rem}
+.tc-def h3 span{opacity:.45;font-variant-numeric:tabular-nums}
+.tc-def p{font-size:.9375rem;line-height:1.6}
+.tc-sec{margin-bottom:5rem;scroll-margin-top:7rem}
+.tc-sec h2{margin-bottom:2rem}
+.tc-clause{display:grid;grid-template-columns:3rem 1fr;border-top:1px solid var(--line-ink);padding:1.2rem 0 1.5rem}
+.tc-clause span{font-size:.8125rem;font-weight:500;opacity:.45;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.tc-clause p{font-size:.9375rem;line-height:1.65;max-width:62ch}
+@media (max-width:991px){.tc-toc{display:none}.tc-body{grid-column:1 / -1}.tc-defs{grid-template-columns:1fr}.tc-clause{grid-template-columns:2.2rem 1fr}}
+
+/* =========================================================
+   IMPRINT
+   ========================================================= */
+.imp{padding-bottom:10rem;row-gap:3rem}
+.imp-block{grid-column:span 3;border-top:1px solid var(--line-ink);padding-top:1.2rem}
+.imp-block .t-label{opacity:.55;margin-bottom:.8rem}
+.imp-block p{font-size:.9375rem;line-height:1.6}
+.imp-block p + p{margin-top:.6rem}
+.imp-wide{grid-column:span 6}
+@media (max-width:991px){.imp-block,.imp-wide{grid-column:1 / -1}.imp{padding-bottom:5rem;row-gap:2rem}}
+
+/* =========================================================
+   FOOTER (kompakt)
+   ========================================================= */
+.foot{background:var(--olive);color:var(--kalk)}
+.foot-top{padding-top:8rem;padding-bottom:6rem;align-items:end;row-gap:2rem}
+.foot-top .t-h1{grid-column:1 / span 9}
+.foot-top .circle-btn{grid-column:11 / span 2;justify-self:end}
+.foot-info{padding-bottom:calc(var(--pad) + env(safe-area-inset-bottom,0px));row-gap:3rem}
+.foot-col{grid-column:span 3;font-size:.8125rem;line-height:1.6}
+.foot-col p + p{margin-top:.8rem}
+.foot-col .t-label{opacity:.55;margin-bottom:.6rem}
+.foot-legal{grid-column:1 / -1;display:flex;justify-content:space-between;border-top:1px solid var(--line-kalk);padding-top:1.2rem;font-size:.75rem}
+.foot-legal nav{display:flex;gap:2rem}
+@media (max-width:991px){.foot-top{padding-top:5rem;padding-bottom:3rem}.foot-top .t-h1,.foot-top .circle-btn{grid-column:1 / -1;justify-self:start}.foot-col{grid-column:span 2}.foot-legal{flex-direction:column;gap:1rem}}
+
+</style>
+</head>
+<body data-page="compass">
+<div class="pt" aria-hidden="true"><div class="pt-window"></div></div>
+
+<header class="hdr" data-theme="light">
+  <a href="index.html" class="hdr-logo" aria-label="Meraki Studios, home">
+    <svg class="hdr-symbol" viewBox="0 0 40 40" aria-hidden="true">
+      <rect class="cell" x="14" y="14" width="12" height="12"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2" y="2" width="36" height="36"/>
+        <line x1="14" y1="2" x2="14" y2="38"/><line x1="26" y1="2" x2="26" y2="38"/>
+        <line x1="2" y1="14" x2="38" y2="14"/><line x1="2" y1="26" x2="38" y2="26"/>
+      </g>
+    </svg>
+    <span class="hdr-word">Meraki Studios</span>
+  </a>
+  <nav class="hdr-nav" aria-label="Main">
+    <a class="lnk hide-m" href="index.html#units">Apartments and Studios</a>
+    <a class="lnk hide-m is-current" href="compass.html">Guest Compass</a>
+    <a class="pill" href="index.html#book">Book your stay</a>
+  </nav>
+</header>
+<div class="sbar" aria-hidden="true"><span class="sbar-thumb"></span><span class="sbar-label">00</span></div>
+
+<main>
+
+<section class="cp-hero" data-bg="stone">
+  <div class="cp-screen">
+    <figure class="cp-fig">
+      <img data-wix="f3bbf6_d44dc4fe195844f2ab710f3059589428~mv2.jpeg" data-size="2400x1600" alt="">
+      <img data-wix="f3bbf6_7b26c68c8f7b4359bab62ea3bf8a77f2~mv2.jpeg" data-size="2400x1600" alt="">
+      <div class="cp-shade"></div>
+    </figure>
+    <svg class="cp-grid" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="cp-title-wrap"><h1 class="t-display" data-fit data-reveal="h" data-manual="intro">Guest Compass</h1></div>
+    <div class="cp-quote">
+      <div class="grid">
+        <blockquote class="t-h2">
+          <span class="q-l" data-reveal="p" data-manual>I hope nothing.</span>
+          <span class="q-l" data-reveal="p" data-manual>I fear nothing.</span>
+          <span class="q-l" data-reveal="p" data-manual>I am free.</span>
+        </blockquote>
+        <p class="t-label cp-author" data-reveal="ctn" data-manual>Nikos Kazantzakis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cp-intro" data-bg="light">
+  <div class="grid"><p class="t-h3" data-reveal="p">handpicked selection of authentic places, tavernas and hidden corners of Crete - gathered with patience, curiosity and a quiet love for detail</p></div>
+</section>
+
+<section class="cats" data-bg="light">
+  <ul>
+      <li><a class="cat-row" href="guide.html?c=neighbourhood">
+        <figure class="fig cat-thumb"><img data-wix="f3bbf6_763d0ce0a5274141b0d40bc154b4e337~mv2.png" data-size="1200x900" alt="" loading="lazy"></figure>
+        <span class="t-h2 cat-name">The neighbourhood</span>
+        <span class="cat-go">Open</span>
+      </a></li>
+      <li><a class="cat-row" href="guide.html?c=seaside">
+        <figure class="fig cat-thumb"><img data-wix="f3bbf6_fa6616431f3b4f3a825a6368e3d39bf8~mv2.jpeg" data-size="1200x900" alt="" loading="lazy"></figure>
+        <span class="t-h2 cat-name">At the seaside</span>
+        <span class="cat-go">Open</span>
+      </a></li>
+      <li><a class="cat-row" href="guide.html?c=hiking">
+        <figure class="fig cat-thumb"><img data-wix="f3bbf6_6b9beb281a4b46e88265f6f9c2964c15~mv2.jpeg" data-size="1200x900" alt="" loading="lazy"></figure>
+        <span class="t-h2 cat-name">Short and long hiking tours &amp; running routs</span>
+        <span class="cat-go">Open</span>
+      </a></li>
+  </ul>
+  <div class="cat-float" aria-hidden="true"><img data-wix="f3bbf6_763d0ce0a5274141b0d40bc154b4e337~mv2.png" data-size="900x675" alt=""><img data-wix="f3bbf6_fa6616431f3b4f3a825a6368e3d39bf8~mv2.jpeg" data-size="900x675" alt=""><img data-wix="f3bbf6_6b9beb281a4b46e88265f6f9c2964c15~mv2.jpeg" data-size="900x675" alt=""></div>
+</section>
+</main>
+
+<footer class="foot" data-bg="dark">
+  <div class="grid foot-top">
+    <p class="t-h1" data-reveal="h">Be our guest.</p>
+    <a class="circle-btn" href="mailto:booking@merakistudios.gr" data-magnetic><span>Feel free to get in touch.</span></a>
+  </div>
+  <div class="grid foot-info">
+    <div class="foot-col">
+      <p class="t-label">Meraki Studios</p>
+      <p>Tsikalaria<br>74053 Kissos</p>
+      <p><a class="lnk" href="https://maps.app.goo.gl/SPsBgnACP2speaUC9" target="_blank" rel="noopener">Google Maps</a></p>
+    </div>
+    <div class="foot-col">
+      <p><a class="lnk" href="tel:+306972508070">+30 697 250 80 70</a></p>
+      <p><a class="lnk" href="mailto:hello@merakistudios.gr">hello@merakistudios.gr</a></p>
+      <p><a class="lnk" href="https://www.instagram.com/meraki_studios_kissos/" target="_blank" rel="noopener">@meraki_studios_kissos</a></p>
+    </div>
+    <div class="foot-col">
+      <p class="t-label">Architecture</p>
+      <p><a class="lnk" href="http://sigurdlarsen.com/" target="_blank" rel="noopener">Sigurd Larsen – Design and Architecture</a></p>
+    </div>
+    <div class="foot-col">
+      <p class="t-label">Photos &amp; Videos:</p>
+      <p><a class="lnk" href="https://www.zoleo-hamburg.com/" target="_blank" rel="noopener">ZOLEO</a></p>
+      <p><a class="lnk" href="https://kkrom.services/" target="_blank" rel="noopener">KKROM Services</a></p>
+    </div>
+    <div class="foot-legal">
+      <span>Meraki Studios</span>
+      <nav aria-label="Legal"><a class="lnk" href="imprint.html">Imprint</a><a class="lnk" href="terms.html">Terms and Conditions</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.21/dist/lenis.min.js"></script>
+<script>
+/* =========================================================
+   MERAKI STUDIOS – site.js
+   Motion-System (GSAP + ScrollTrigger + SplitText + Lenis),
+   Seitenwechsel über das Betonfenster, Module je Seite.
+   ========================================================= */
+(() => {
+'use strict';
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const html = document.documentElement;
+const page = document.body.dataset.page || '';
+
+/* ---------- Wix-Bilder ---------- */
+const WIX = 'https://static.wixstatic.com/media/';
+/* Bilder liegen lokal in img/. Fehlt eine Datei, wird sie automatisch vom Wix-CDN geladen. */
+const IMG_DIR = 'img/';
+const wixFile = f => f.includes('~') ? f : f + '~mv2.jpg';
+const wixRemote = f => `${WIX}${wixFile(f)}/v1/fit/w_2400,h_2400,q_85/${wixFile(f)}`;
+const wixSrc = file => IMG_DIR + wixFile(file).replace('~mv2', '');
+document.addEventListener('error', e => {
+  const t = e.target;
+  if (!t || t.tagName !== 'IMG' || t.dataset.remote) return;
+  const m = (t.getAttribute('src') || '').match(/^img\/(.+)$/); if (!m) return;
+  t.dataset.remote = '1';
+  t.src = wixRemote(m[1].replace(/(\.\w+)$/, '~mv2$1'));
+}, true);
+
+/* =========================================================
+   INHALTE GUEST COMPASS
+   Die Unterseiten auf merakistudios.gr sind passwortgeschützt.
+   Einträge hier 1:1 aus den Originalseiten einsetzen.
+   ========================================================= */
+const GUIDES = {
+  neighbourhood: {
+    title: 'The neighbourhood',
+    img: 'f3bbf6_763d0ce0a5274141b0d40bc154b4e337~mv2.png',
+    places: [
+      { name: '[Name]', type: '[Kategorie A]', time: '[Entfernung]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' },
+      { name: '[Name]', type: '[Kategorie B]', time: '[Entfernung]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' },
+      { name: '[Name]', type: '[Kategorie A]', time: '[Entfernung]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' }
+    ]
+  },
+  seaside: {
+    title: 'At the seaside',
+    img: 'f3bbf6_fa6616431f3b4f3a825a6368e3d39bf8~mv2.jpeg',
+    places: [
+      { name: '[Name]', type: '[Kategorie A]', time: '[Entfernung]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' },
+      { name: '[Name]', type: '[Kategorie B]', time: '[Entfernung]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' }
+    ]
+  },
+  hiking: {
+    title: 'Short and long hiking tours & running routs',
+    img: 'f3bbf6_6b9beb281a4b46e88265f6f9c2964c15~mv2.jpeg',
+    places: [
+      { name: '[Name]', type: '[Kategorie A]', time: '[Dauer]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' },
+      { name: '[Name]', type: '[Kategorie B]', time: '[Dauer]', text: '[Beschreibung 1:1 aus der Originalseite]', maps: '', img: '' }
+    ]
+  }
+};
+const GUIDE_ORDER = ['neighbourhood', 'seaside', 'hiking'];
+
+/* ---------- Guide rendern (vor allem anderen) ---------- */
+function renderGuide() {
+  const key = new URLSearchParams(location.search).get('c');
+  const g = GUIDES[key] || GUIDES.neighbourhood;
+  const k = GUIDES[key] ? key : 'neighbourhood';
+  document.title = `${g.title} | Guest Compass | Meraki Studios`;
+  $('.gd-title').textContent = g.title;
+  $('.crumb-current').textContent = g.title;
+  const media = $('.gd-media');
+  media.innerHTML = `<img data-wix="${g.img}" data-size="1400x1600" alt="">`;
+  const types = [...new Set(g.places.map(p => p.type).filter(Boolean))];
+  const filter = $('.gd-filter');
+  filter.innerHTML = types.length > 1 ? ['All', ...types].map((t, i) => `<button class="chip" aria-pressed="${i === 0}" data-type="${i === 0 ? '' : t}">${t}</button>`).join('') : '';
+  const list = $('.gd-places');
+  list.innerHTML = g.places.map(p => `
+    <li class="place" data-type="${p.type}" ${p.img ? `data-img="${p.img}"` : ''}>
+      <p class="t-label place-meta">${p.type ? `<span>${p.type}</span>` : ''}${p.time ? `<span>${p.time}</span>` : ''}</p>
+      <h2 class="t-h4 place-name">${p.name}</h2>
+      <p class="t-body place-text">${p.text}</p>
+      ${p.maps ? `<p class="place-links"><a class="lnk" href="${p.maps}" target="_blank" rel="noopener">Google Maps</a></p>` : ''}
+    </li>`).join('');
+  filter.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    $$('.chip', filter).forEach(c => c.setAttribute('aria-pressed', c === b));
+    const t = b.dataset.type;
+    $$('.place', list).forEach(li => li.classList.toggle('is-hidden', !!t && li.dataset.type !== t));
+    window.ScrollTrigger && ScrollTrigger.refresh();
+  });
+  const i = GUIDE_ORDER.indexOf(k), next = GUIDE_ORDER[(i + 1) % GUIDE_ORDER.length];
+  const n = $('.gd-next-link');
+  n.href = `guide.html?c=${next}`;
+  $('.gd-next-title').textContent = GUIDES[next].title;
+  // Bild wechselt beim Hover auf einen Eintrag mit eigenem Bild
+  const base = () => media.querySelector('img');
+  $$('.place[data-img]', list).forEach(li => {
+    const alt = new Image(); alt.src = wixSrc(li.dataset.img, 1400, 1600);
+    li.addEventListener('mouseenter', () => { base().style.opacity = 0; setTimeout(() => { base().src = alt.src; base().style.opacity = 1; }, 380); });
+  });
+}
+if (page === 'guide') renderGuide();
+
+/* ---------- Bilder setzen ---------- */
+$$('img[data-wix]').forEach(img => {
+  const [w, h] = (img.dataset.size || '1920x1280').split('x');
+  img.src = wixSrc(img.dataset.wix, w, h, img.dataset.mode || 'fill');
+});
+
+/* ---------- Links ---------- */
+$$('.lnk').forEach(a => {
+  const t = a.textContent.trim();
+  a.innerHTML = `<span class="lnk-in"><span class="lnk-a">${t}</span><span class="lnk-b" aria-hidden="true">${t}</span></span>`;
+});
+
+/* ---------- Floorplan-Lightbox (funktioniert auch ohne GSAP) ---------- */
+function initLightbox(gs, lenisRef) {
+  const items = $$('.fp-item'); if (!items.length) return;
+  const lb = $('.lb'), stage = $('.lb-stage'), img = $('.lb-stage img'), count = $('.lb-count'), cap = $('.lb-cap');
+  let idx = 0, zoom = false, lastFocus = null;
+  const big = el => wixSrc(el.dataset.file, 2600, 2600, 'fit');
+  const setT = (s, x = 0, y = 0, anim = true) => {
+    if (gs) gs.to(img, { scale: s, x, y, duration: anim ? .8 : 0, ease: 'Out', overwrite: true });
+    else img.style.transform = `translate(${x}px,${y}px) scale(${s})`;
+  };
+  const show = i => {
+    idx = (i + items.length) % items.length;
+    zoom = false; stage.classList.remove('is-zoomed'); setT(1, 0, 0, false);
+    img.src = big(items[idx]); img.alt = items[idx].querySelector('img').alt;
+    count.textContent = `${idx + 1} / ${items.length}`;
+    cap.textContent = items[idx].querySelector('figcaption').textContent;
+  };
+  const open = i => {
+    lastFocus = document.activeElement;
+    show(i); lb.classList.add('is-open'); lb.setAttribute('aria-hidden', 'false');
+    lenisRef && lenisRef() && lenisRef().stop();
+    gs && gs.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: .5, ease: 'Out' });
+    $('.lb-close').focus();
+  };
+  const close = () => {
+    const done = () => { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true'); lenisRef && lenisRef() && lenisRef().start(); lastFocus && lastFocus.focus(); };
+    gs ? gs.to(lb, { opacity: 0, duration: .35, ease: 'In', onComplete: done }) : done();
+  };
+  items.forEach((el, i) => { el.addEventListener('click', () => open(i)); el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } }); });
+  $('.lb-close').addEventListener('click', close);
+  $('.lb-prev').addEventListener('click', () => show(idx - 1));
+  $('.lb-next').addEventListener('click', () => show(idx + 1));
+  const pan = e => {
+    if (!zoom) return;
+    const r = stage.getBoundingClientRect(), w = img.offsetWidth, h = img.offsetHeight, S = 2.5;
+    const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+    setT(S, -px * w * (S - 1), -py * h * (S - 1));
+  };
+  stage.addEventListener('click', e => { zoom = !zoom; stage.classList.toggle('is-zoomed', zoom); zoom ? pan(e) : setT(1); });
+  stage.addEventListener('pointermove', pan);
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') show(idx + 1);
+    if (e.key === 'ArrowLeft') show(idx - 1);
+  });
+}
+
+const reduce = html.classList.contains('rm');
+if (!window.gsap || !window.ScrollTrigger || !window.Lenis) {
+  html.classList.add('rm'); html.classList.add('pt-off');
+  initLightbox(null, null); return;
+}
+
+gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
+CustomEase.create('InOut', '0.75,0,0.25,1');
+CustomEase.create('Out', '0.25,1,0.5,1');
+CustomEase.create('In', '0.5,0,0.75,0');
+CustomEase.create('Ease', '0.25,0.1,0.25,1');
+CustomEase.create('diveIn', '0.6,0,0,1');
+const D = { s: .4, m: .8, l: 1.2 }, ST = .1, BP = 992;
+const desk = () => innerWidth >= BP;
+let lenis = null;
+
+/* ---------- Reveals ---------- */
+const chars = el => (el._sc ||= new SplitText(el, { type: 'words,chars', wordsClass: 'wd', charsClass: 'ch' })).chars;
+const lines = el => (el._sl ||= new SplitText(el, { type: 'lines', linesClass: 'ln', mask: 'lines' })).lines;
+const R = {
+  h: { init: el => { gsap.set(chars(el), { opacity: 0, yPercent: 50, rotateY: 90 }); gsap.set(el, { opacity: 1 }); },
+       show: (el, d = 0) => gsap.to(chars(el), { opacity: 1, yPercent: 0, rotateY: 0, duration: D.l, delay: d, stagger: ST * .5, ease: 'Out', overwrite: true }),
+       hide: (el, d = 0) => gsap.to(chars(el), { opacity: 0, yPercent: -50, rotateY: -90, duration: D.s, delay: d, stagger: ST * .25, ease: 'In', overwrite: true }) },
+  p: { init: el => { gsap.set(lines(el), { yPercent: 110 }); gsap.set(el, { opacity: 1 }); },
+       show: (el, d = 0) => gsap.to(lines(el), { yPercent: 0, duration: D.l, delay: d, stagger: ST, ease: 'Out', overwrite: true }),
+       hide: (el, d = 0) => gsap.to(lines(el), { yPercent: -110, duration: D.s, delay: d, stagger: ST * .5, ease: 'In', overwrite: true }) },
+  ctn: { init: el => gsap.set(el, { opacity: 0, y: '3rem' }),
+         show: (el, d = 0) => gsap.to(el, { opacity: 1, y: 0, duration: D.l, delay: d, ease: 'Out', overwrite: true }),
+         hide: (el, d = 0) => gsap.to(el, { opacity: 0, duration: D.s, delay: d, ease: 'In', overwrite: true }) }
+};
+const rv = (el, a, d) => el && R[el.dataset.reveal][a](el, d);
+
+function fitText() {
+  $$('[data-fit]').forEach(el => {
+    const wrap = el.parentElement, cs = getComputedStyle(wrap);
+    const avail = wrap.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    el.style.fontSize = '10rem';
+    el.style.fontSize = (10 * avail / el.getBoundingClientRect().width * .995) + 'rem';
+  });
+}
+
+/* ---------- Header-/Scrollbar-Theme ---------- */
+const hdr = $('.hdr'), sbar = $('.sbar');
+const themed = $$('[data-bg]');
+function updateTheme() {
+  [hdr, sbar].forEach(el => {
+    if (!el) return;
+    const r = el.getBoundingClientRect(), y = r.top + r.height / 2;
+    let bg = 'light';
+    for (const s of themed) { const b = s.getBoundingClientRect(); if (b.top <= y && b.bottom >= y) bg = s.dataset.bg; }
+    el.dataset.theme = bg === 'dark' ? 'dark' : 'light';
+  });
+}
+
+/* ---------- Raster-Linien für Fenster-Motiv ---------- */
+function buildGrid(svg, ix, iy) {
+  const w = 100 - 2 * ix, h = 100 - 2 * iy; let s = '';
+  [ix - 2 * w, ix - w, ix, 100 - ix, 100 - ix + w, 100 - ix + 2 * w].forEach(x => s += `<line x1="${x}" y1="-200" x2="${x}" y2="300"/>`);
+  [iy - h, iy, 100 - iy, 100 - iy + h].forEach(y => s += `<line x1="-200" y1="${y}" x2="300" y2="${y}"/>`);
+  svg.innerHTML = s + `<rect x="${ix}" y="${iy}" width="${w}" height="${h}"/>`;
+}
+
+/* ---------- Seitenwechsel ---------- */
+const pt = $('.pt'), ptWin = $('.pt-window');
+function ptOpen(after) {
+  if (!pt || reduce) { pt && (pt.style.display = 'none'); after && after(); return; }
+  pt.classList.add('pt-live'); pt.style.display = 'block';
+  gsap.fromTo(ptWin, { width: 0, height: 0 }, { width: innerWidth * 1.4, height: innerHeight * 1.4, duration: D.l * 1.6, ease: 'diveIn', onComplete: () => { pt.style.display = 'none'; } });
+  gsap.delayedCall(D.l * .45, () => after && after());
+}
+function ptLeave(href) {
+  if (!pt || reduce) { location.href = href; return; }
+  lenis && lenis.stop();
+  pt.style.display = 'block';
+  gsap.fromTo(ptWin, { width: innerWidth * 1.4, height: innerHeight * 1.4 }, { width: 0, height: 0, duration: D.l, ease: 'InOut', onComplete: () => { location.href = href; } });
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a'); if (!a) return;
+  if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank' || a.hasAttribute('download')) return;
+  const url = new URL(a.href, location.href);
+  if (url.origin !== location.origin && url.protocol !== 'file:') return;
+  if (url.protocol !== location.protocol) return;
+  const samePage = url.pathname === location.pathname && url.search === location.search;
+  if (samePage && url.hash) {
+    const t = $(url.hash); if (!t) return;
+    e.preventDefault(); lenis && lenis.scrollTo(t, { duration: 2 }); return;
+  }
+  if (!/\.html$|\/$/.test(url.pathname)) return;
+  e.preventDefault(); ptLeave(url.href);
+});
+addEventListener('pageshow', e => { if (e.persisted && pt) { pt.style.display = 'none'; gsap.set(ptWin, { width: innerWidth * 1.4, height: innerHeight * 1.4 }); lenis && lenis.start(); } });
+
+/* ---------- Start ---------- */
+document.fonts.ready.then(start);
+
+function start() {
+  fitText();
+  initLightbox(gsap, () => lenis);
+  if (reduce) { $$('[data-reveal]').forEach(el => el.style.opacity = 1); updateTheme(); addEventListener('scroll', updateTheme, { passive: true }); ptOpen(); return; }
+
+  lenis = new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  lenis.on('scroll', ScrollTrigger.update);
+  lenis.on('scroll', updateTheme);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  $$('[data-reveal]').forEach(el => rv(el, 'init'));
+  const mm = gsap.matchMedia();
+
+  /* Parallax */
+  $$('.fig[data-par]').forEach(fig => gsap.fromTo(fig.querySelector('img'), { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: .5 } }));
+
+  /* Scroll-Reveals */
+  $$('[data-reveal]:not([data-manual])').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => rv(el, 'show') }));
+
+  /* Scrollbar */
+  if (sbar) {
+    const label = $('.sbar-label');
+    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: s => { sbar.style.setProperty('--p', s.progress); label.textContent = String(Math.round(s.progress * 100)).padStart(2, '0'); } });
+  }
+
+  /* Logo */
+  (() => {
+    const sym = $('.hdr-symbol'); if (!sym) return;
+    const st = { speed: 24 }; let rot = 0, dir = 1, to;
+    gsap.ticker.add((t, dt) => { rot += st.speed * Math.min(dt, 100) / 1000; gsap.set(sym, { rotation: rot, transformOrigin: '50% 50%' }); });
+    lenis.on('scroll', ({ velocity }) => {
+      if (velocity !== 0) dir = velocity > 0 ? 1 : -1;
+      gsap.to(st, { speed: dir * (24 + 10 * Math.abs(velocity)), duration: .3, ease: 'Out', overwrite: true });
+      clearTimeout(to); to = setTimeout(() => gsap.to(st, { speed: 24 * dir, duration: D.l, ease: 'Out' }), 100);
+    });
+  })();
+
+  /* Magnetisch */
+  mm.add(`(min-width: ${BP}px) and (hover: hover)`, () => {
+    $$('[data-magnetic]').forEach(btn => {
+      const inner = btn.querySelector('span');
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        gsap.to(btn, { x: x * 1.6 + 'rem', y: y * 1.6 + 'rem', duration: 1.6, ease: 'power4.out' });
+        inner && gsap.to(inner, { x: x * .8 + 'rem', y: y * .8 + 'rem', duration: 2, ease: 'power4.out' });
+      });
+      btn.addEventListener('mouseleave', () => gsap.to([btn, inner], { x: 0, y: 0, duration: 1.6, ease: 'elastic.out(1, 0.3)' }));
+    });
+  });
+
+  /* Seitenkopf-Reveal nach dem Öffnen */
+  const intro = () => {
+    $$('[data-reveal][data-manual="intro"]').forEach((el, i) => rv(el, 'show', i * .12));
+    if (location.hash && $(location.hash)) lenis.scrollTo($(location.hash), { duration: 1.6 });
+  };
+
+  /* ---------- Modul: Compass ---------- */
+  if (page === 'compass') {
+    const hero = $('.cp-hero'), fig = $('.cp-fig'), grid = $('.cp-grid'), shade = $('.cp-shade'), title = $('.cp-title-wrap');
+    const imgs = $$('.cp-fig img'), qLines = $$('.cp-quote .q-l'), author = $('.cp-author');
+    let cur = 0;
+    if (imgs.length > 1) setInterval(() => {
+      const nx = (cur + 1) % imgs.length;
+      gsap.to(imgs[cur], { opacity: 0, duration: D.l, ease: 'InOut' });
+      gsap.fromTo(imgs[nx], { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: D.l * 1.5, ease: 'InOut' });
+      cur = nx;
+    }, 4200);
+    mm.add({ d: `(min-width: ${BP}px)`, m: `(max-width: ${BP - 1}px)` }, ctx => {
+      const [ix, iy] = ctx.conditions.d ? [36, 24] : [18, 28];
+      buildGrid(grid, ix, iy);
+      gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom bottom', scrub: true } })
+        .fromTo(fig, { clipPath: `inset(${iy}% ${ix}% ${iy}% ${ix}%)` }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'InOut', duration: .5 }, 0)
+        .fromTo(grid, { scale: 1, opacity: 1 }, { scale: 3.4, opacity: 0, ease: 'In', duration: .5 }, 0)
+        .to(title, { yPercent: -60, opacity: 0, ease: 'In', duration: .3 }, 0)
+        .to(shade, { opacity: 1, duration: .15 }, .38)
+        .to({}, { duration: .5 });
+    });
+    ScrollTrigger.create({ trigger: hero, start: '40% top',
+      onEnter: () => { qLines.forEach((l, i) => rv(l, 'show', i * .18)); rv(author, 'show', D.m); },
+      onLeaveBack: () => { qLines.forEach(l => rv(l, 'hide')); rv(author, 'hide'); } });
+
+    /* Kategorie-Bild folgt dem Cursor */
+    mm.add(`(min-width: ${BP}px) and (hover: hover)`, () => {
+      const fl = $('.cat-float'), flImgs = $$('img', fl);
+      const qx = gsap.quickTo(fl, 'x', { duration: 1.2, ease: 'power3' }), qy = gsap.quickTo(fl, 'y', { duration: 1.2, ease: 'power3' });
+      let on = false;
+      addEventListener('mousemove', e => { if (on) { qx(e.clientX); qy(e.clientY); } });
+      $$('.cat-row').forEach((row, i) => {
+        row.addEventListener('mouseenter', e => {
+          if (!on) { gsap.set(fl, { x: e.clientX, y: e.clientY }); }
+          on = true;
+          flImgs.forEach((im, k) => gsap.to(im, { opacity: k === i ? 1 : 0, duration: D.m, ease: 'InOut' }));
+          gsap.to(fl, { opacity: 1, scale: 1, duration: D.m, ease: 'Out' });
+        });
+        row.addEventListener('mouseleave', () => { on = false; gsap.to(fl, { opacity: 0, scale: .85, duration: D.m, ease: 'Out' }); });
+      });
+    });
+  }
+
+  /* ---------- Modul: Guide ---------- */
+  if (page === 'guide') {
+    gsap.from('.place', { opacity: 0, y: '2rem', duration: D.l, stagger: ST, ease: 'Out', delay: .9 });
+  }
+
+  /* ---------- Modul: Terms ---------- */
+  if (page === 'terms') {
+    const links = $$('.tc-toc a');
+    $$('.tc-sec').forEach(sec => {
+      const a = links.find(l => l.getAttribute('href') === '#' + sec.id); if (!a) return;
+      ScrollTrigger.create({ trigger: sec, start: 'top 40%', end: 'bottom 40%', onToggle: s => s.isActive && links.forEach(l => l.classList.toggle('is-active', l === a)) });
+    });
+  }
+
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { ScrollTrigger.refresh(true); updateTheme(); }, 60); });
+  ScrollTrigger.refresh();
+  updateTheme();
+  gsap.set(hdr, { opacity: 0 });
+  ptOpen(() => { intro(); gsap.to(hdr, { opacity: 1, duration: D.l, ease: 'Out' }); });
+}
+})();
+
+</script>
+</body>
+</html>
