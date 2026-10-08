@@ -383,6 +383,49 @@ html.rm .arch{height:auto}html.rm .arch-screen{position:relative}html.rm .arch-f
 .foot-legal nav{display:flex;gap:2rem}
 @media (max-width:991px){.foot-area{height:170vh}.foot-col{grid-column:span 2}.foot-legal{flex-direction:column;gap:1rem}}
 html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
+
+/* =========================================================
+   MOBILE: Menü, Buchungsleiste, Viewport-Höhen
+   ========================================================= */
+.hdr .hdr-menu{display:none}
+.hdr.menu-open{color:var(--kalk)!important}
+.mnav{position:fixed;inset:0;z-index:49;background:var(--olive);color:var(--kalk);display:flex;flex-direction:column;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 6.5rem) var(--pad) calc(env(safe-area-inset-bottom,0px) + 2rem);visibility:hidden;opacity:0;transition:opacity .45s var(--e-out),visibility 0s linear .45s;overscroll-behavior:contain}
+.mnav.is-open{visibility:visible;opacity:1;transition:opacity .45s var(--e-out)}
+.mnav-links a{display:block;font-size:2.1rem;font-weight:300;letter-spacing:-.02em;line-height:1.15;padding:.7rem 0;border-bottom:1px solid var(--line-kalk)}
+.mnav-links a:first-child{border-top:1px solid var(--line-kalk)}
+.mnav-meta{display:flex;flex-direction:column;gap:.8rem;font-size:.9375rem}
+.mbook{display:none}
+@media (min-width:992px){.mnav{display:none}}
+@media (max-width:991px){
+  body{overflow-x:clip}
+  .hdr .hdr-menu{display:inline-flex;min-height:2.75rem;align-items:center}
+  .hdr-nav .pill:not(.hdr-menu){display:none}
+  .mbook{display:flex;position:fixed;left:var(--pad);right:var(--pad);bottom:calc(env(safe-area-inset-bottom,0px) + .9rem);z-index:45;height:3.4rem;align-items:center;justify-content:center;border-radius:999px;background:var(--ink);color:var(--kalk);font-size:.9375rem;font-weight:500;box-shadow:0 .5rem 2rem rgba(29,32,25,.25);transform:translateY(170%);transition:transform .6s var(--e-out)}
+  .mbook.is-visible{transform:none}
+  .foot-legal,.foot-info{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 5.5rem)}
+  .foot-col a,.foot-legal a{display:inline-block;padding:.25rem 0}
+}
+
+@media (max-width:991px){
+  .hero-screen,.intro-sticky,.card,.amen-screen,.arch-screen,.foot-screen,.pre{height:100vh;height:100svh}
+  .card:not(:last-child){margin-bottom:45svh}
+  .cards{padding-bottom:25svh}
+  .card-in{padding-top:5.5rem}
+  .card-fig{height:36svh}
+  .amen{height:380vh}
+  .amen-shade{background:linear-gradient(0deg,rgba(29,32,25,.88) 0%,rgba(29,32,25,.45) 55%,rgba(29,32,25,.15) 100%)}
+  .amen-item{padding:.2rem 0}
+  .loc-map .map-labels{display:none}
+  .loc-legend{display:flex}
+  .bm-date input{-webkit-appearance:none;appearance:none;min-height:1.6em}
+  .bm-chip{min-height:2.75rem}
+  .units-tab{padding:.3rem 0}
+}
+.loc-legend{display:none;flex-direction:column;gap:.55rem;margin-top:1.5rem;font-size:.875rem;font-weight:500}
+.loc-legend li{display:flex;align-items:center;gap:.7rem}
+.loc-legend li::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--ink)}
+.loc-legend li:first-child::before{background:var(--flechte);width:.7rem;height:.7rem}
+.unit-dots{display:none}
 </style>
 </head>
 <body>
@@ -416,8 +459,26 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
     <a class="lnk hide-m" href="#units">Apartments and Studios</a>
     <a class="lnk hide-m" href="compass.html">Guest Compass</a>
     <a class="pill" href="#book">Book your stay</a>
+    <button class="pill hdr-menu" aria-expanded="false" aria-controls="mnav">Menu</button>
   </nav>
 </header>
+
+<nav class="mnav" id="mnav" aria-label="Menu">
+  <div class="mnav-links">
+    <a href="#units">Apartments and Studios</a>
+    <a href="#location">Location</a>
+    <a href="compass.html">Guest Compass</a>
+    <a href="floorplan.html">Floorplan</a>
+    <a href="#book">Book your stay</a>
+  </div>
+  <div class="mnav-meta">
+    <a href="mailto:hello@merakistudios.gr">hello@merakistudios.gr</a>
+    <a href="tel:+306972508070">+30 697 250 80 70</a>
+    <a href="https://www.instagram.com/meraki_studios_kissos/" target="_blank" rel="noopener">@meraki_studios_kissos</a>
+  </div>
+</nav>
+<a class="mbook" href="#book">Book your stay</a>
+
 
 <div class="sbar" aria-hidden="true"><span class="sbar-thumb"></span><span class="sbar-label">00</span></div>
 
@@ -516,6 +577,7 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
             <text x="642" y="333">Psiloritis National Park</text>
           </g>
         </svg>
+        <ul class="loc-legend"><li>Meraki Studios</li><li>Spili, 8 min</li><li>Ligres &amp; Triopetra, 25 min</li><li>Rethymno, 30 min</li><li>Psiloritis National Park</li></ul>
       </div>
       <div class="loc-panel loc-p4">
         <p class="t-body" data-reveal="p">Explore some of the most beautiful beaches on the rural south coast like Ligres and Triopetra about a 25 minute drive away, or dive into Rethymno’s vibrant dining and culture in half an hour. You can wander nearby villages or hike the stunning Psiloritis National Park.</p>
@@ -619,7 +681,7 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
       <label class="bm-date"><span>Check-in</span><input type="date" name="start"></label>
       <label class="bm-date"><span>Checkout</span><input type="date" name="end"></label>
     </div>
-    <div class="bm-units" role="group" aria-label="Apartments and Studios">
+    <div class="bm-units" data-lenis-prevent role="group" aria-label="Apartments and Studios">
       <button class="bm-chip" data-bm="" aria-pressed="true">All</button>
       <button class="bm-chip" data-bm="aera" aria-pressed="false">aéra <small>4 Guests</small></button>
       <button class="bm-chip" data-bm="syka" aria-pressed="false">syka <small>2 Guests</small></button>
@@ -820,8 +882,49 @@ function initBooking() {
   load();
 }
 
+
+/* ---------- Mobile: Menü + Buchungsleiste ---------- */
+function initMobile(getLenis) {
+  const btn = $('.hdr-menu'), nav = $('.mnav'), bar = $('.mbook'), hdrEl = $('.hdr');
+  if (btn && nav) {
+    const set = open => {
+      nav.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? 'Close' : 'Menu';
+      hdrEl.classList.toggle('menu-open', open);
+      const l = getLenis(); l && (open ? l.stop() : l.start());
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+    btn.addEventListener('click', () => set(!nav.classList.contains('is-open')));
+    nav.addEventListener('click', e => {
+      const a = e.target.closest('a'); if (!a) return;
+      const href = a.getAttribute('href') || '';
+      set(false);
+      if (href.startsWith('#')) {
+        const t = $(href); if (!t) return;
+        e.preventDefault();
+        const l = getLenis();
+        setTimeout(() => l ? l.scrollTo(t, { duration: 1.6 }) : t.scrollIntoView({ behavior: 'smooth' }), 50);
+      }
+    });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('is-open')) set(false); });
+  }
+  if (bar) {
+    const book = $('#book'), foot = $('.foot');
+    const inView = el => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
+    const upd = () => {
+      const show = scrollY > innerHeight * .9 && !inView(book) && !inView(foot) && !(nav && nav.classList.contains('is-open'));
+      bar.classList.toggle('is-visible', show);
+    };
+    addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+    if (bar.getAttribute('href').startsWith('#')) bar.addEventListener('click', e => {
+      e.preventDefault(); const l = getLenis(); l ? l.scrollTo(book, { duration: 1.8 }) : book.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+}
+
 const reduce = html.classList.contains('rm');
-if (!window.gsap || !window.ScrollTrigger) { html.classList.add('rm'); initUnits(null); initBooking(); return; }
+if (!window.gsap || !window.ScrollTrigger) { html.classList.add('rm'); initUnits(null); initBooking(); initMobile(() => null); return; }
 
 gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 CustomEase.create('InOut', '0.75,0,0.25,1');
@@ -980,6 +1083,16 @@ function initUnits(gs) {
     if (gs && !instant) gs.fromTo(thumbs.children, { opacity: 0, y: '1rem' }, { opacity: 1, y: 0, duration: D.m, stagger: ST * .6, ease: 'Out', clearProps: 'opacity,transform' });
   };
   tabs.forEach(t => t.addEventListener('click', () => setUnit(t.dataset.unit)));
+  // Wischen auf dem großen Bild: nächstes / vorheriges Bild
+  const mainFig = $('.unit-main'); let sx = null, sy = null;
+  mainFig.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  mainFig.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+    const th = $$('.unit-thumb', thumbs), i = th.findIndex(t => t.classList.contains('is-active'));
+    const n = th[(i + (dx < 0 ? 1 : -1) + th.length) % th.length]; n && n.click();
+  });
   setUnit('nero', true);
   addEventListener('resize', () => { const a = $('.units-tab.is-active'); a && moveHl(a); });
 }
@@ -1008,6 +1121,7 @@ function start() {
   initBooking();
 
   if (reduce) {
+    initMobile(() => null);
     $$('[data-reveal]').forEach(el => el.style.opacity = 1);
     updateTheme(); addEventListener('scroll', updateTheme, { passive: true });
     $('.pre') && $('.pre').remove();
@@ -1016,10 +1130,12 @@ function start() {
 
   /* Lenis */
   lenis = new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  ScrollTrigger.config({ ignoreMobileResize: true });
   lenis.on('scroll', ScrollTrigger.update);
   lenis.on('scroll', updateTheme);
   gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
+  initMobile(() => lenis);
 
   /* initial states */
   $$('[data-reveal]').forEach(el => rv(el, 'init'));
@@ -1052,7 +1168,7 @@ function start() {
   })();
 
   /* INTRO: Buchstaben laufen auseinander */
-  gsap.fromTo('.intro-word', { letterSpacing: '-0.04em' }, { letterSpacing: '0.34em', ease: 'none', scrollTrigger: { trigger: '.intro', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.intro-word', { letterSpacing: '-0.04em' }, { letterSpacing: () => desk() ? '0.34em' : '0.06em', ease: 'none', scrollTrigger: { trigger: '.intro', start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
 
   /* CARDS: Stapel */
   const cards = $$('.card');
