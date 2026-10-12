@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Floorplan | Meraki Studios</title>
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');history.scrollRestoration='manual';</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Exposure";src:url("fonts/exposure.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_3f0ba5ec469544dc84bfbec308f920bf/woff2/file.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_3f0ba5ec469544dc84bfbec308f920bf/woff/file.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"New Edge";src:url("fonts/new-edge-light.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_660f7f5e5e794c9fa425c5c10287f0ee/woff2/file.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_660f7f5e5e794c9fa425c5c10287f0ee/woff/file.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
 /* =========================================================
    MERAKI STUDIOS – Unterseiten
    Raster: Canvas 1600 px, 1rem = 1vw (16 px @1600)
@@ -290,26 +289,86 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 .tc-mtoc summary::after{content:"+";font-weight:300;font-size:1.25rem;line-height:1}
 .tc-mtoc[open] summary::after{content:"–"}
 .tc-mtoc a{display:block;padding:.75rem 1.1rem;border-top:1px solid var(--line-ink);font-size:.875rem}
+
+.ln-mask{display:block;padding:.08em 0 .18em;margin:-.08em 0 -.18em}
+
+@media (max-width:991px){
+  .cp-hero{height:auto!important}
+  .cp-screen{position:relative;height:auto!important;overflow:visible;display:flex;flex-direction:column;padding-top:5.5rem}
+  .cp-title-wrap{position:relative;bottom:auto;order:1;padding-bottom:1.5rem;opacity:1!important;transform:none!important}
+  .cp-fig{position:relative;inset:auto;clip-path:none!important;aspect-ratio:3 / 2;order:2}
+  .cp-grid,.cp-shade{display:none}
+  .cp-quote{position:relative;inset:auto;color:var(--ink);order:3;padding:4rem 0 0}
+  .cp-intro{padding:4rem 0 3rem}
+  .fig[data-par] img{position:static;height:auto;top:auto}
+}
+
+/* =========================================================
+   MARKE: Schriften der Originalseite, kompaktere Größen
+   ========================================================= */
+:root{--font:"New Edge","Helvetica Neue",Helvetica,Arial,sans-serif;--serif:"Exposure","Times New Roman",Georgia,serif}
+body{font-family:var(--font);font-synthesis:none;font-weight:400}
+.t-display,.t-h1,.t-h2,.t-h3,.t-h4,.intro-word,.units-tab,.amen-item,.mnav-links a,.pre-name,.faq-q,.cp-name,.cat-name{font-family:var(--serif);font-weight:400}
+.t-h1,.t-h2,.t-h3{letter-spacing:-.02em}
+.t-h4{letter-spacing:-.01em}
+.t-label{letter-spacing:.02em}
+.hdr-logo svg{display:block;height:2.4rem;width:auto}
+.hdr-word,.hdr-symbol{display:none}
+@media (min-width:992px){
+  .t-h1{font-size:7.5rem;line-height:.98}
+  .t-h2{font-size:5rem;line-height:1}
+  .t-h3{font-size:3.1rem;line-height:1.1}
+  .t-h4{font-size:2rem;line-height:1.2}
+  .t-body{font-size:1rem;line-height:1.62}
+}
+@media (max-width:991px){
+  .t-h1{font-size:2.8rem;line-height:1}
+  .t-h2{font-size:2.25rem;line-height:1.04}
+  .t-h3{font-size:1.65rem;line-height:1.15}
+  .t-h4{font-size:1.3rem;line-height:1.25}
+  .hdr-logo svg{height:2rem}
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.hdr-nav{gap:1.9rem}
+.hdr-nav .lnk.is-current .lnk-in::after{background:var(--flechte);height:2px}
+@media (min-width:992px) and (max-width:1180px){.hdr-nav{gap:1.2rem}.hdr-nav .lnk{font-size:.75rem}}
+.mnav{overflow-y:auto}
+.mnav-links a{font-size:1.75rem;padding:.55rem 0}
+
+/* =========================================================
+   HEADER-BALKEN + SPRACHWAHL
+   ========================================================= */
+.hdr{padding-top:.9rem;padding-bottom:.9rem;background:rgba(228,225,218,.88);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--line-ink);transition:color .45s var(--e-out),background-color .45s var(--e-out),border-color .45s var(--e-out)}
+.hdr[data-theme="dark"]{background:rgba(45,51,34,.8);border-bottom-color:var(--line-kalk)}
+.hdr.menu-open{background:var(--olive);border-bottom-color:var(--line-kalk)}
+.lang-sw{display:inline-flex;align-items:center;gap:.35rem;font-size:.8125rem}
+.lang-sw span{opacity:.4}
+.lang-sw button{padding:.4rem .15rem;opacity:.5;transition:opacity .3s var(--e-out)}
+.lang-sw button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1px}
+.lang-sw button:hover{opacity:1}
+@media (min-width:992px) and (max-width:1199px){
+  .hdr-nav .hide-m{display:none}
+  .hdr .hdr-menu{display:inline-flex}
+  .mnav{display:flex}
+}
+@media (max-width:991px){.hdr{padding-top:.7rem;padding-bottom:.7rem}.hdr-nav{gap:.9rem}.lang-sw{font-size:.75rem}}
 </style>
 </head>
 <body data-page="floorplan">
 <div class="pt" aria-hidden="true"><div class="pt-window"></div></div>
 
 <header class="hdr" data-theme="light">
-  <a href="index.html" class="hdr-logo" aria-label="Meraki Studios, home">
-    <svg class="hdr-symbol" viewBox="0 0 40 40" aria-hidden="true">
-      <rect class="cell" x="14" y="14" width="12" height="12"/>
-      <g fill="none" stroke="currentColor" stroke-width="1.4">
-        <rect x="2" y="2" width="36" height="36"/>
-        <line x1="14" y1="2" x2="14" y2="38"/><line x1="26" y1="2" x2="26" y2="38"/>
-        <line x1="2" y1="14" x2="38" y2="14"/><line x1="2" y1="26" x2="38" y2="26"/>
-      </g>
-    </svg>
-    <span class="hdr-word">Meraki Studios</span>
-  </a>
+  <a href="index.html" class="hdr-logo" aria-label="Meraki Studios"><svg xmlns="http://www.w3.org/2000/svg" viewBox="326.027 782.001 1504.94 456.969" fill="currentColor" aria-hidden="true" focusable="false"><path d="M402.18 1057.22c6.7.38 7.66-8.33 1.25-9.77-27.2-6.13-28.06-12.45-24.91-52.97 2.78-35.35 5.94-70.4 10.25-111.59 1.53-12.45 15.8-13.79 20.59-2.78 25.1 61.21 50 120.69 72.32 178.73 2.3 6.04 9.58 6.04 12.17 0 8.43-20.31 17.24-40.71 26.05-60.92 16.47-37.74 33.24-75.09 49.14-111.97 5.17-11.78 20.97-10.73 22.51 3.54 3.54 35.34 6.71 70.02 9.48 104.59 3.16 40.9 1.53 46.74-25.38 52.78-6.51 1.44-5.46 9.96 1.25 9.77 28.64-.77 58.24-.86 87.07.29 5.17.19 7.28-7.76.86-9.39-26.05-6.71-29.88-11.69-33.62-53.06-5.08-56.51-9.77-112.64-12.93-159.67-1.53-19.25 2.59-28.93 26.72-35.63 6.13-1.63 5.27-9.77-.96-9.58-16.28.86-28.74 1.15-46.55.67-4.89-.29-7.19 1.34-8.62 5.17-11.3 28.93-22.8 57.57-34.1 85.53-15.99 39.27-31.8 77.39-46.93 113.5-4.6 11.11-16.19 11.11-20.78 0-24.71-60.73-52.59-127.87-77.97-198.18-1.63-4.41-4.12-6.42-10.15-6.23-18.39.57-31.03.29-45.21-.48-7.86-.38-7.66 7.76-2.49 9.39 23.56 7.09 28.35 13.7 26.53 37.74-1.15 14.65-2.49 30.08-3.83 45.98-2.97 35.63-6.32 73.85-9.86 112.16-3.74 41.47-7.95 46.36-34 52.97-6.51 1.72-4.4 9.58.86 9.39 23.37-.77 47.8-1.53 71.26 0"/><path d="M887.44 1058.95c6.13.19 8.14-2.49 8.62-8.05 1.44-21.36 2.87-36.11 5.08-56.61.86-6.61-7.28-7.66-9.39-1.82-18.2 47.61-27.01 54.88-74.04 54.88h-10.73c-54.12-.38-61.68-9.48-62.45-53.45-.38-20.88-.38-34.19 0-47.51 0-12.07 5.84-19.35 18.68-19.35h20.02c30.94 0 40.71 4.6 51.44 32.57 2.3 6.03 10.63 4.88 9.87-1.92-3.54-30.08-2.97-40.71 0-72.22.67-6.8-7.47-8.05-9.77-2.01-11.01 28.83-20.59 33.24-51.53 33.24h-20.02c-12.84 0-18.68-6.51-18.68-16.95-.38-23.56-.38-45.11 0-82.47 0-10.63 5.08-16.47 17.43-16.47 24.42-.29 44.73-.58 65.04-.48 30.27.1 40.52 6.42 58.24 56.9 2.01 5.84 10.63 5.27 9.77-1.92-2.78-19.73-4.69-37.64-6.23-57.38-.48-6.99-2.97-9-9.58-8.81-15.04.38-25.86.67-36.69.77-21.55.29-42.62.67-64.08.77-29.31.1-59.29-.19-92.62-.77-6.9-.19-7.76 7.18-1.53 9.39 24.33 7.76 28.54 13.41 28.93 38.03.77 61.59.77 108.33 0 156.61-.77 43.58-3.07 46.65-28.93 54.31-6.42 1.92-3.93 9.58 1.34 9.39 17.72-.67 58.05-.67 111.88-.19l32.76.29c19.35.19 39.56.77 57.18 1.25"/><path d="M1322.35 952.63c-20.11.38-41.19.38-63.7 0-10.34 0-15.71-6.32-11.3-17.63l32.09-79.6c4.02-9.87 15.8-10.06 20.02 0 11.4 26.72 25.86 61.2 33.33 78.83 5.07 12.07-.38 18.39-10.44 18.39m-321.47-25.47c-10.53-.67-17.43-6.13-17.43-16.47-.38-29.02-.38-60.82 0-89.46 0-14.18 4.12-20.31 21.17-21.17 45.88-1.63 78.92 23.28 78.92 62.83 0 29.22-18.77 68.49-82.66 64.27m431.33 130.36c7.85.38 7.76-7.85 3.26-9.2-23.56-7.28-26.15-10.34-39.08-41.28-32.18-75.58-61.49-144.83-92.24-220.97-2.11-5.17-8.72-5.75-11.11.29-30.27 77.97-59.87 149.71-89.27 221.16-8.49 20.54-12.29 28.49-21.85 33.6-17.040 7.71-29.7 5.85-37.56 2.69-9.13-3.97-15.17-10.53-24.99-24.41-9.39-13.12-20.78-26.82-51.44-72.13-5.94-8.52-4.41-16.19 4.12-20.11 31.99-14.18 48.37-39.75 48.37-67.81 0-38.41-35.44-72.32-106.61-69.44-28.54 1.05-59.29.96-89.46.19-6.71-.19-7.09 7.47-1.25 9.39 25 7.76 28.64 14.37 29.02 37.83.38 72.22.38 111.49 0 157.37-.38 39.94-2.2 46.55-28.83 53.54-6.42 1.72-3.93 9.58 1.34 9.39 31.61-1.15 54.02-1.05 90.8.1 5.46.19 7.09-7.85 1.05-9.39-30.65-7.85-31.7-12.74-32.85-54.4-.38-14.56-.19-27.68.19-38.7.38-11.11 5.75-17.72 18.39-17.91h2.97c12.74-.19 22.03 2.87 27.97 10.92 21.55 30.17 42.34 62.74 63.98 94.92 6.17 9.05 10.97 12.41 18.47 13.59h134.2c3.95-2.03 3.75-7.91-1.87-9.08-29.89-6.23-39.08-14.46-28.06-43.2 3.54-9.39 7.38-18.39 11.01-27.78 3.54-8.53 9.96-13.6 22.6-13.7 27.3-.1 50.29-.1 77.39 0 9.67.1 15.61 4.6 19.25 13.41 3.83 9.48 7.95 20.21 11.78 29.69 8.81 22.51 7.47 34-20.5 41.95-5.84 1.72-4.4 9.58 1.06 9.39 28.83-1.06 57.28-1.25 89.75.1"/><path d="M1703.58 1057.61c7.47.38 7.95-8.14 2.3-9.39-14.46-3.73-25.86-10.34-42.15-27.58-32.18-34.58-58.43-63.6-89.08-96.55-6.9-7.47-7.18-15.52.19-22.89 26.72-26.63 47.89-46.65 75.77-74.52 11.59-11.78 26.82-21.26 43.87-27.11 6.04-2.11 5.46-9.77-1.92-9.39-23.66 1.15-48.18 1.15-71.55 0-6.99-.38-7.28 7.47-2.01 9.1 21.07 6.99 22.8 16.95 7.38 32.18-29.02 29.02-52.59 52.59-82.57 81.42-9.67 9.19-20.69 5.46-20.69-7.95 0-18.87 0-34 .19-57.76.29-33.43 1.06-38.98 27.97-47.7 6.42-2.11 4.98-9.58-.58-9.39-28.83.77-57.95.77-86.59 0-6.61-.19-7.09 7.47-1.25 9.39 24.14 7.95 28.35 12.64 28.74 37.83.38 67.14.77 105.55 0 156.99-.77 43.2-3.06 46.36-28.54 53.93-6.52 2.11-4.41 9.58.86 9.39 28.74-.77 57.47-.77 86.59 0 6.42.19 7.66-8.14 1.15-9.58-26.72-6.9-28.26-14.37-28.35-58.24l-.1-50.67c0-10.92 11.97-15.61 20.5-6.61 27.97 29.88 49.52 53.45 77.3 84.19 14.85 16.57 9.77 26.82-8.43 31.32-6.61 1.63-5.36 9.77.67 9.58 36.49-.86 63.89-1.15 90.32 0"/><path d="M1737.87 799.47c24.23 7.76 28.35 13.22 28.73 37.83.77 61.59.77 108.33 0 156.61-.77 43.58-2.97 46.65-28.83 54.31-6.42 1.92-3.93 9.58 1.34 9.39 28.83-.77 57.95-.77 86.78 0 5.17.19 7.66-7.47 1.25-9.39-25.86-7.66-27.97-10.73-28.83-54.31-.77-48.28-.77-95.02 0-156.61.38-24.62 3.93-30.08 28.16-37.83 6.03-2.11 5.27-9.58-1.44-9.39-28.26.77-57.47.77-85.73 0-6.610-.19-7.47 7.28-1.44 9.39"/><path d="M734.28 1224.3h-35.45v-112.07h35.45c31.26 0 52.22 20.2 52.22 54.89 0 38.12-23.25 57.18-52.22 57.18m.57-123.89h-49.17v135.71h49.17c34.12 0 65.57-20.2 65.57-69 0-44.79-28.02-66.71-65.57-66.71"/><path d="m819.1 1100.41.19 135.71h13.15l-.19-135.71z"/><path d="M652.52 1184.46c0 25.73-10.1 41.93-35.64 41.93s-35.83-16.2-35.830-41.93v-84.05h-13.34v79.67c0 30.11 6.67 58.13 49.18 58.13s48.98-28.02 48.98-58.13v-79.67h-13.34v84.05Z"/><path d="M912.11 1226.78c-25.54 0-47.08-21.16-47.08-59.09s21.54-57.37 47.08-57.37 47.08 18.87 47.08 57.37-21.54 59.09-47.08 59.09m0-128.66c-38.12 0-60.8 28.4-60.8 69.38s22.68 71.47 60.8 71.47 60.99-28.97 60.99-71.47-22.87-69.38-60.99-69.38"/><path d="M432.56 1112.23h54.51v123.89h13.15v-123.89h54.52v-11.82H432.56z"/><path d="m1048.2 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.31 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.17-12.96 49.17-38.31c0-20.58-12.58-31.83-34.88-37.36"/><path d="m397.68 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.3 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.18-12.96 49.18-38.31c0-20.58-12.58-31.83-34.88-37.36"/></svg>
+</a>
   <nav class="hdr-nav" aria-label="Main">
-    <a class="lnk hide-m is-current" href="index.html#units">Apartments and Studios</a>
+    <a class="lnk hide-m" href="index.html#studios" data-nav="studios">The Studios</a>
+    <a class="lnk hide-m" href="index.html#location" data-nav="location">Location</a>
+    <a class="lnk hide-m" href="index.html#units" data-nav="units">Apartments</a>
+    <a class="lnk hide-m" href="index.html#amenities" data-nav="amenities">Amenities</a>
+    <a class="lnk hide-m" href="index.html#faq" data-nav="faq">FAQ</a>
     <a class="lnk hide-m" href="compass.html">Guest Compass</a>
+    <div class="lang-sw" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-lang="de">DE</button></div>
     <a class="pill" href="index.html#book">Book your stay</a>
     <button class="pill hdr-menu" aria-expanded="false" aria-controls="mnav">Menu</button>
   </nav>
@@ -317,8 +376,12 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 
 <nav class="mnav" id="mnav" aria-label="Menu">
   <div class="mnav-links">
-    <a href="index.html#units">Apartments and Studios</a>
+    <a href="index.html#studios">The Studios</a>
     <a href="index.html#location">Location</a>
+    <a href="index.html#units">Apartments and Studios</a>
+    <a href="index.html#amenities">Amenities</a>
+    <a href="index.html#architecture">Architecture</a>
+    <a href="index.html#faq">FAQ</a>
     <a href="compass.html">Guest Compass</a>
     <a href="floorplan.html">Floorplan</a>
     <a href="index.html#book">Book your stay</a>
@@ -412,6 +475,50 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const html = document.documentElement;
+
+/* ---------- Sprache EN / DE ---------- */
+const LANG = (() => {
+  let l = null;
+  try { l = localStorage.getItem('mk-lang'); } catch (e) {}
+  if (!l) l = new URLSearchParams(location.search).get('lang');
+  if (!l) l = (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
+  return l === 'de' ? 'de' : 'en';
+})();
+const DE = {"The Studios": "Die Studios", "Location": "Lage", "Apartments": "Apartments", "Amenities": "Ausstattung", "FAQ": "FAQ", "Book your stay": "Aufenthalt buchen", "Menu": "Menü", "Close": "Schließen", "Apartments and Studios": "Apartments und Studios", "Architecture": "Architektur", "Floorplan": "Grundriss", "Floorplans": "Grundrisse", "Kissos, Greece": "Kissos, Griechenland", "Previous": "Zurück", "Next": "Weiter", "Contact": "Kontakt", "Imprint": "Impressum", "Terms and Conditions": "Mietbedingungen", "Photos & Videos:": "Fotos & Videos:", "Contents": "Inhalt", "Language": "Sprache", "A pure and minimalistic way to stay in the nature of Kissos, Greece.": "Ein klarer, minimalistischer Ort zum Wohnen inmitten der Natur von Kissos, Griechenland.", "Be our guest.": "Seien Sie unser Gast.", "The word “Meraki” means doing something with love and care – and that’s the spirit of this place.": "Das Wort „Meraki“ bedeutet, etwas mit Liebe und Hingabe zu tun. Genau das ist der Geist dieses Ortes.", "In the quiet of the valley six intimate Studios await, each with a great vista of the ever-changing beauty of Crete’s nature. Here, simplicity equals luxury.": "In der Stille des Tals warten sechs intime Studios, jedes mit weitem Blick auf die sich stets wandelnde Schönheit der kretischen Natur. Hier ist Einfachheit Luxus.", "The Garden": "Der Garten", "The large 6500 m² garden surrounding the building is a green paradise, filled with old olive, oak, fig, nut and all kinds of fruit trees.": "Der 6500 m² große Garten rund um das Gebäude ist ein grünes Paradies voller alter Oliven-, Eichen-, Feigen- und Nussbäume und Obstbäume aller Art.", "Nature": "Natur", "Among the locals the plot goes by the name of Tsikalaria. It used to be cultivated by a man who had a reputation to be particularly knowledgeable of plants. We want to honour this heritage.": "Bei den Einheimischen heißt das Grundstück Tsikalaria. Früher bewirtschaftete es ein Mann, der als besonders kundig in Pflanzen galt. Dieses Erbe möchten wir ehren.", "We believe in the power of simplicity, living in harmony with nature and focusing on essentials.": "Wir glauben an die Kraft der Einfachheit, an ein Leben im Einklang mit der Natur und an die Konzentration auf das Wesentliche.", "Each studio has a large partly shaded patio and the transition between indoor and outdoor living is seamless. The building is organically integrated in the surrounding nature and invites you to appreciate the moment – enjoy tranquility and connect with the land.": "Jedes Studio hat eine große, teils beschattete Terrasse, drinnen und draußen gehen nahtlos ineinander über. Das Gebäude fügt sich organisch in die umgebende Natur ein und lädt dazu ein, den Moment zu genießen: Ruhe finden und sich mit dem Land verbinden.", "Crete": "Kreta", "Nestled in the beautiful landscape just a short stroll away from the charming village of Kissos, this spot is a quiet escape into traditional Crete. Surrounded by a tapestry of traditionally cultivated land with olive groves, small vineyards, vegetable gardens and wild nature it’s a world away from mass tourism.": "Eingebettet in eine wunderschöne Landschaft, nur einen kurzen Spaziergang vom charmanten Dorf Kissos entfernt, ist dieser Ort ein stiller Rückzug ins traditionelle Kreta. Umgeben von traditionell bewirtschaftetem Land mit Olivenhainen, kleinen Weinbergen, Gemüsegärten und wilder Natur, liegt er weit entfernt vom Massentourismus.", "Psiloritis National Park": "Psiloritis-Nationalpark", "Explore some of the most beautiful beaches on the rural south coast like Ligres and Triopetra about a 25 minute drive away, or dive into Rethymno’s vibrant dining and culture in half an hour. You can wander nearby villages or hike the stunning Psiloritis National Park.": "Entdecken Sie einige der schönsten Strände der ursprünglichen Südküste wie Ligres und Triopetra, etwa 25 Autominuten entfernt, oder tauchen Sie in einer halben Stunde in Rethymnos lebendige Gastronomie und Kultur ein. Streifen Sie durch die umliegenden Dörfer oder wandern Sie im beeindruckenden Psiloritis-Nationalpark.", "We are located in 74053 Kissos, Rethymno.": "Sie finden uns in 74053 Kissos, Rethymno.", "Comfort": "Komfort", "Groups": "Gruppen", "In the large 12 by 5 meters infinity pool you can start the day with a swim or cool down on hot summer days.": "Im großen, 12 mal 5 Meter messenden Infinity-Pool beginnen Sie den Tag mit ein paar Zügen oder kühlen sich an heißen Sommertagen ab.", "The studios and apartments offer a balance of comfort and function with cocomat mattresses and pillows, small well equipped kitchens providing everything to prepare simple meals.": "Die Studios und Apartments verbinden Komfort und Funktion: mit Matratzen und Kissen von COCO-MAT und kleinen, gut ausgestatteten Küchen mit allem, was man für einfache Mahlzeiten braucht.", "For those who appreciate the virtues of Yoga each unit is provided with hey hey yoga mats.": "Für alle, die Yoga schätzen, liegen in jeder Wohneinheit Yogamatten von hejhej bereit.", "The building with all six units is also perfect to be rented entirely by a group.": "Das Haus mit allen sechs Einheiten eignet sich auch perfekt, um es als Gruppe komplett zu mieten.", "At Meraki Studios, Sigurd Larsen’s vision is brought to life through the raw elegance of concrete, an exposed skeleton that stands proudly as a three-dimensional grid. This structure, shaped by the land, mirrors the rugged form of an abstract rock, it’s cool stone walls crafted from the earth itself, offering a refuge from the Mediterranean sun.": "Bei Meraki Studios wird Sigurd Larsens Vision durch die rohe Eleganz von Beton lebendig: ein freiliegendes Skelett, das selbstbewusst als dreidimensionales Raster dasteht. Die vom Gelände geformte Struktur spiegelt die zerklüftete Form eines abstrakten Felsens, ihre kühlen Steinmauern stammen aus der Erde selbst und bieten Zuflucht vor der Mittelmeersonne.", "“For years, we talked about leaving the hustle of city life behind. In 2022, we made the move to Crete with our children, and our vision was simple: to create a space that allows you to reconnect with mother nature, that nurtures us, our family, and our guests. Crete, with its natural beauty, offered the perfect place to bring our dream to life.”": "„Jahrelang haben wir davon gesprochen, die Hektik des Stadtlebens hinter uns zu lassen. 2022 sind wir mit unseren Kindern nach Kreta gezogen, und unsere Vision war einfach: einen Ort zu schaffen, an dem man wieder zu Mutter Natur findet und der uns, unsere Familie und unsere Gäste nährt. Kreta bot mit seiner natürlichen Schönheit den perfekten Ort, um unseren Traum wahr werden zu lassen.“", "Jan & Vanessa": "Jan & Vanessa", "Check-in": "Anreise", "Checkout": "Abreise", "All": "Alle", "4 Guests": "4 Gäste", "2 Guests": "2 Gäste", "Loading availability": "Verfügbarkeit wird geladen", "The booking calendar could not be loaded.": "Der Buchungskalender konnte nicht geladen werden.", "Discounts:": "Rabatte:", "15% for 7 days and more": "15 % ab 7 Tagen", "5% for one person in a studio": "5 % für eine Person im Studio", "5% for two persons in an apartment": "5 % für zwei Personen im Apartment", "Included in the price:": "Im Preis enthalten:", "- final cleaning": "- Endreinigung", "- accommodation tax": "- Übernachtungssteuer", "- energy & water": "- Strom & Wasser", "- WiFi": "- WLAN", "Minimum stay:": "Mindestaufenthalt:", "3 nights": "3 Nächte", "10% for one person": "10 % für eine Person", "Laundry": "Wäsche", "We have a washing machine so you can stay fresh and clean even if you travel light (5 euros per load)": "Wir haben eine Waschmaschine, damit Sie auch mit leichtem Gepäck frisch bleiben (5 Euro pro Ladung)", "Feel free to get in touch.": "Schreiben Sie uns gern.", "When can I check in and check out?": "Wann kann ich an- und abreisen?", "The rent will become effective on the first day of the agreed rental period at 15.00 hours local time and ends on the last day of the agreed rental period at 12.00 hours local time. Special agreements to the check-in and check- out time can be agreed in advance with the lessor due to availability.": "Die Miete beginnt am ersten Tag des vereinbarten Mietzeitraums um 15.00 Uhr Ortszeit und endet am letzten Tag um 12.00 Uhr Ortszeit. Abweichende An- und Abreisezeiten können je nach Verfügbarkeit vorab mit der Vermieterin vereinbart werden.", "Is there a minimum stay?": "Gibt es einen Mindestaufenthalt?", "What is included in the price?": "Was ist im Preis enthalten?", "The rent includes the expenses for electricity and water use, all taxes final cleaning and wifi.": "Die Miete umfasst Strom und Wasser, alle Steuern, die Endreinigung und WLAN.", "How do I pay?": "Wie bezahle ich?", "Within three (3) working days after the booking the lessee must have transferred 50% of the total amount to the bank account of the lessor. This will serve to confirm the booking, making it peremptory.": "Innerhalb von drei (3) Werktagen nach der Buchung überweisen Sie 50 % des Gesamtbetrags auf das Konto der Vermieterin. Damit ist die Buchung bestätigt und verbindlich.", "What if I need to cancel?": "Was passiert, wenn ich stornieren muss?", "The deposit is refundable until 30 days before arrival. At 30 days before arrival, the balance is due and the total payment is non-refundable. sole exception: In case we can rent out the apartment/studio within this time of 30 days we refund the sum paid minus 200 Euros cancellation fee.": "Die Anzahlung wird bis 30 Tage vor Anreise erstattet. 30 Tage vor Anreise ist der Restbetrag fällig, die Gesamtzahlung ist dann nicht mehr erstattbar. Einzige Ausnahme: Können wir das Apartment oder Studio innerhalb dieser 30 Tage anderweitig vermieten, erstatten wir den gezahlten Betrag abzüglich 200 Euro Stornogebühr.", "Is there a washing machine?": "Gibt es eine Waschmaschine?", "Can we rent the whole house?": "Können wir das ganze Haus mieten?", "How do we get there?": "Wie kommen wir hin?", "The house is accessible with car or scooter, taxi or public transport.": "Das Haus ist mit Auto oder Roller, Taxi oder öffentlichen Verkehrsmitteln erreichbar.", "Are pets allowed? Can I smoke?": "Sind Haustiere erlaubt? Darf man rauchen?", "Pets are not allowed. Inside the apartment(s) smoking is not allowed.": "Haustiere sind nicht erlaubt. In den Apartments ist das Rauchen nicht gestattet.", "Can we barbecue?": "Dürfen wir grillen?", "Open fires are not allowed by law. No BBQ/ grill charcoal or grill coal can be used.": "Offenes Feuer ist gesetzlich verboten. Grillkohle darf nicht verwendet werden.", "Can children use the pool?": "Dürfen Kinder den Pool nutzen?", "Children should not use the swimming pool unattended": "Kinder sollten den Pool nicht unbeaufsichtigt nutzen.", "Main": "Hauptmenü", "Meraki Studios in the valley of Kissos": "Meraki Studios im Tal von Kissos", "Meraki Studios at night": "Meraki Studios bei Nacht", "Pomegranate blossoms in front of Meraki Studios": "Granatapfelblüten vor Meraki Studios", "Meraki Studios between olive trees": "Meraki Studios zwischen Olivenbäumen", "Stone path at Meraki Studios at dusk": "Steinweg bei Meraki Studios in der Dämmerung", "Units": "Wohneinheiten", "Open image": "Bild öffnen", "Previous image": "Vorheriges Bild", "Next image": "Nächstes Bild", "Infinity pool": "Infinity-Pool", "Meraki Studios building": "Gebäude von Meraki Studios", "Partners": "Partner", "Concrete structure of Meraki Studios": "Betonstruktur von Meraki Studios", "Jan and Vanessa with their family": "Jan und Vanessa mit ihrer Familie", "Booking Form": "Buchungsformular", "Light and shadow on the concrete structure": "Licht und Schatten auf der Betonstruktur", "Legal": "Rechtliches", "Breadcrumb": "Pfad", "Categories": "Kategorien", "Map of Crete with all places": "Karte von Kreta mit allen Orten", "Open floorplan 1": "Grundriss 1 öffnen", "Open floorplan 2": "Grundriss 2 öffnen", "Open floorplan 3": "Grundriss 3 öffnen", "I hope nothing.": "Ich erhoffe nichts.", "I fear nothing.": "Ich fürchte nichts.", "I am free.": "Ich bin frei.", "handpicked selection of authentic places, tavernas and hidden corners of Crete - gathered with patience, curiosity and a quiet love for detail": "handverlesene Auswahl authentischer Orte, Tavernen und versteckter Winkel Kretas - gesammelt mit Geduld, Neugier und einer stillen Liebe zum Detail", "The neighbourhood": "Die Nachbarschaft", "At the seaside": "Am Meer", "Hiking tours": "Wanderungen", "Short and long hiking tours & running routs": "Kurze und lange Wanderungen & Laufstrecken", "Tavernas & restaurants, coffeeshops & ice cream in the area": "Tavernen & Restaurants, Cafés & Eis in der Umgebung", "Tavernas, restaurants and Bars": "Tavernen, Restaurants und Bars", "Explore the wild": "Die Wildnis entdecken", "not on the map": "nicht auf der Karte", "in the village of Meraki Studios": "im Dorf von Meraki Studios", "village close to a canyon for hiking": "Dorf nahe einer Schlucht zum Wandern", "village close to Kissos": "Dorf nahe Kissos", "village 5 km drive from Kissos. tip: order half portion": "Dorf, 5 km Fahrt von Kissos. Tipp: halbe Portion bestellen", "we love this place! also for breakfast": "wir lieben diesen Ort! auch zum Frühstück", "quick Greek food near Kissos (5 km)": "schnelles griechisches Essen nahe Kissos (5 km)", "cretan natural products, food, coffeeshop and breakfast": "kretische Naturprodukte, Essen, Café und Frühstück", "traditional cretan food": "traditionelle kretische Küche", "quick breakfast or take away": "schnelles Frühstück oder zum Mitnehmen", "village close to Kissos on the way to Rethymno": "Dorf nahe Kissos auf dem Weg nach Rethymno", "near Kissos, on the way to Rethymno": "nahe Kissos, auf dem Weg nach Rethymno", "A family-run eco taverna in the hills above Plakias and Ammoudi": "Familiengeführte Öko-Taverne in den Hügeln über Plakias und Ammoudi", "stunning beach Taverna, excellent food": "traumhafte Strandtaverne, ausgezeichnetes Essen", "relaxed Taverna directly at the beach": "entspannte Taverne direkt am Strand", "sea view taverna": "Taverne mit Meerblick", "village above the sea in the mountains": "Dorf in den Bergen über dem Meer", "at the beach of Plakias": "am Strand von Plakias", "with stunning sea view in a small village": "mit traumhaftem Meerblick in einem kleinen Dorf", "relaxed beach taverna (~30 min drive)": "entspannte Strandtaverne (ca. 30 Min. Fahrt)", "authentic tiny beach bar with its own beach and signature drinks": "authentische kleine Strandbar mit eigenem Strand und Signature-Drinks", "Kourtaliotiko Gorge": "Kourtaliotiko-Schlucht", "just start this adventure very early in the morning": "starten Sie dieses Abenteuer am besten sehr früh am Morgen", "hiking from Plakias to Kalypso beach": "Wanderung von Plakias zum Kalypso-Strand", "when you make a route go from Plakias beach to:": "für die Route am Strand von Plakias starten, Ziel:", "Myli Gorge – easy to hike": "Myli-Schlucht – leicht zu wandern", "take the second, less well-known entrance a little further along the road": "nehmen Sie den zweiten, weniger bekannten Eingang etwas weiter die Straße entlang", "Patsos Gorge": "Patsos-Schlucht", "8 km and the last part is recommended for advanced hikers only": "8 km, der letzte Abschnitt nur für geübte Wanderer", "Stunning plateau above Kissos": "Traumhafte Hochebene über Kissos", "Kissos-Kentrochori-Monastery Agia pnevma-Kissos": "Kissos-Kentrochori-Kloster Agia Pnevma-Kissos", "beautiful run or walk": "schöne Lauf- oder Wanderstrecke", "VAT: EL174532803": "USt-IdNr.: EL174532803", "We are located outside the village of Kissos, Agios Vasilios, Crete, Greece. Coordinates: (35.1930123, 24.5557285)": "Wir befinden uns außerhalb des Dorfes Kissos, Agios Vasilios, Kreta, Griechenland. Koordinaten: (35.1930123, 24.5557285)", "Meraki Studios, Kissos, Crete": "Meraki Studios, Kissos, Kreta", "Floorplan | Meraki Studios": "Grundriss | Meraki Studios", "Terms and Conditions | Meraki Studios": "Mietbedingungen | Meraki Studios", "Imprint | Meraki Studios": "Impressum | Meraki Studios"};
+const DE_CAP = {"2 bed apartment": "Apartment mit 2 Schlafzimmern", "terrace": "Terrasse", "bedroom 1": "Schlafzimmer 1", "bathroom": "Bad", "outside view": "Außenansicht", "living area": "Wohnbereich", "view": "Aussicht", "kitchenette": "Küchenzeile", "studio for 2 persons": "Studio für 2 Personen"};
+const norm = s => s.replace(/\s+/g, ' ').trim();
+const mkT = s => LANG === 'de' ? (DE[norm(s)] || s) : s;
+window.mkT = mkT; window.mkLang = LANG;
+window.mkCap = s => LANG === 'de' ? s.replace(/ - (.+)$/, (m, x) => ' - ' + (DE_CAP[x] || x)) : s;
+html.lang = LANG;
+if (LANG === 'de') {
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement && n.parentElement.closest('script,style,svg') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const nodes = []; let nd; while ((nd = w.nextNode())) nodes.push(nd);
+  nodes.forEach(n => { const raw = n.nodeValue, k = norm(raw); if (k && DE[k]) n.nodeValue = raw.replace(raw.trim(), DE[k]); });
+  document.querySelectorAll('[alt],[aria-label],[title]').forEach(e => ['alt', 'aria-label', 'title'].forEach(a => { const v = e.getAttribute(a); if (v && DE[norm(v)]) e.setAttribute(a, DE[norm(v)]); }));
+  if (DE[document.title]) document.title = DE[document.title];
+}
+document.querySelectorAll('.lang-sw [data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === LANG));
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-lang]'); if (!b) return;
+  const l = b.dataset.lang; if (l === LANG) return;
+  try { localStorage.setItem('mk-lang', l); } catch (er) {}
+  const y = String(window.__mkLenis ? window.__mkLenis.scroll : scrollY);
+  try {
+    if (document.body.dataset.page) sessionStorage.setItem('mk-sub-y:' + location.pathname, y);
+    else { sessionStorage.setItem('mk-return', '1'); sessionStorage.setItem('mk-y', y); }
+  } catch (er) {}
+  location.reload();
+});
+/* Unterseiten: nach Sprachwechsel an derselben Stelle bleiben */
+if (document.body.dataset.page) addEventListener('load', () => {
+  let y = null; try { y = sessionStorage.getItem('mk-sub-y:' + location.pathname); sessionStorage.removeItem('mk-sub-y:' + location.pathname); } catch (e) {}
+  if (y) setTimeout(() => { window.__mkLenis ? window.__mkLenis.scrollTo(+y, { immediate: true }) : scrollTo(0, +y); }, 120);
+});
+/* Höhe des Headers als CSS-Variable */
+const setHdrH = () => { const h = document.querySelector('.hdr'); h && html.style.setProperty('--hdr-h', h.offsetHeight + 'px'); };
+setHdrH(); addEventListener('resize', setHdrH);
+
 const page = document.body.dataset.page || '';
 
 /* ---------- Wix-Bilder ---------- */
@@ -423,9 +530,9 @@ const wixRemote = f => `${WIX}${wixFile(f)}/v1/fit/w_2400,h_2400,q_85/${wixFile(
 const wixSrc = file => IMG_DIR + wixFile(file).replace('~mv2', '');
 document.addEventListener('error', e => {
   const t = e.target;
-  if (!t || t.tagName !== 'IMG' || t.dataset.remote) return;
-  const m = (t.getAttribute('src') || '').match(/^img\/(.+)$/); if (!m) return;
-  t.dataset.remote = '1';
+  if (!t || t.tagName !== 'IMG') return;
+  /* nur lokale Wix-Kopien (img/<id>.<ext>) auf das CDN umleiten; schlägt das CDN fehl, endet es hier */
+  const m = (t.getAttribute('src') || '').match(/^img\/([0-9a-f]{6}_[0-9a-f]{32}\.\w+)$/); if (!m) return;
   t.src = wixRemote(m[1].replace(/(\.\w+)$/, '~mv2$1'));
 }, true);
 
@@ -493,7 +600,7 @@ function renderGuide() {
   });
   const i = GUIDE_ORDER.indexOf(k), next = GUIDE_ORDER[(i + 1) % GUIDE_ORDER.length];
   const n = $('.gd-next-link');
-  n.href = `guide.html?c=${next}`;
+  n.href = `compass.html?c=${next}`;
   $('.gd-next-title').textContent = GUIDES[next].title;
   // Bild wechselt beim Hover auf einen Eintrag mit eigenem Bild
   const base = () => media.querySelector('img');
@@ -605,6 +712,17 @@ function initMobile(getLenis) {
   }
 }
 
+
+/* Mobil: natives Scrollen statt Lenis (gleiche Schnittstelle) */
+const nativeScroll = () => {
+  const subs = [];
+  addEventListener('scroll', () => subs.forEach(f => f({ velocity: 0, scroll: scrollY })), { passive: true });
+  const yOf = t => typeof t === 'number' ? t : (typeof t === 'string' ? ($(t) ? $(t).getBoundingClientRect().top + scrollY : 0) : t.getBoundingClientRect().top + scrollY);
+  return { get scroll() { return scrollY; }, on(ev, f) { if (ev === 'scroll') subs.push(f); }, raf() {},
+    stop() { document.documentElement.style.overflow = 'hidden'; }, start() { document.documentElement.style.overflow = ''; },
+    scrollTo(t, o = {}) { window.scrollTo({ top: Math.max(0, yOf(t) - (o.offset || 0)), behavior: o.immediate ? 'auto' : 'smooth' }); } };
+};
+
 const reduce = html.classList.contains('rm');
 if (!window.gsap || !window.ScrollTrigger || !window.Lenis) {
   html.classList.add('rm'); html.classList.add('pt-off');
@@ -619,6 +737,8 @@ CustomEase.create('Ease', '0.25,0.1,0.25,1');
 CustomEase.create('diveIn', '0.6,0,0,1');
 const D = { s: .4, m: .8, l: 1.2 }, ST = .1, BP = 992;
 const desk = () => innerWidth >= BP;
+const MOB = innerWidth < BP;
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (MOB !== (innerWidth < BP)) location.reload(); }, 300); });
 let lenis = null;
 
 /* ---------- Reveals ---------- */
@@ -635,7 +755,7 @@ const R = {
          show: (el, d = 0) => gsap.to(el, { opacity: 1, y: 0, duration: D.l, delay: d, ease: 'Out', overwrite: true }),
          hide: (el, d = 0) => gsap.to(el, { opacity: 0, duration: D.s, delay: d, ease: 'In', overwrite: true }) }
 };
-const rv = (el, a, d) => el && R[el.dataset.reveal][a](el, d);
+const rv = (el, a, d) => el && R[MOB ? 'ctn' : el.dataset.reveal][a](el, d);
 
 function fitText() {
   $$('[data-fit]').forEach(el => {
@@ -705,11 +825,11 @@ function start() {
   initLightbox(gsap, () => lenis);
   if (reduce) { initMobile(() => null); $$('[data-reveal]').forEach(el => el.style.opacity = 1); updateTheme(); addEventListener('scroll', updateTheme, { passive: true }); ptOpen(); return; }
 
-  lenis = new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  lenis = MOB ? nativeScroll() : new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   ScrollTrigger.config({ ignoreMobileResize: true });
   lenis.on('scroll', ScrollTrigger.update);
   lenis.on('scroll', updateTheme);
-  gsap.ticker.add(t => lenis.raf(t * 1000));
+  if (!MOB) gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
   initMobile(() => lenis);
 
@@ -717,10 +837,10 @@ function start() {
   const mm = gsap.matchMedia();
 
   /* Parallax */
-  $$('.fig[data-par]').forEach(fig => gsap.fromTo(fig.querySelector('img'), { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: .5 } }));
+  if (!MOB) $$('.fig[data-par]').forEach(fig => gsap.fromTo(fig.querySelector('img'), { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: .5 } }));
 
   /* Scroll-Reveals */
-  $$('[data-reveal]:not([data-manual])').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => rv(el, 'show') }));
+  $$(MOB ? '[data-reveal]:not([data-manual="intro"])' : '[data-reveal]:not([data-manual])').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => rv(el, 'show') }));
 
   /* Scrollbar */
   if (sbar) {
@@ -770,7 +890,7 @@ function start() {
       gsap.fromTo(imgs[nx], { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: D.l * 1.5, ease: 'InOut' });
       cur = nx;
     }, 4200);
-    mm.add({ d: `(min-width: ${BP}px)`, m: `(max-width: ${BP - 1}px)` }, ctx => {
+    if (!MOB) mm.add({ d: `(min-width: ${BP}px)`, m: `(max-width: ${BP - 1}px)` }, ctx => {
       const [ix, iy] = ctx.conditions.d ? [36, 24] : [18, 28];
       buildGrid(grid, ix, iy);
       gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom bottom', scrub: true } })
@@ -780,7 +900,7 @@ function start() {
         .to(shade, { opacity: 1, duration: .15 }, .38)
         .to({}, { duration: .5 });
     });
-    ScrollTrigger.create({ trigger: hero, start: '40% top',
+    if (!MOB) ScrollTrigger.create({ trigger: hero, start: '40% top',
       onEnter: () => { qLines.forEach((l, i) => rv(l, 'show', i * .18)); rv(author, 'show', D.m); },
       onLeaveBack: () => { qLines.forEach(l => rv(l, 'hide')); rv(author, 'hide'); } });
 

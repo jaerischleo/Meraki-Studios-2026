@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guest Compass | Meraki Studios</title>
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');history.scrollRestoration='manual';</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Exposure";src:url("fonts/exposure.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_3f0ba5ec469544dc84bfbec308f920bf/woff2/file.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_3f0ba5ec469544dc84bfbec308f920bf/woff/file.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"New Edge";src:url("fonts/new-edge-light.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_660f7f5e5e794c9fa425c5c10287f0ee/woff2/file.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_660f7f5e5e794c9fa425c5c10287f0ee/woff/file.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
 /* =========================================================
    MERAKI STUDIOS – Unterseiten
    Raster: Canvas 1600 px, 1rem = 1vw (16 px @1600)
@@ -290,26 +289,177 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 .tc-mtoc summary::after{content:"+";font-weight:300;font-size:1.25rem;line-height:1}
 .tc-mtoc[open] summary::after{content:"–"}
 .tc-mtoc a{display:block;padding:.75rem 1.1rem;border-top:1px solid var(--line-ink);font-size:.875rem}
+
+.ln-mask{display:block;padding:.08em 0 .18em;margin:-.08em 0 -.18em}
+
+@media (max-width:991px){
+  .cp-hero{height:auto!important}
+  .cp-screen{position:relative;height:auto!important;overflow:visible;display:flex;flex-direction:column;padding-top:5.5rem}
+  .cp-title-wrap{position:relative;bottom:auto;order:1;padding-bottom:1.5rem;opacity:1!important;transform:none!important}
+  .cp-fig{position:relative;inset:auto;clip-path:none!important;aspect-ratio:3 / 2;order:2}
+  .cp-grid,.cp-shade{display:none}
+  .cp-quote{position:relative;inset:auto;color:var(--ink);order:3;padding:4rem 0 0}
+  .cp-intro{padding:4rem 0 3rem}
+  .fig[data-par] img{position:static;height:auto;top:auto}
+}
+
+/* =========================================================
+   MARKE: Schriften der Originalseite, kompaktere Größen
+   ========================================================= */
+:root{--font:"New Edge","Helvetica Neue",Helvetica,Arial,sans-serif;--serif:"Exposure","Times New Roman",Georgia,serif}
+body{font-family:var(--font);font-synthesis:none;font-weight:400}
+.t-display,.t-h1,.t-h2,.t-h3,.t-h4,.intro-word,.units-tab,.amen-item,.mnav-links a,.pre-name,.faq-q,.cp-name,.cat-name{font-family:var(--serif);font-weight:400}
+.t-h1,.t-h2,.t-h3{letter-spacing:-.02em}
+.t-h4{letter-spacing:-.01em}
+.t-label{letter-spacing:.02em}
+.hdr-logo svg{display:block;height:2.4rem;width:auto}
+.hdr-word,.hdr-symbol{display:none}
+@media (min-width:992px){
+  .t-h1{font-size:7.5rem;line-height:.98}
+  .t-h2{font-size:5rem;line-height:1}
+  .t-h3{font-size:3.1rem;line-height:1.1}
+  .t-h4{font-size:2rem;line-height:1.2}
+  .t-body{font-size:1rem;line-height:1.62}
+}
+@media (max-width:991px){
+  .t-h1{font-size:2.8rem;line-height:1}
+  .t-h2{font-size:2.25rem;line-height:1.04}
+  .t-h3{font-size:1.65rem;line-height:1.15}
+  .t-h4{font-size:1.3rem;line-height:1.25}
+  .hdr-logo svg{height:2rem}
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.hdr-nav{gap:1.9rem}
+.hdr-nav .lnk.is-current .lnk-in::after{background:var(--flechte);height:2px}
+@media (min-width:992px) and (max-width:1180px){.hdr-nav{gap:1.2rem}.hdr-nav .lnk{font-size:.75rem}}
+.mnav{overflow-y:auto}
+.mnav-links a{font-size:1.75rem;padding:.55rem 0}
+
+/* =========================================================
+   HEADER-BALKEN + SPRACHWAHL
+   ========================================================= */
+.hdr{padding-top:.9rem;padding-bottom:.9rem;background:rgba(228,225,218,.88);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--line-ink);transition:color .45s var(--e-out),background-color .45s var(--e-out),border-color .45s var(--e-out)}
+.hdr[data-theme="dark"]{background:rgba(45,51,34,.8);border-bottom-color:var(--line-kalk)}
+.hdr.menu-open{background:var(--olive);border-bottom-color:var(--line-kalk)}
+.lang-sw{display:inline-flex;align-items:center;gap:.35rem;font-size:.8125rem}
+.lang-sw span{opacity:.4}
+.lang-sw button{padding:.4rem .15rem;opacity:.5;transition:opacity .3s var(--e-out)}
+.lang-sw button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1px}
+.lang-sw button:hover{opacity:1}
+@media (min-width:992px) and (max-width:1199px){
+  .hdr-nav .hide-m{display:none}
+  .hdr .hdr-menu{display:inline-flex}
+  .mnav{display:flex}
+}
+@media (max-width:991px){.hdr{padding-top:.7rem;padding-bottom:.7rem}.hdr-nav{gap:.9rem}.lang-sw{font-size:.75rem}}
+.lang-note{display:none;border:1px solid var(--line-ink);padding:1rem 1.2rem;margin-bottom:3rem;font-size:.9375rem}html[lang="de"] .lang-note{display:block}
+
+/* ================= GUEST COMPASS (Karte) ================= */
+.cp-head{background-color:#2f6aa3;background-image:linear-gradient(rgba(14,40,72,.58),rgba(14,40,72,.4)),url("img/site/bg-cyanotype-blue.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff;padding:calc(var(--hdr-h,4.5rem) + 4.5rem) 0 4.5rem;text-shadow:0 1px 18px rgba(10,30,60,.35)}
+.cp-crumb{grid-column:1 / -1;margin-bottom:2.5rem;color:#fff}
+.cph-title{grid-column:1 / span 8;align-self:end}
+.cph-quote{grid-column:9 / span 4;align-self:end;margin:0;line-height:1.2}
+.cph-quote cite{display:block;font-family:var(--font);font-style:normal;font-size:.8125rem;margin-top:1rem;opacity:.85}
+.cph-intro{grid-column:1 / span 6;margin-top:2.5rem;font-size:1.125rem;line-height:1.55;max-width:46ch}
+.cpm{display:grid;grid-template-columns:31rem 1fr;grid-template-rows:auto 1fr;height:100vh;height:100svh;border-top:1px solid var(--line-ink);background:var(--kalk)}
+.cpm-filter{grid-column:1;grid-row:1;display:flex;flex-wrap:wrap;gap:.45rem;padding:calc(var(--hdr-h,4.5rem) + 1rem) var(--pad) 1.2rem;border-right:1px solid var(--line-ink);border-bottom:1px solid var(--line-ink)}
+.cpm-chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line-ink);border-radius:999px;padding:.55rem .95rem;font-size:.8125rem;min-height:2.5rem;transition:background-color .35s var(--e-out),color .35s var(--e-out),border-color .35s var(--e-out)}
+.cpm-chip i{width:.6rem;height:.6rem;border-radius:50%;background:var(--c);display:inline-block}
+.cpm-chip small{opacity:.55;font-size:.75rem}
+.cpm-chip:hover{border-color:var(--ink)}
+.cpm-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--kalk)}
+.cpm-chip[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--kalk)}
+.cpm-panel{grid-column:1;grid-row:2;overflow-y:auto;border-right:1px solid var(--line-ink);overscroll-behavior:contain}
+.cpm-map-wrap{grid-column:2;grid-row:1 / span 2;position:relative}
+.cpm-map{position:absolute;inset:0;background:#e8e6e0}
+.cpm-list{padding:0}
+.cp-item{display:grid;grid-template-columns:6.5rem 1fr;gap:1.1rem;padding:1.1rem var(--pad);border-bottom:1px solid var(--line-ink);cursor:pointer;transition:background-color .3s var(--e-out)}
+.cp-item:hover{background:rgba(255,255,255,.45)}
+.cp-item.is-active{background:#fff}
+.cp-item.is-hidden{display:none}
+.cp-thumb{width:6.5rem;aspect-ratio:4 / 3;overflow:hidden;background:var(--beton)}
+.cp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cp-meta{display:flex;align-items:center;gap:.5rem;font-size:.75rem;opacity:.7;margin-bottom:.25rem}
+.cp-meta i{width:.5rem;height:.5rem;border-radius:50%;background:var(--c)}
+.cp-name{font-size:1.25rem;line-height:1.2;margin-bottom:.3rem}
+.cp-desc{font-size:.875rem;line-height:1.5;opacity:.85}
+.cp-links{margin-top:.6rem;font-size:.8125rem;display:flex;gap:1.2rem}
+.cp-nopin{opacity:.55}
+.leaflet-container{font-family:var(--font);background:#e8e6e0}
+.leaflet-tile-pane{filter:sepia(.18) saturate(.8) brightness(1.02)}
+.cp-sea{background:#d6e0e4!important}
+.leaflet-pane.leaflet-labels-pane{pointer-events:none}
+.cp-pin{width:1rem;height:1rem;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:transform .3s var(--e-out)}
+.cp-pin.is-active{transform:scale(1.6)}
+.cp-home{width:1.4rem;height:1.4rem;border-radius:50%;background:var(--flechte);border:3px solid var(--ink);box-shadow:0 0 0 6px rgba(200,180,60,.25)}
+.cp-home-label{font-family:var(--serif);font-size:1rem;color:var(--ink);white-space:nowrap;background:none;border:0;box-shadow:none;padding:0;margin-left:.9rem}
+.cp-home-label::before{display:none}
+.cp-town{font-family:var(--serif);font-size:.95rem;color:#6b6656;white-space:nowrap;width:auto!important;height:auto!important}
+.leaflet-popup-content-wrapper{border-radius:0;padding:0;background:var(--kalk);box-shadow:0 1rem 3rem rgba(29,32,25,.25)}
+.leaflet-popup-content{margin:0;width:18rem!important}
+.leaflet-popup-tip{background:var(--kalk)}
+.leaflet-popup-close-button{color:var(--ink)!important;font-size:1.4rem!important;width:2rem!important;height:2rem!important;top:.2rem!important;right:.2rem!important;background:var(--kalk)!important;border-radius:50%}
+.cp-card-img{aspect-ratio:16 / 10;overflow:hidden;background:var(--beton)}
+.cp-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cp-card-body{padding:1rem 1.1rem 1.2rem}
+.cp-card-body .cp-name{font-size:1.35rem}
+.cp-card-body .pill{margin-top:.9rem;padding:.6rem 1rem;color:var(--ink)}
+@media (max-width:991px){
+  .cp-head{padding:7rem 0 3rem}
+  .cph-title,.cph-quote,.cph-intro{grid-column:1 / -1}
+  .cph-quote{margin-top:1.8rem}
+  .cph-intro{margin-top:1.5rem;font-size:1rem}
+  .cpm{display:block;height:auto}
+  .cpm-filter{position:sticky;top:var(--hdr-h,3.6rem);z-index:20;background:var(--kalk);flex-wrap:nowrap;overflow-x:auto;padding:.9rem var(--pad);border-right:0;scrollbar-width:none}
+  .cp-head{padding-top:calc(var(--hdr-h,3.6rem) + 3rem)}
+  .cpm-filter::-webkit-scrollbar{display:none}
+  .cpm-chip{flex:0 0 auto}
+  .cpm-map-wrap{height:50svh;position:sticky;top:calc(var(--hdr-h,3.6rem) + 4.2rem);z-index:10;border-bottom:1px solid var(--line-ink)}
+  .cpm-panel{overflow:visible;border-right:0;padding-bottom:6rem}
+  .cp-item{grid-template-columns:5.5rem 1fr;gap:.9rem}
+  .cp-thumb{width:5.5rem}
+  .leaflet-popup-content{width:15rem!important}
+}
+
+.cp-crumb .lnk,.cp-crumb em,.cp-crumb span{color:#fff}
+.cp-crumb span{opacity:.6}
+.cp-town{font-family:var(--serif);font-size:.95rem;color:#5d5949;white-space:nowrap;width:auto!important;height:auto!important;text-shadow:0 0 6px #f4f1ea,0 0 2px #f4f1ea}
+.cp-town.is-small{font-family:var(--font);font-size:.75rem;color:#7a7462}
+
+.cp-group{padding:1.6rem var(--pad) .9rem;border-bottom:1px solid var(--line-ink);background:var(--kalk)}
+.cp-group.is-hidden{display:none}
+.cp-group-t{display:flex;align-items:center;gap:.55rem;font-family:var(--serif);font-size:1.6rem;line-height:1.15}
+.cp-group-t i{width:.65rem;height:.65rem;border-radius:50%;background:var(--c);flex:0 0 auto}
+.cp-group-s{font-size:.875rem;opacity:.7;margin-top:.35rem}
+.cp-group-n{font-size:.8125rem;margin-top:.7rem;padding:.7rem .85rem;border:1px solid var(--line-ink);line-height:1.5}
+.cp-links .lnk + .lnk{margin-left:0}
+@media (min-width:992px){.cp-group{position:sticky;top:0;z-index:2}}
+@media (max-width:991px){.cp-group-t{font-size:1.35rem}}
+
+@media (min-width:992px){
+  .cpm{grid-template-columns:33rem 1fr}
+  .cpm-filter{gap:.35rem}
+  .cpm-chip{padding:.4rem .75rem;min-height:2.1rem;font-size:.75rem}
+  .cpm-chip small{font-size:.6875rem}
+}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
-<body data-page="compass">
+<body data-page="compassmap">
 <div class="pt" aria-hidden="true"><div class="pt-window"></div></div>
 
 <header class="hdr" data-theme="light">
-  <a href="index.html" class="hdr-logo" aria-label="Meraki Studios, home">
-    <svg class="hdr-symbol" viewBox="0 0 40 40" aria-hidden="true">
-      <rect class="cell" x="14" y="14" width="12" height="12"/>
-      <g fill="none" stroke="currentColor" stroke-width="1.4">
-        <rect x="2" y="2" width="36" height="36"/>
-        <line x1="14" y1="2" x2="14" y2="38"/><line x1="26" y1="2" x2="26" y2="38"/>
-        <line x1="2" y1="14" x2="38" y2="14"/><line x1="2" y1="26" x2="38" y2="26"/>
-      </g>
-    </svg>
-    <span class="hdr-word">Meraki Studios</span>
-  </a>
+  <a href="index.html" class="hdr-logo" aria-label="Meraki Studios"><svg xmlns="http://www.w3.org/2000/svg" viewBox="326.027 782.001 1504.94 456.969" fill="currentColor" aria-hidden="true" focusable="false"><path d="M402.18 1057.22c6.7.38 7.66-8.33 1.25-9.77-27.2-6.13-28.06-12.45-24.91-52.97 2.78-35.35 5.94-70.4 10.25-111.59 1.53-12.45 15.8-13.79 20.59-2.78 25.1 61.21 50 120.69 72.32 178.73 2.3 6.04 9.58 6.04 12.17 0 8.43-20.31 17.24-40.71 26.05-60.92 16.47-37.74 33.24-75.09 49.14-111.97 5.17-11.78 20.97-10.73 22.51 3.54 3.54 35.34 6.71 70.02 9.48 104.59 3.16 40.9 1.53 46.74-25.38 52.78-6.51 1.44-5.46 9.96 1.25 9.77 28.64-.77 58.24-.86 87.07.29 5.17.19 7.28-7.76.86-9.39-26.05-6.71-29.88-11.69-33.62-53.06-5.08-56.51-9.77-112.64-12.93-159.67-1.53-19.25 2.59-28.93 26.72-35.63 6.13-1.63 5.27-9.77-.96-9.58-16.28.86-28.74 1.15-46.55.67-4.89-.29-7.19 1.34-8.62 5.17-11.3 28.93-22.8 57.57-34.1 85.53-15.99 39.27-31.8 77.39-46.93 113.5-4.6 11.11-16.19 11.11-20.78 0-24.71-60.73-52.59-127.87-77.97-198.18-1.63-4.41-4.12-6.42-10.15-6.23-18.39.57-31.03.29-45.21-.48-7.86-.38-7.66 7.76-2.49 9.39 23.56 7.09 28.35 13.7 26.53 37.74-1.15 14.65-2.49 30.08-3.83 45.98-2.97 35.63-6.32 73.85-9.86 112.16-3.74 41.47-7.95 46.36-34 52.97-6.51 1.72-4.4 9.58.86 9.39 23.37-.77 47.8-1.53 71.26 0"/><path d="M887.44 1058.95c6.13.19 8.14-2.49 8.62-8.05 1.44-21.36 2.87-36.11 5.08-56.61.86-6.61-7.28-7.66-9.39-1.82-18.2 47.61-27.01 54.88-74.04 54.88h-10.73c-54.12-.38-61.68-9.48-62.45-53.45-.38-20.88-.38-34.19 0-47.51 0-12.07 5.84-19.35 18.68-19.35h20.02c30.94 0 40.71 4.6 51.44 32.57 2.3 6.03 10.63 4.88 9.87-1.92-3.54-30.08-2.97-40.71 0-72.22.67-6.8-7.47-8.05-9.77-2.01-11.01 28.83-20.59 33.24-51.53 33.24h-20.02c-12.84 0-18.68-6.51-18.68-16.95-.38-23.56-.38-45.11 0-82.47 0-10.63 5.08-16.47 17.43-16.47 24.42-.29 44.73-.58 65.04-.48 30.27.1 40.52 6.42 58.24 56.9 2.01 5.84 10.63 5.27 9.77-1.92-2.78-19.73-4.69-37.64-6.23-57.38-.48-6.99-2.97-9-9.58-8.81-15.04.38-25.86.67-36.69.77-21.55.29-42.62.67-64.08.77-29.31.1-59.29-.19-92.62-.77-6.9-.19-7.76 7.18-1.53 9.39 24.33 7.76 28.54 13.41 28.93 38.03.77 61.59.77 108.33 0 156.61-.77 43.58-3.07 46.65-28.93 54.31-6.42 1.92-3.93 9.58 1.34 9.39 17.72-.67 58.05-.67 111.88-.19l32.76.29c19.35.19 39.56.77 57.18 1.25"/><path d="M1322.35 952.63c-20.11.38-41.19.38-63.7 0-10.34 0-15.71-6.32-11.3-17.63l32.09-79.6c4.02-9.87 15.8-10.06 20.02 0 11.4 26.72 25.86 61.2 33.33 78.83 5.07 12.07-.38 18.39-10.44 18.39m-321.47-25.47c-10.53-.67-17.43-6.13-17.43-16.47-.38-29.02-.38-60.82 0-89.46 0-14.18 4.12-20.31 21.17-21.17 45.88-1.63 78.92 23.28 78.92 62.83 0 29.22-18.77 68.49-82.66 64.27m431.33 130.36c7.85.38 7.76-7.85 3.26-9.2-23.56-7.28-26.15-10.34-39.08-41.28-32.18-75.58-61.49-144.83-92.24-220.97-2.11-5.17-8.72-5.75-11.11.29-30.27 77.97-59.87 149.71-89.27 221.16-8.49 20.54-12.29 28.49-21.85 33.6-17.040 7.71-29.7 5.85-37.56 2.69-9.13-3.97-15.17-10.53-24.99-24.41-9.39-13.12-20.78-26.82-51.44-72.13-5.94-8.52-4.41-16.19 4.12-20.11 31.99-14.18 48.37-39.75 48.37-67.81 0-38.41-35.44-72.32-106.61-69.44-28.54 1.05-59.29.96-89.46.19-6.71-.19-7.09 7.47-1.25 9.39 25 7.76 28.64 14.37 29.02 37.83.38 72.22.38 111.49 0 157.37-.38 39.94-2.2 46.55-28.83 53.54-6.42 1.72-3.93 9.58 1.34 9.39 31.61-1.15 54.02-1.05 90.8.1 5.46.19 7.09-7.85 1.05-9.39-30.65-7.85-31.7-12.74-32.85-54.4-.38-14.56-.19-27.68.19-38.7.38-11.11 5.75-17.72 18.39-17.91h2.97c12.74-.19 22.03 2.87 27.97 10.92 21.55 30.17 42.34 62.74 63.98 94.92 6.17 9.05 10.97 12.41 18.47 13.59h134.2c3.95-2.03 3.75-7.91-1.87-9.08-29.89-6.23-39.08-14.46-28.06-43.2 3.54-9.39 7.38-18.39 11.01-27.78 3.54-8.53 9.96-13.6 22.6-13.7 27.3-.1 50.29-.1 77.39 0 9.67.1 15.61 4.6 19.25 13.41 3.83 9.48 7.95 20.21 11.78 29.69 8.81 22.51 7.47 34-20.5 41.95-5.84 1.72-4.4 9.58 1.06 9.39 28.83-1.06 57.28-1.25 89.75.1"/><path d="M1703.58 1057.61c7.47.38 7.95-8.14 2.3-9.39-14.46-3.73-25.86-10.34-42.15-27.58-32.18-34.58-58.43-63.6-89.08-96.55-6.9-7.47-7.18-15.52.19-22.89 26.72-26.63 47.89-46.65 75.77-74.52 11.59-11.78 26.82-21.26 43.87-27.11 6.04-2.11 5.46-9.77-1.92-9.39-23.66 1.15-48.18 1.15-71.55 0-6.99-.38-7.28 7.47-2.01 9.1 21.07 6.99 22.8 16.95 7.38 32.18-29.02 29.02-52.59 52.59-82.57 81.42-9.67 9.19-20.69 5.46-20.69-7.95 0-18.87 0-34 .19-57.76.29-33.43 1.06-38.98 27.97-47.7 6.42-2.11 4.98-9.58-.58-9.39-28.83.77-57.95.77-86.59 0-6.61-.19-7.09 7.47-1.25 9.39 24.14 7.95 28.35 12.64 28.74 37.83.38 67.14.77 105.55 0 156.99-.77 43.2-3.06 46.36-28.54 53.93-6.52 2.11-4.41 9.58.86 9.39 28.74-.77 57.47-.77 86.59 0 6.42.19 7.66-8.14 1.15-9.58-26.72-6.9-28.26-14.37-28.35-58.24l-.1-50.67c0-10.92 11.97-15.61 20.5-6.61 27.97 29.88 49.52 53.45 77.3 84.19 14.85 16.57 9.77 26.82-8.43 31.32-6.61 1.63-5.36 9.77.67 9.58 36.49-.86 63.89-1.15 90.32 0"/><path d="M1737.87 799.47c24.23 7.76 28.35 13.22 28.73 37.83.77 61.59.77 108.33 0 156.61-.77 43.58-2.97 46.65-28.83 54.31-6.42 1.92-3.93 9.58 1.34 9.39 28.83-.77 57.95-.77 86.78 0 5.17.19 7.66-7.47 1.25-9.39-25.86-7.66-27.97-10.73-28.83-54.31-.77-48.28-.77-95.02 0-156.61.38-24.62 3.93-30.08 28.16-37.83 6.03-2.11 5.27-9.58-1.44-9.39-28.26.77-57.47.77-85.73 0-6.610-.19-7.47 7.28-1.44 9.39"/><path d="M734.28 1224.3h-35.45v-112.07h35.45c31.26 0 52.22 20.2 52.22 54.89 0 38.12-23.25 57.18-52.22 57.18m.57-123.89h-49.17v135.71h49.17c34.12 0 65.57-20.2 65.57-69 0-44.79-28.02-66.71-65.57-66.71"/><path d="m819.1 1100.41.19 135.71h13.15l-.19-135.71z"/><path d="M652.52 1184.46c0 25.73-10.1 41.93-35.64 41.93s-35.83-16.2-35.830-41.93v-84.05h-13.34v79.67c0 30.11 6.67 58.13 49.18 58.13s48.98-28.02 48.98-58.13v-79.67h-13.34v84.05Z"/><path d="M912.11 1226.78c-25.54 0-47.08-21.16-47.08-59.09s21.54-57.37 47.08-57.37 47.08 18.87 47.08 57.37-21.54 59.09-47.08 59.09m0-128.66c-38.12 0-60.8 28.4-60.8 69.38s22.68 71.47 60.8 71.47 60.99-28.97 60.99-71.47-22.87-69.38-60.99-69.38"/><path d="M432.56 1112.23h54.51v123.89h13.15v-123.89h54.52v-11.82H432.56z"/><path d="m1048.2 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.31 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.17-12.96 49.17-38.31c0-20.58-12.58-31.83-34.88-37.36"/><path d="m397.68 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.3 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.18-12.96 49.18-38.31c0-20.58-12.58-31.83-34.88-37.36"/></svg>
+</a>
   <nav class="hdr-nav" aria-label="Main">
-    <a class="lnk hide-m" href="index.html#units">Apartments and Studios</a>
+    <a class="lnk hide-m" href="index.html#studios" data-nav="studios">The Studios</a>
+    <a class="lnk hide-m" href="index.html#location" data-nav="location">Location</a>
+    <a class="lnk hide-m" href="index.html#units" data-nav="units">Apartments</a>
+    <a class="lnk hide-m" href="index.html#amenities" data-nav="amenities">Amenities</a>
+    <a class="lnk hide-m" href="index.html#faq" data-nav="faq">FAQ</a>
     <a class="lnk hide-m is-current" href="compass.html">Guest Compass</a>
+    <div class="lang-sw" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-lang="de">DE</button></div>
     <a class="pill" href="index.html#book">Book your stay</a>
     <button class="pill hdr-menu" aria-expanded="false" aria-controls="mnav">Menu</button>
   </nav>
@@ -317,8 +467,12 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 
 <nav class="mnav" id="mnav" aria-label="Menu">
   <div class="mnav-links">
-    <a href="index.html#units">Apartments and Studios</a>
+    <a href="index.html#studios">The Studios</a>
     <a href="index.html#location">Location</a>
+    <a href="index.html#units">Apartments and Studios</a>
+    <a href="index.html#amenities">Amenities</a>
+    <a href="index.html#architecture">Architecture</a>
+    <a href="index.html#faq">FAQ</a>
     <a href="compass.html">Guest Compass</a>
     <a href="floorplan.html">Floorplan</a>
     <a href="index.html#book">Book your stay</a>
@@ -334,52 +488,21 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 <div class="sbar" aria-hidden="true"><span class="sbar-thumb"></span><span class="sbar-label">00</span></div>
 
 <main>
-
-<section class="cp-hero" data-bg="stone">
-  <div class="cp-screen">
-    <figure class="cp-fig">
-      <img data-wix="f3bbf6_d44dc4fe195844f2ab710f3059589428~mv2.jpeg" data-size="2400x1600" alt="">
-      <img data-wix="f3bbf6_7b26c68c8f7b4359bab62ea3bf8a77f2~mv2.jpeg" data-size="2400x1600" alt="">
-      <div class="cp-shade"></div>
-    </figure>
-    <svg class="cp-grid" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
-    <div class="cp-title-wrap"><h1 class="t-display" data-fit data-reveal="h" data-manual="intro">Guest Compass</h1></div>
-    <div class="cp-quote">
-      <div class="grid">
-        <blockquote class="t-h2">
-          <span class="q-l" data-reveal="p" data-manual>I hope nothing.</span>
-          <span class="q-l" data-reveal="p" data-manual>I fear nothing.</span>
-          <span class="q-l" data-reveal="p" data-manual>I am free.</span>
-        </blockquote>
-        <p class="t-label cp-author" data-reveal="ctn" data-manual>Nikos Kazantzakis</p>
-      </div>
-    </div>
+<section class="cp-head" data-bg="dark">
+  <div class="grid">
+    <nav class="crumb cp-crumb" aria-label="Breadcrumb"><a class="lnk" href="index.html">Meraki Studios</a><span>/</span><em style="font-style:normal">Guest Compass</em></nav>
+    <h1 class="t-h1 cph-title" data-reveal="h" data-manual="intro">Guest Compass</h1>
+    <blockquote class="cph-quote t-h4" data-reveal="ctn" data-manual="intro">I hope nothing.<br>I fear nothing.<br>I am free.<cite>Nikos Kazantzakis</cite></blockquote>
+    <p class="cph-intro" data-reveal="ctn" data-manual="intro">handpicked selection of authentic places, tavernas and hidden corners of Crete - gathered with patience, curiosity and a quiet love for detail</p>
   </div>
 </section>
 
-<section class="cp-intro" data-bg="light">
-  <div class="grid"><p class="t-h3" data-reveal="p">handpicked selection of authentic places, tavernas and hidden corners of Crete - gathered with patience, curiosity and a quiet love for detail</p></div>
-</section>
-
-<section class="cats" data-bg="light">
-  <ul>
-      <li><a class="cat-row" href="guide.html?c=neighbourhood">
-        <figure class="fig cat-thumb"><img data-wix="f3bbf6_763d0ce0a5274141b0d40bc154b4e337~mv2.png" data-size="1200x900" alt="" loading="lazy"></figure>
-        <span class="t-h2 cat-name">The neighbourhood</span>
-        <span class="cat-go">Open</span>
-      </a></li>
-      <li><a class="cat-row" href="guide.html?c=seaside">
-        <figure class="fig cat-thumb"><img data-wix="f3bbf6_fa6616431f3b4f3a825a6368e3d39bf8~mv2.jpeg" data-size="1200x900" alt="" loading="lazy"></figure>
-        <span class="t-h2 cat-name">At the seaside</span>
-        <span class="cat-go">Open</span>
-      </a></li>
-      <li><a class="cat-row" href="guide.html?c=hiking">
-        <figure class="fig cat-thumb"><img data-wix="f3bbf6_6b9beb281a4b46e88265f6f9c2964c15~mv2.jpeg" data-size="1200x900" alt="" loading="lazy"></figure>
-        <span class="t-h2 cat-name">Short and long hiking tours &amp; running routs</span>
-        <span class="cat-go">Open</span>
-      </a></li>
-  </ul>
-  <div class="cat-float" aria-hidden="true"><img data-wix="f3bbf6_763d0ce0a5274141b0d40bc154b4e337~mv2.png" data-size="900x675" alt=""><img data-wix="f3bbf6_fa6616431f3b4f3a825a6368e3d39bf8~mv2.jpeg" data-size="900x675" alt=""><img data-wix="f3bbf6_6b9beb281a4b46e88265f6f9c2964c15~mv2.jpeg" data-size="900x675" alt=""></div>
+<section class="cpm" id="map" data-bg="light">
+  <div class="cpm-filter" role="group" aria-label="Categories" data-lenis-prevent></div>
+  <div class="cpm-map-wrap"><div class="cpm-map" id="cpmMap" data-lenis-prevent aria-label="Map of Crete with all places"></div></div>
+  <div class="cpm-panel" data-lenis-prevent>
+    <ul class="cpm-list"></ul>
+  </div>
 </section>
 </main>
 
@@ -431,6 +554,50 @@ html.rm .cp-hero{height:auto}html.rm .cp-screen{position:relative}html.rm .cp-fi
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const html = document.documentElement;
+
+/* ---------- Sprache EN / DE ---------- */
+const LANG = (() => {
+  let l = null;
+  try { l = localStorage.getItem('mk-lang'); } catch (e) {}
+  if (!l) l = new URLSearchParams(location.search).get('lang');
+  if (!l) l = (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
+  return l === 'de' ? 'de' : 'en';
+})();
+const DE = {"The Studios": "Die Studios", "Location": "Lage", "Apartments": "Apartments", "Amenities": "Ausstattung", "FAQ": "FAQ", "Book your stay": "Aufenthalt buchen", "Menu": "Menü", "Close": "Schließen", "Apartments and Studios": "Apartments und Studios", "Architecture": "Architektur", "Floorplan": "Grundriss", "Floorplans": "Grundrisse", "Kissos, Greece": "Kissos, Griechenland", "Previous": "Zurück", "Next": "Weiter", "Contact": "Kontakt", "Imprint": "Impressum", "Terms and Conditions": "Mietbedingungen", "Photos & Videos:": "Fotos & Videos:", "Contents": "Inhalt", "Language": "Sprache", "A pure and minimalistic way to stay in the nature of Kissos, Greece.": "Ein klarer, minimalistischer Ort zum Wohnen inmitten der Natur von Kissos, Griechenland.", "Be our guest.": "Seien Sie unser Gast.", "The word “Meraki” means doing something with love and care – and that’s the spirit of this place.": "Das Wort „Meraki“ bedeutet, etwas mit Liebe und Hingabe zu tun. Genau das ist der Geist dieses Ortes.", "In the quiet of the valley six intimate Studios await, each with a great vista of the ever-changing beauty of Crete’s nature. Here, simplicity equals luxury.": "In der Stille des Tals warten sechs intime Studios, jedes mit weitem Blick auf die sich stets wandelnde Schönheit der kretischen Natur. Hier ist Einfachheit Luxus.", "The Garden": "Der Garten", "The large 6500 m² garden surrounding the building is a green paradise, filled with old olive, oak, fig, nut and all kinds of fruit trees.": "Der 6500 m² große Garten rund um das Gebäude ist ein grünes Paradies voller alter Oliven-, Eichen-, Feigen- und Nussbäume und Obstbäume aller Art.", "Nature": "Natur", "Among the locals the plot goes by the name of Tsikalaria. It used to be cultivated by a man who had a reputation to be particularly knowledgeable of plants. We want to honour this heritage.": "Bei den Einheimischen heißt das Grundstück Tsikalaria. Früher bewirtschaftete es ein Mann, der als besonders kundig in Pflanzen galt. Dieses Erbe möchten wir ehren.", "We believe in the power of simplicity, living in harmony with nature and focusing on essentials.": "Wir glauben an die Kraft der Einfachheit, an ein Leben im Einklang mit der Natur und an die Konzentration auf das Wesentliche.", "Each studio has a large partly shaded patio and the transition between indoor and outdoor living is seamless. The building is organically integrated in the surrounding nature and invites you to appreciate the moment – enjoy tranquility and connect with the land.": "Jedes Studio hat eine große, teils beschattete Terrasse, drinnen und draußen gehen nahtlos ineinander über. Das Gebäude fügt sich organisch in die umgebende Natur ein und lädt dazu ein, den Moment zu genießen: Ruhe finden und sich mit dem Land verbinden.", "Crete": "Kreta", "Nestled in the beautiful landscape just a short stroll away from the charming village of Kissos, this spot is a quiet escape into traditional Crete. Surrounded by a tapestry of traditionally cultivated land with olive groves, small vineyards, vegetable gardens and wild nature it’s a world away from mass tourism.": "Eingebettet in eine wunderschöne Landschaft, nur einen kurzen Spaziergang vom charmanten Dorf Kissos entfernt, ist dieser Ort ein stiller Rückzug ins traditionelle Kreta. Umgeben von traditionell bewirtschaftetem Land mit Olivenhainen, kleinen Weinbergen, Gemüsegärten und wilder Natur, liegt er weit entfernt vom Massentourismus.", "Psiloritis National Park": "Psiloritis-Nationalpark", "Explore some of the most beautiful beaches on the rural south coast like Ligres and Triopetra about a 25 minute drive away, or dive into Rethymno’s vibrant dining and culture in half an hour. You can wander nearby villages or hike the stunning Psiloritis National Park.": "Entdecken Sie einige der schönsten Strände der ursprünglichen Südküste wie Ligres und Triopetra, etwa 25 Autominuten entfernt, oder tauchen Sie in einer halben Stunde in Rethymnos lebendige Gastronomie und Kultur ein. Streifen Sie durch die umliegenden Dörfer oder wandern Sie im beeindruckenden Psiloritis-Nationalpark.", "We are located in 74053 Kissos, Rethymno.": "Sie finden uns in 74053 Kissos, Rethymno.", "Comfort": "Komfort", "Groups": "Gruppen", "In the large 12 by 5 meters infinity pool you can start the day with a swim or cool down on hot summer days.": "Im großen, 12 mal 5 Meter messenden Infinity-Pool beginnen Sie den Tag mit ein paar Zügen oder kühlen sich an heißen Sommertagen ab.", "The studios and apartments offer a balance of comfort and function with cocomat mattresses and pillows, small well equipped kitchens providing everything to prepare simple meals.": "Die Studios und Apartments verbinden Komfort und Funktion: mit Matratzen und Kissen von COCO-MAT und kleinen, gut ausgestatteten Küchen mit allem, was man für einfache Mahlzeiten braucht.", "For those who appreciate the virtues of Yoga each unit is provided with hey hey yoga mats.": "Für alle, die Yoga schätzen, liegen in jeder Wohneinheit Yogamatten von hejhej bereit.", "The building with all six units is also perfect to be rented entirely by a group.": "Das Haus mit allen sechs Einheiten eignet sich auch perfekt, um es als Gruppe komplett zu mieten.", "At Meraki Studios, Sigurd Larsen’s vision is brought to life through the raw elegance of concrete, an exposed skeleton that stands proudly as a three-dimensional grid. This structure, shaped by the land, mirrors the rugged form of an abstract rock, it’s cool stone walls crafted from the earth itself, offering a refuge from the Mediterranean sun.": "Bei Meraki Studios wird Sigurd Larsens Vision durch die rohe Eleganz von Beton lebendig: ein freiliegendes Skelett, das selbstbewusst als dreidimensionales Raster dasteht. Die vom Gelände geformte Struktur spiegelt die zerklüftete Form eines abstrakten Felsens, ihre kühlen Steinmauern stammen aus der Erde selbst und bieten Zuflucht vor der Mittelmeersonne.", "“For years, we talked about leaving the hustle of city life behind. In 2022, we made the move to Crete with our children, and our vision was simple: to create a space that allows you to reconnect with mother nature, that nurtures us, our family, and our guests. Crete, with its natural beauty, offered the perfect place to bring our dream to life.”": "„Jahrelang haben wir davon gesprochen, die Hektik des Stadtlebens hinter uns zu lassen. 2022 sind wir mit unseren Kindern nach Kreta gezogen, und unsere Vision war einfach: einen Ort zu schaffen, an dem man wieder zu Mutter Natur findet und der uns, unsere Familie und unsere Gäste nährt. Kreta bot mit seiner natürlichen Schönheit den perfekten Ort, um unseren Traum wahr werden zu lassen.“", "Jan & Vanessa": "Jan & Vanessa", "Check-in": "Anreise", "Checkout": "Abreise", "All": "Alle", "4 Guests": "4 Gäste", "2 Guests": "2 Gäste", "Loading availability": "Verfügbarkeit wird geladen", "The booking calendar could not be loaded.": "Der Buchungskalender konnte nicht geladen werden.", "Discounts:": "Rabatte:", "15% for 7 days and more": "15 % ab 7 Tagen", "5% for one person in a studio": "5 % für eine Person im Studio", "5% for two persons in an apartment": "5 % für zwei Personen im Apartment", "Included in the price:": "Im Preis enthalten:", "- final cleaning": "- Endreinigung", "- accommodation tax": "- Übernachtungssteuer", "- energy & water": "- Strom & Wasser", "- WiFi": "- WLAN", "Minimum stay:": "Mindestaufenthalt:", "3 nights": "3 Nächte", "10% for one person": "10 % für eine Person", "Laundry": "Wäsche", "We have a washing machine so you can stay fresh and clean even if you travel light (5 euros per load)": "Wir haben eine Waschmaschine, damit Sie auch mit leichtem Gepäck frisch bleiben (5 Euro pro Ladung)", "Feel free to get in touch.": "Schreiben Sie uns gern.", "When can I check in and check out?": "Wann kann ich an- und abreisen?", "The rent will become effective on the first day of the agreed rental period at 15.00 hours local time and ends on the last day of the agreed rental period at 12.00 hours local time. Special agreements to the check-in and check- out time can be agreed in advance with the lessor due to availability.": "Die Miete beginnt am ersten Tag des vereinbarten Mietzeitraums um 15.00 Uhr Ortszeit und endet am letzten Tag um 12.00 Uhr Ortszeit. Abweichende An- und Abreisezeiten können je nach Verfügbarkeit vorab mit der Vermieterin vereinbart werden.", "Is there a minimum stay?": "Gibt es einen Mindestaufenthalt?", "What is included in the price?": "Was ist im Preis enthalten?", "The rent includes the expenses for electricity and water use, all taxes final cleaning and wifi.": "Die Miete umfasst Strom und Wasser, alle Steuern, die Endreinigung und WLAN.", "How do I pay?": "Wie bezahle ich?", "Within three (3) working days after the booking the lessee must have transferred 50% of the total amount to the bank account of the lessor. This will serve to confirm the booking, making it peremptory.": "Innerhalb von drei (3) Werktagen nach der Buchung überweisen Sie 50 % des Gesamtbetrags auf das Konto der Vermieterin. Damit ist die Buchung bestätigt und verbindlich.", "What if I need to cancel?": "Was passiert, wenn ich stornieren muss?", "The deposit is refundable until 30 days before arrival. At 30 days before arrival, the balance is due and the total payment is non-refundable. sole exception: In case we can rent out the apartment/studio within this time of 30 days we refund the sum paid minus 200 Euros cancellation fee.": "Die Anzahlung wird bis 30 Tage vor Anreise erstattet. 30 Tage vor Anreise ist der Restbetrag fällig, die Gesamtzahlung ist dann nicht mehr erstattbar. Einzige Ausnahme: Können wir das Apartment oder Studio innerhalb dieser 30 Tage anderweitig vermieten, erstatten wir den gezahlten Betrag abzüglich 200 Euro Stornogebühr.", "Is there a washing machine?": "Gibt es eine Waschmaschine?", "Can we rent the whole house?": "Können wir das ganze Haus mieten?", "How do we get there?": "Wie kommen wir hin?", "The house is accessible with car or scooter, taxi or public transport.": "Das Haus ist mit Auto oder Roller, Taxi oder öffentlichen Verkehrsmitteln erreichbar.", "Are pets allowed? Can I smoke?": "Sind Haustiere erlaubt? Darf man rauchen?", "Pets are not allowed. Inside the apartment(s) smoking is not allowed.": "Haustiere sind nicht erlaubt. In den Apartments ist das Rauchen nicht gestattet.", "Can we barbecue?": "Dürfen wir grillen?", "Open fires are not allowed by law. No BBQ/ grill charcoal or grill coal can be used.": "Offenes Feuer ist gesetzlich verboten. Grillkohle darf nicht verwendet werden.", "Can children use the pool?": "Dürfen Kinder den Pool nutzen?", "Children should not use the swimming pool unattended": "Kinder sollten den Pool nicht unbeaufsichtigt nutzen.", "Main": "Hauptmenü", "Meraki Studios in the valley of Kissos": "Meraki Studios im Tal von Kissos", "Meraki Studios at night": "Meraki Studios bei Nacht", "Pomegranate blossoms in front of Meraki Studios": "Granatapfelblüten vor Meraki Studios", "Meraki Studios between olive trees": "Meraki Studios zwischen Olivenbäumen", "Stone path at Meraki Studios at dusk": "Steinweg bei Meraki Studios in der Dämmerung", "Units": "Wohneinheiten", "Open image": "Bild öffnen", "Previous image": "Vorheriges Bild", "Next image": "Nächstes Bild", "Infinity pool": "Infinity-Pool", "Meraki Studios building": "Gebäude von Meraki Studios", "Partners": "Partner", "Concrete structure of Meraki Studios": "Betonstruktur von Meraki Studios", "Jan and Vanessa with their family": "Jan und Vanessa mit ihrer Familie", "Booking Form": "Buchungsformular", "Light and shadow on the concrete structure": "Licht und Schatten auf der Betonstruktur", "Legal": "Rechtliches", "Breadcrumb": "Pfad", "Categories": "Kategorien", "Map of Crete with all places": "Karte von Kreta mit allen Orten", "Open floorplan 1": "Grundriss 1 öffnen", "Open floorplan 2": "Grundriss 2 öffnen", "Open floorplan 3": "Grundriss 3 öffnen", "I hope nothing.": "Ich erhoffe nichts.", "I fear nothing.": "Ich fürchte nichts.", "I am free.": "Ich bin frei.", "handpicked selection of authentic places, tavernas and hidden corners of Crete - gathered with patience, curiosity and a quiet love for detail": "handverlesene Auswahl authentischer Orte, Tavernen und versteckter Winkel Kretas - gesammelt mit Geduld, Neugier und einer stillen Liebe zum Detail", "The neighbourhood": "Die Nachbarschaft", "At the seaside": "Am Meer", "Hiking tours": "Wanderungen", "Short and long hiking tours & running routs": "Kurze und lange Wanderungen & Laufstrecken", "Tavernas & restaurants, coffeeshops & ice cream in the area": "Tavernen & Restaurants, Cafés & Eis in der Umgebung", "Tavernas, restaurants and Bars": "Tavernen, Restaurants und Bars", "Explore the wild": "Die Wildnis entdecken", "not on the map": "nicht auf der Karte", "in the village of Meraki Studios": "im Dorf von Meraki Studios", "village close to a canyon for hiking": "Dorf nahe einer Schlucht zum Wandern", "village close to Kissos": "Dorf nahe Kissos", "village 5 km drive from Kissos. tip: order half portion": "Dorf, 5 km Fahrt von Kissos. Tipp: halbe Portion bestellen", "we love this place! also for breakfast": "wir lieben diesen Ort! auch zum Frühstück", "quick Greek food near Kissos (5 km)": "schnelles griechisches Essen nahe Kissos (5 km)", "cretan natural products, food, coffeeshop and breakfast": "kretische Naturprodukte, Essen, Café und Frühstück", "traditional cretan food": "traditionelle kretische Küche", "quick breakfast or take away": "schnelles Frühstück oder zum Mitnehmen", "village close to Kissos on the way to Rethymno": "Dorf nahe Kissos auf dem Weg nach Rethymno", "near Kissos, on the way to Rethymno": "nahe Kissos, auf dem Weg nach Rethymno", "A family-run eco taverna in the hills above Plakias and Ammoudi": "Familiengeführte Öko-Taverne in den Hügeln über Plakias und Ammoudi", "stunning beach Taverna, excellent food": "traumhafte Strandtaverne, ausgezeichnetes Essen", "relaxed Taverna directly at the beach": "entspannte Taverne direkt am Strand", "sea view taverna": "Taverne mit Meerblick", "village above the sea in the mountains": "Dorf in den Bergen über dem Meer", "at the beach of Plakias": "am Strand von Plakias", "with stunning sea view in a small village": "mit traumhaftem Meerblick in einem kleinen Dorf", "relaxed beach taverna (~30 min drive)": "entspannte Strandtaverne (ca. 30 Min. Fahrt)", "authentic tiny beach bar with its own beach and signature drinks": "authentische kleine Strandbar mit eigenem Strand und Signature-Drinks", "Kourtaliotiko Gorge": "Kourtaliotiko-Schlucht", "just start this adventure very early in the morning": "starten Sie dieses Abenteuer am besten sehr früh am Morgen", "hiking from Plakias to Kalypso beach": "Wanderung von Plakias zum Kalypso-Strand", "when you make a route go from Plakias beach to:": "für die Route am Strand von Plakias starten, Ziel:", "Myli Gorge – easy to hike": "Myli-Schlucht – leicht zu wandern", "take the second, less well-known entrance a little further along the road": "nehmen Sie den zweiten, weniger bekannten Eingang etwas weiter die Straße entlang", "Patsos Gorge": "Patsos-Schlucht", "8 km and the last part is recommended for advanced hikers only": "8 km, der letzte Abschnitt nur für geübte Wanderer", "Stunning plateau above Kissos": "Traumhafte Hochebene über Kissos", "Kissos-Kentrochori-Monastery Agia pnevma-Kissos": "Kissos-Kentrochori-Kloster Agia Pnevma-Kissos", "beautiful run or walk": "schöne Lauf- oder Wanderstrecke", "VAT: EL174532803": "USt-IdNr.: EL174532803", "We are located outside the village of Kissos, Agios Vasilios, Crete, Greece. Coordinates: (35.1930123, 24.5557285)": "Wir befinden uns außerhalb des Dorfes Kissos, Agios Vasilios, Kreta, Griechenland. Koordinaten: (35.1930123, 24.5557285)", "Meraki Studios, Kissos, Crete": "Meraki Studios, Kissos, Kreta", "Floorplan | Meraki Studios": "Grundriss | Meraki Studios", "Terms and Conditions | Meraki Studios": "Mietbedingungen | Meraki Studios", "Imprint | Meraki Studios": "Impressum | Meraki Studios", "Beaches": "Strände", "Activities": "Aktivitäten", "Wine Tasting": "Weinprobe", "Wine Tasting with Iliana Malihin": "Weinprobe bei Iliana Malihin", "life… how it should be!": "Leben… wie es sein sollte!", "Tavernas, restaurants": "Tavernen, Restaurants", "own or guided explorations": "auf eigene Faust oder geführt", "Explore on your own": "Auf eigene Faust", "Guided tours": "Geführte Touren", "WAY TO CRETE\nwe can highly recommend this tour agency; please mention that you come from Meraki studios": "WAY TO CRETE\nDiese Agentur können wir sehr empfehlen. Bitte erwähnen Sie, dass Sie von Meraki Studios kommen.", "please make an appointment via whats app in advance: +30 697 9344044": "bitte vorab per WhatsApp einen Termin vereinbaren: +30 697 9344044", "with the chilled ligres beach taverna": "mit der entspannten Ligres Beach Taverna", "taverna directly at the beach, stunning view": "Taverne direkt am Strand, traumhafte Aussicht", "and small springs on the left side": "mit kleinen Quellen auf der linken Seite", "close to many tavernas like sirocco": "nahe vieler Tavernen wie Sirocco", "with different tavernas": "mit verschiedenen Tavernen", "fine dining with an amazing view right next to the sea": "Fine Dining mit traumhaftem Blick direkt am Meer", "fine dining, good steak old town of Rethymno": "Fine Dining, gutes Steak, Altstadt von Rethymno", "fine dining at the old venetian harbour": "Fine Dining am alten venezianischen Hafen", "authentic greek taverna in the old town of Rethymno": "authentische griechische Taverne in der Altstadt von Rethymno", "local taverna, good price - good food": "lokale Taverne, guter Preis - gutes Essen", "good food at a nice spot near old town Rethymno": "gutes Essen an einem schönen Ort nahe der Altstadt von Rethymno", "modern place for breakfast, lunch and dinner near old town Rethymno": "modernes Lokal für Frühstück, Mittag- und Abendessen nahe der Altstadt von Rethymno", "best coffee and breakfast in town": "bester Kaffee und bestes Frühstück der Stadt", "best ice cream and lemon tart in town": "bestes Eis und beste Zitronentarte der Stadt", "Taverna Oneiro is the best around the lake": "die Taverna Oneiro ist die beste rund um den See", "every Saturday": "jeden Samstag", "we recommend a guided tour": "wir empfehlen eine Führung", "Ligres beach": "Strand von Ligres", "Agia fotia beach with taverna": "Strand Agia Fotia mit Taverne", "Ammoudi beach with cantina": "Strand Ammoudi mit Kantine", "Plakias beach": "Strand von Plakias", "Triopetra beach": "Strand von Triopetra", "Souda beach": "Strand von Souda", "Micro triopetra beach": "Strand Mikro Triopetra", "Famous Village Margarites": "Das bekannte Dorf Margarites", "“Venetian” Chania": "„Venezianisches“ Chania", "Kournas Lake": "Kournas-See", "Plakias Horse Riding": "Reiten in Plakias", "Local Market Rethymno": "Wochenmarkt Rethymno", "Local Market Mires": "Wochenmarkt Mires", "Palace Knossos": "Palast von Knossos", "Archeological museum Heraklion": "Archäologisches Museum Heraklion", "See how they make cheese in crete": "Sehen, wie auf Kreta Käse gemacht wird", "Shepherd for one day": "Einen Tag Hirte sein", "Honey tasting": "Honigverkostung", "Wine tasting": "Weinprobe", "South Crete Tour": "Tour durch Südkreta", "Website": "Website", "Find out more": "Mehr erfahren", "WAY TO CRETE we can highly recommend this tour agency; please mention that you come from Meraki studios": "WAY TO CRETE\nDiese Agentur können wir sehr empfehlen. Bitte erwähnen Sie, dass Sie von Meraki Studios kommen."};
+const DE_CAP = {"2 bed apartment": "Apartment mit 2 Schlafzimmern", "terrace": "Terrasse", "bedroom 1": "Schlafzimmer 1", "bathroom": "Bad", "outside view": "Außenansicht", "living area": "Wohnbereich", "view": "Aussicht", "kitchenette": "Küchenzeile", "studio for 2 persons": "Studio für 2 Personen"};
+const norm = s => s.replace(/\s+/g, ' ').trim();
+const mkT = s => LANG === 'de' ? (DE[norm(s)] || s) : s;
+window.mkT = mkT; window.mkLang = LANG;
+window.mkCap = s => LANG === 'de' ? s.replace(/ - (.+)$/, (m, x) => ' - ' + (DE_CAP[x] || x)) : s;
+html.lang = LANG;
+if (LANG === 'de') {
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement && n.parentElement.closest('script,style,svg') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const nodes = []; let nd; while ((nd = w.nextNode())) nodes.push(nd);
+  nodes.forEach(n => { const raw = n.nodeValue, k = norm(raw); if (k && DE[k]) n.nodeValue = raw.replace(raw.trim(), DE[k]); });
+  document.querySelectorAll('[alt],[aria-label],[title]').forEach(e => ['alt', 'aria-label', 'title'].forEach(a => { const v = e.getAttribute(a); if (v && DE[norm(v)]) e.setAttribute(a, DE[norm(v)]); }));
+  if (DE[document.title]) document.title = DE[document.title];
+}
+document.querySelectorAll('.lang-sw [data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === LANG));
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-lang]'); if (!b) return;
+  const l = b.dataset.lang; if (l === LANG) return;
+  try { localStorage.setItem('mk-lang', l); } catch (er) {}
+  const y = String(window.__mkLenis ? window.__mkLenis.scroll : scrollY);
+  try {
+    if (document.body.dataset.page) sessionStorage.setItem('mk-sub-y:' + location.pathname, y);
+    else { sessionStorage.setItem('mk-return', '1'); sessionStorage.setItem('mk-y', y); }
+  } catch (er) {}
+  location.reload();
+});
+/* Unterseiten: nach Sprachwechsel an derselben Stelle bleiben */
+if (document.body.dataset.page) addEventListener('load', () => {
+  let y = null; try { y = sessionStorage.getItem('mk-sub-y:' + location.pathname); sessionStorage.removeItem('mk-sub-y:' + location.pathname); } catch (e) {}
+  if (y) setTimeout(() => { window.__mkLenis ? window.__mkLenis.scrollTo(+y, { immediate: true }) : scrollTo(0, +y); }, 120);
+});
+/* Höhe des Headers als CSS-Variable */
+const setHdrH = () => { const h = document.querySelector('.hdr'); h && html.style.setProperty('--hdr-h', h.offsetHeight + 'px'); };
+setHdrH(); addEventListener('resize', setHdrH);
+
 const page = document.body.dataset.page || '';
 
 /* ---------- Wix-Bilder ---------- */
@@ -442,9 +609,9 @@ const wixRemote = f => `${WIX}${wixFile(f)}/v1/fit/w_2400,h_2400,q_85/${wixFile(
 const wixSrc = file => IMG_DIR + wixFile(file).replace('~mv2', '');
 document.addEventListener('error', e => {
   const t = e.target;
-  if (!t || t.tagName !== 'IMG' || t.dataset.remote) return;
-  const m = (t.getAttribute('src') || '').match(/^img\/(.+)$/); if (!m) return;
-  t.dataset.remote = '1';
+  if (!t || t.tagName !== 'IMG') return;
+  /* nur lokale Wix-Kopien (img/<id>.<ext>) auf das CDN umleiten; schlägt das CDN fehl, endet es hier */
+  const m = (t.getAttribute('src') || '').match(/^img\/([0-9a-f]{6}_[0-9a-f]{32}\.\w+)$/); if (!m) return;
   t.src = wixRemote(m[1].replace(/(\.\w+)$/, '~mv2$1'));
 }, true);
 
@@ -512,7 +679,7 @@ function renderGuide() {
   });
   const i = GUIDE_ORDER.indexOf(k), next = GUIDE_ORDER[(i + 1) % GUIDE_ORDER.length];
   const n = $('.gd-next-link');
-  n.href = `guide.html?c=${next}`;
+  n.href = `compass.html?c=${next}`;
   $('.gd-next-title').textContent = GUIDES[next].title;
   // Bild wechselt beim Hover auf einen Eintrag mit eigenem Bild
   const base = () => media.querySelector('img');
@@ -624,6 +791,17 @@ function initMobile(getLenis) {
   }
 }
 
+
+/* Mobil: natives Scrollen statt Lenis (gleiche Schnittstelle) */
+const nativeScroll = () => {
+  const subs = [];
+  addEventListener('scroll', () => subs.forEach(f => f({ velocity: 0, scroll: scrollY })), { passive: true });
+  const yOf = t => typeof t === 'number' ? t : (typeof t === 'string' ? ($(t) ? $(t).getBoundingClientRect().top + scrollY : 0) : t.getBoundingClientRect().top + scrollY);
+  return { get scroll() { return scrollY; }, on(ev, f) { if (ev === 'scroll') subs.push(f); }, raf() {},
+    stop() { document.documentElement.style.overflow = 'hidden'; }, start() { document.documentElement.style.overflow = ''; },
+    scrollTo(t, o = {}) { window.scrollTo({ top: Math.max(0, yOf(t) - (o.offset || 0)), behavior: o.immediate ? 'auto' : 'smooth' }); } };
+};
+
 const reduce = html.classList.contains('rm');
 if (!window.gsap || !window.ScrollTrigger || !window.Lenis) {
   html.classList.add('rm'); html.classList.add('pt-off');
@@ -638,6 +816,8 @@ CustomEase.create('Ease', '0.25,0.1,0.25,1');
 CustomEase.create('diveIn', '0.6,0,0,1');
 const D = { s: .4, m: .8, l: 1.2 }, ST = .1, BP = 992;
 const desk = () => innerWidth >= BP;
+const MOB = innerWidth < BP;
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (MOB !== (innerWidth < BP)) location.reload(); }, 300); });
 let lenis = null;
 
 /* ---------- Reveals ---------- */
@@ -654,7 +834,7 @@ const R = {
          show: (el, d = 0) => gsap.to(el, { opacity: 1, y: 0, duration: D.l, delay: d, ease: 'Out', overwrite: true }),
          hide: (el, d = 0) => gsap.to(el, { opacity: 0, duration: D.s, delay: d, ease: 'In', overwrite: true }) }
 };
-const rv = (el, a, d) => el && R[el.dataset.reveal][a](el, d);
+const rv = (el, a, d) => el && R[MOB ? 'ctn' : el.dataset.reveal][a](el, d);
 
 function fitText() {
   $$('[data-fit]').forEach(el => {
@@ -724,11 +904,11 @@ function start() {
   initLightbox(gsap, () => lenis);
   if (reduce) { initMobile(() => null); $$('[data-reveal]').forEach(el => el.style.opacity = 1); updateTheme(); addEventListener('scroll', updateTheme, { passive: true }); ptOpen(); return; }
 
-  lenis = new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  lenis = MOB ? nativeScroll() : new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   ScrollTrigger.config({ ignoreMobileResize: true });
   lenis.on('scroll', ScrollTrigger.update);
   lenis.on('scroll', updateTheme);
-  gsap.ticker.add(t => lenis.raf(t * 1000));
+  if (!MOB) gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
   initMobile(() => lenis);
 
@@ -736,10 +916,10 @@ function start() {
   const mm = gsap.matchMedia();
 
   /* Parallax */
-  $$('.fig[data-par]').forEach(fig => gsap.fromTo(fig.querySelector('img'), { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: .5 } }));
+  if (!MOB) $$('.fig[data-par]').forEach(fig => gsap.fromTo(fig.querySelector('img'), { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: .5 } }));
 
   /* Scroll-Reveals */
-  $$('[data-reveal]:not([data-manual])').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => rv(el, 'show') }));
+  $$(MOB ? '[data-reveal]:not([data-manual="intro"])' : '[data-reveal]:not([data-manual])').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => rv(el, 'show') }));
 
   /* Scrollbar */
   if (sbar) {
@@ -789,7 +969,7 @@ function start() {
       gsap.fromTo(imgs[nx], { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: D.l * 1.5, ease: 'InOut' });
       cur = nx;
     }, 4200);
-    mm.add({ d: `(min-width: ${BP}px)`, m: `(max-width: ${BP - 1}px)` }, ctx => {
+    if (!MOB) mm.add({ d: `(min-width: ${BP}px)`, m: `(max-width: ${BP - 1}px)` }, ctx => {
       const [ix, iy] = ctx.conditions.d ? [36, 24] : [18, 28];
       buildGrid(grid, ix, iy);
       gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom bottom', scrub: true } })
@@ -799,7 +979,7 @@ function start() {
         .to(shade, { opacity: 1, duration: .15 }, .38)
         .to({}, { duration: .5 });
     });
-    ScrollTrigger.create({ trigger: hero, start: '40% top',
+    if (!MOB) ScrollTrigger.create({ trigger: hero, start: '40% top',
       onEnter: () => { qLines.forEach((l, i) => rv(l, 'show', i * .18)); rv(author, 'show', D.m); },
       onLeaveBack: () => { qLines.forEach(l => rv(l, 'hide')); rv(author, 'hide'); } });
 
@@ -843,6 +1023,122 @@ function start() {
 }
 })();
 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(() => {
+'use strict';
+if (!window.L) return;
+const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const PLACES = [{"c": "neighbourhood", "v": "Kissos", "n": "Cafe/Taverna \"αλλού ποθές\"", "d": "in the village of Meraki Studios", "m": "https://maps.app.goo.gl/teuHx3HgSWSQzUpN8", "i": "f3bbf6_763d0ce0a5274141b0d40bc154b4e337~mv2.png", "lat": 35.1946, "lng": 24.5538}, {"c": "neighbourhood", "v": "Patsos", "n": "Taverna Patsos Escape", "d": "village close to a canyon for hiking", "m": "https://maps.app.goo.gl/TYHQjbUAkWpXm4j7A", "i": "f3bbf6_8fb257a7411a42d8b27898b6595400ae~mv2.png", "lat": 35.2556, "lng": 24.5866}, {"c": "neighbourhood", "v": "Kentrochori", "n": "Taverna Agamemnon", "d": "village close to Kissos", "m": "https://maps.app.goo.gl/UoZN1FE1Fsq7Dr778", "i": "f3bbf6_dddc60db93b14c54b856910337524858~mv2.png", "lat": 35.2028, "lng": 24.5748}, {"c": "neighbourhood", "v": "Spili", "n": "Taverna To Sideratiko", "d": "village 5 km drive from Kissos. tip: order half portion", "m": "https://maps.app.goo.gl/YEqQZmBP3AztNQk78", "i": "f3bbf6_250865af77a14fb9b0abd199c5f7e346~mv2.png", "lat": 35.2183, "lng": 24.5352}, {"c": "neighbourhood", "v": "Spili", "n": "PLATIA Taverna Cafe/Grill", "d": "we love this place! also for breakfast", "m": "https://g.co/kgsGm3JP2K", "i": "f3bbf6_b4adb1cca71740dd84f03bd284fff925~mv2.png", "lat": 35.2193, "lng": 24.5363}, {"c": "neighbourhood", "v": "Spili", "n": "Diporto Grill Café, Gyros", "d": "quick Greek food near Kissos (5 km)", "m": "https://maps.app.goo.gl/sEkvxPUrc9AGBQEz5", "i": "f3bbf6_49d8d3cef9544b9b9c295423a57289fd~mv2.png", "lat": 35.2201, "lng": 24.5376}, {"c": "neighbourhood", "v": "Spili", "n": "Maravel Garden", "d": "cretan natural products, food, coffeeshop and breakfast", "m": "https://maps.app.goo.gl/Er2pefckDsfYgH9t8", "i": "f3bbf6_6290938b482b4147978d2bd24b234d96~mv2.png", "lat": 35.217, "lng": 24.534}, {"c": "neighbourhood", "v": "Lampini", "n": "TARTALA - Taveran & Kafenio", "d": "traditional cretan food", "m": "https://share.google/3msiAgHjP9m28kEMb", "i": "f3bbf6_392f27e982f64bf394c2a705ce2a69e5~mv2.jpeg", "lat": 35.2342, "lng": 24.5325}, {"c": "neighbourhood", "v": "Spili", "n": "Brilliant Coffeeshop & bread", "d": "quick breakfast or take away", "m": "https://maps.app.goo.gl/wXeeTo3RvTPS7KUH6", "i": "f3bbf6_615985d383334d9a924c4453ec759d4c~mv2.png", "lat": 35.2178, "lng": 24.5386}, {"c": "neighbourhood", "v": "Armeni", "n": "Alekos Taverna", "d": "village close to Kissos on the way to Rethymno", "m": "https://maps.app.goo.gl/2m38tkhBWVearDiZ7", "i": "f3bbf6_4737b643984b420c874abd488455d5f7~mv2.png", "lat": 35.3035, "lng": 24.465}, {"c": "neighbourhood", "v": "Mixorrouma", "n": "Grandma´s Taverna Petro-Kofino", "d": "near Kissos, on the way to Rethymno", "m": "https://maps.app.goo.gl/Y8V1jWQ83Jw5s9XKA", "i": "f3bbf6_890c825cf01f4856b3f65afe6237d470~mv2.png", "lat": 35.2541, "lng": 24.489}, {"c": "neighbourhood", "v": "Sellia", "n": "Taverna Merastri", "d": "A family-run eco taverna in the hills above Plakias and Ammoudi", "m": "https://maps.app.goo.gl/4edAFqahRfPeptpo7", "i": "f3bbf6_41da817510ba43b088c7837344f29059~mv2.jpeg", "lat": 35.1847, "lng": 24.4177}, {"c": "seaside", "v": "Agia Fotini", "n": "Agia Fotia Taverna", "d": "stunning beach Taverna, excellent food", "m": "https://maps.app.goo.gl/TakPXgb5dDKFNLH19", "i": "f3bbf6_e723f3853332479f93601901b36b802c~mv2.png", "lat": 35.1404, "lng": 24.5423}, {"c": "seaside", "v": "Ligres Beach", "n": "Ligres Beach Taverna", "d": "relaxed Taverna directly at the beach", "m": "https://maps.app.goo.gl/JD7Y95h1eEX6gWwy9", "i": "f3bbf6_d84f735687a040f7a821206f3d28f1fd~mv2.png", "lat": 35.1326, "lng": 24.5281}, {"c": "seaside", "v": "Mariou above Plakias", "n": "Taverna Mariou", "d": "sea view taverna", "m": "https://maps.app.goo.gl/fNDEmyvt5KHVxHNy6", "i": "f3bbf6_4aac4196c8e640449f14b2282c3e5962~mv2.png", "lat": 35.1824, "lng": 24.4316}, {"c": "seaside", "v": "Drimiskos", "n": "Mathios Taverna", "d": "village above the sea in the mountains", "m": "https://maps.app.goo.gl/oHg1DxcFkFWdmd2a8", "i": "f3bbf6_4ac805f5768045a687803011a81ede8c~mv2.png", "lat": 35.1551, "lng": 24.544}, {"c": "seaside", "v": "Plakias", "n": "Taverna Sirocco", "d": "at the beach of Plakias", "m": "https://maps.app.goo.gl/91dnkEHsTQ4DKamz9", "i": "f3bbf6_aee16c8d64a44a25a082fca06fc50791~mv2.png", "lat": 35.1897, "lng": 24.3943}, {"c": "seaside", "v": "Mirthios", "n": "Taverna Vrisi", "d": "with stunning sea view in a small village", "m": "https://maps.app.goo.gl/G5C9PQiBV1F1b82i7", "i": "f3bbf6_9c8b6219451045e0806e3b3063b44b6d~mv2.png", "lat": 35.196, "lng": 24.4005}, {"c": "seaside", "v": "Agia Galini", "n": "Taverana & Cafe Agios Georgios", "d": "relaxed beach taverna (~30 min drive)", "m": "https://share.google/yJZBsk143t8KwE7nM", "i": "f3bbf6_8b5ba379eba24e6999ce325f5017666e~mv2.jpeg", "lat": 35.0992, "lng": 24.6605}, {"c": "seaside", "v": "", "n": "Kenta Bar", "d": "authentic tiny beach bar with its own beach and signature drinks", "m": "https://share.google/Gnz6fkVRM9mFw81EG", "i": "f3bbf6_b1fc5a6c590548eabe486261bedfd218~mv2.jpg", "lat": null, "lng": null}, {"c": "beaches", "v": "", "n": "Ligres beach", "d": "with the chilled ligres beach taverna", "m": "https://g.co/kgs/xDtoJNa", "i": "f3bbf6_418a7b3ff2e644419cd0546d50394430~mv2.jpeg", "lat": 35.1312, "lng": 24.5303}, {"c": "beaches", "v": "", "n": "Agia fotia beach with taverna", "d": "taverna directly at the beach, stunning view", "m": "https://maps.app.goo.gl/YBJAo2if62jv8944A", "i": "f3bbf6_cfc3d242cd08449385ef05777b4a3716~mv2.jpeg", "lat": 35.1395, "lng": 24.5445}, {"c": "beaches", "v": "", "n": "Ammoudi beach with cantina", "d": "and small springs on the left side", "m": "https://g.co/kgs/3y7KonK", "i": "f3bbf6_37aae5b8c2f249339e51879a65613a2d~mv2.png", "lat": 35.1808, "lng": 24.429}, {"c": "beaches", "v": "", "n": "Plakias beach", "d": "close to many tavernas like sirocco", "m": "https://maps.app.goo.gl/EvZiVmBonCHJQS3T6", "i": "f3bbf6_0c529082be824e7181a813c07655a087~mv2.png", "lat": 35.1878, "lng": 24.3985}, {"c": "beaches", "v": "", "n": "Triopetra beach", "d": "with different tavernas", "m": "https://maps.app.goo.gl/6xRM2EjQVjWRrM628", "i": "f3bbf6_fd6a53fa342542079dc2e60252dd22b9~mv2.png", "lat": 35.118, "lng": 24.5545}, {"c": "beaches", "v": "", "n": "Souda beach", "d": "with different tavernas", "m": "https://maps.app.goo.gl/GCFLHa1nJhv7qmrz7", "i": "f3bbf6_54cd568c13d44001932ad05782b19996~mv2.png", "lat": 35.1983, "lng": 24.3732}, {"c": "beaches", "v": "", "n": "Micro triopetra beach", "d": "with different tavernas", "m": "https://maps.app.goo.gl/f91oZkwYTzN62654A", "i": "f3bbf6_8658fdb578f046979c64e6eda925e376~mv2.png", "lat": 35.1222, "lng": 24.5478}, {"c": "rethymno", "v": "Rethymno", "n": "Prima Plora Restaurant", "d": "fine dining with an amazing view right next to the sea", "m": "https://maps.app.goo.gl/L4n5M6hdtSCWQuSF7", "i": "f3bbf6_fc6e209070ac4a908be7335409aaa551~mv2.png", "lat": 35.3712, "lng": 24.4705}, {"c": "rethymno", "v": "Rethymno", "n": "Hasika Restaurant", "d": "fine dining, good steak old town of Rethymno", "m": "https://maps.app.goo.gl/TWXPKGcSMqUxmd2u8", "i": "f3bbf6_26a4858228bc4c8d9251dc64abf6aa9e~mv2.png", "lat": 35.368, "lng": 24.473}, {"c": "rethymno", "v": "Rethymno", "n": "Achinos Restaurant", "d": "fine dining at the old venetian harbour", "m": "https://maps.app.goo.gl/dZs1Qt5hA7XKQyDEA", "i": "f3bbf6_9ff00d7513b7414cb276a003ff2991e9~mv2.png", "lat": 35.3706, "lng": 24.4776}, {"c": "rethymno", "v": "Rethymno", "n": "Taverna Raki Ba Raki", "d": "authentic greek taverna in the old town of Rethymno", "m": "https://maps.app.goo.gl/RwUV93vEUsBWN1d36", "i": "f3bbf6_033840e99bb94372bbaa8b51effb8887~mv2.png", "lat": 35.3692, "lng": 24.4752}, {"c": "rethymno", "v": "Rethymno", "n": "Taverna Zisis", "d": "local taverna, good price - good food", "m": "https://g.co/kgs/ZhAQvo2", "i": "f3bbf6_bc66560e78334aadadb25141bb5c65ff~mv2.png", "lat": 35.3605, "lng": 24.505}, {"c": "rethymno", "v": "Rethymno", "n": "Soho Grill house", "d": "good food at a nice spot near old town Rethymno", "m": "https://g.co/kgs/ACBdW6m", "i": "f3bbf6_24504ed96d57491d8967d72a56f61e67~mv2.png", "lat": 35.366, "lng": 24.479}, {"c": "rethymno", "v": "Rethymno", "n": "Theorist", "d": "modern place for breakfast, lunch and dinner near old town Rethymno", "m": "https://maps.app.goo.gl/LQeq7q3iRSZNZoTe8", "i": "f3bbf6_6405d974f092480aaa8b5cf73ea852ea~mv2.png", "lat": 35.3665, "lng": 24.4762}, {"c": "rethymno", "v": "Rethymno", "n": "Skrik - the good hotspot", "d": "best coffee and breakfast in town", "m": "https://g.co/kgs/hMrKx6C", "i": "f3bbf6_0a4031fcbfa24cc2ad9db595afd27176~mv2.png", "lat": 35.3676, "lng": 24.4742}, {"c": "rethymno", "v": "Rethymno", "n": "Ice cream @ Gelato.it", "d": "best ice cream and lemon tart in town", "m": "https://maps.app.goo.gl/8eXdf5be3qcdXBEi6", "i": "f3bbf6_0d645d099ac54f6f9c35a3033861a8b0~mv2.png", "lat": 35.3688, "lng": 24.4786}, {"c": "hiking", "v": "", "n": "Kourtaliotiko Gorge", "d": "just start this adventure very early in the morning", "m": "https://g.co/kgs/6vHVdum", "i": "f3bbf6_9ac72eff65354e1fb138bdaa4137ccba~mv2.png", "lat": 35.1968, "lng": 24.4782}, {"c": "hiking", "v": "", "n": "hiking from Plakias to Kalypso beach", "d": "when you make a route go from Plakias beach to:", "m": "https://maps.app.goo.gl/Jg44cdgQAa3GaNoU6", "i": "f3bbf6_6514f1c9715b45e89f6c36b7cc72ca23~mv2.jpeg", "lat": 35.184, "lng": 24.373}, {"c": "hiking", "v": "", "n": "Myli Gorge – easy to hike", "d": "take the second, less well-known entrance a little further along the road", "m": "https://g.co/kgs/HiRLSCB", "i": "f3bbf6_d7323b5d79574a4daee9fa56152cad47~mv2.png", "lat": 35.342, "lng": 24.4795}, {"c": "hiking", "v": "", "n": "Patsos Gorge", "d": "8 km and the last part is recommended for advanced hikers only", "m": "https://maps.app.goo.gl/cvUtjBKbzvPGoNyp7", "i": "f3bbf6_7ca19ac3d27c4cd590c3e646f740fa3d~mv2.jpeg", "lat": 35.26, "lng": 24.596}, {"c": "hiking", "v": "", "n": "Stunning plateau above Kissos", "d": "beautiful run or walk", "m": "https://maps.app.goo.gl/ioxhjn61zbDztJmK7", "i": "f3bbf6_45ee41e0b2454daaa8041be08b572f55~mv2.jpeg", "lat": 35.201, "lng": 24.56}, {"c": "hiking", "v": "", "n": "Kissos-Kentrochori-Monastery Agia pnevma-Kissos", "d": "beautiful run or walk", "m": "https://maps.app.goo.gl/NZr9gwPQRhVreNUH8", "i": "f3bbf6_1462ee5d139845e596356383886f87ec~mv2.jpeg", "lat": 35.1985, "lng": 24.566}, {"c": "activities", "v": "Explore on your own", "n": "Famous Village Margarites", "d": "", "m": "https://maps.app.goo.gl/vMVz17J1Z3CGEFzVA", "i": "f3bbf6_b42ce12d9e4645669ff6ac8aab28b095~mv2.png", "lat": 35.3295, "lng": 24.6585, "far": 1}, {"c": "activities", "v": "Explore on your own", "n": "“Venetian” Chania", "d": "", "m": "https://www.chaniatourism.gr/", "i": "f3bbf6_11fd77dfa4e84b0e9b2fa61fccb2fb3b~mv2.png", "lat": 35.517, "lng": 24.018, "far": 1}, {"c": "activities", "v": "Explore on your own", "n": "Kournas Lake", "d": "Taverna Oneiro is the best around the lake", "m": "https://g.co/kgs/znNazEH", "i": "f3bbf6_d82df08781254965be92024164cb4d4d~mv2.png", "lat": 35.329, "lng": 24.277, "far": 1}, {"c": "activities", "v": "Explore on your own", "n": "Plakias Horse Riding", "d": "", "m": "https://g.co/kgs/5vRcf3j", "i": "f3bbf6_3f9c606585f0421f811aa31d746417f8~mv2.png", "lat": 35.1925, "lng": 24.401}, {"c": "activities", "v": "Explore on your own", "n": "Local Market Rethymno", "d": "every Saturday", "m": "https://maps.app.goo.gl/QnuBSec3espRP5L69", "i": "f3bbf6_c5ca013928f746138723e2d2116a301b~mv2.png", "lat": 35.3655, "lng": 24.47}, {"c": "activities", "v": "Explore on your own", "n": "Local Market Mires", "d": "every Saturday", "m": "https://g.co/kgs/6T8QtTs", "i": "f3bbf6_7c7aa9213007426a8966a849b7313da9~mv2.png", "lat": 35.049, "lng": 24.878, "far": 1}, {"c": "activities", "v": "Explore on your own", "n": "Palace Knossos", "d": "we recommend a guided tour", "m": "https://knossos-palace.gr/", "i": "f3bbf6_4a181250a45a47dba0ab91d94930dee4~mv2.png", "lat": 35.298, "lng": 25.163, "far": 1}, {"c": "activities", "v": "Explore on your own", "n": "Archeological museum Heraklion", "d": "", "m": "https://www.heraklionmuseum.gr/", "i": "f3bbf6_03572d76f5a84808b48ae28e81b66c63~mv2.jpeg", "lat": 35.339, "lng": 25.137, "far": 1}, {"c": "activities", "v": "Guided tours", "n": "See how they make cheese in crete", "d": "", "m": "https://waytocrete.com/", "i": "f3bbf6_205ea401118348e5bd9ba29e33b659f8~mv2.jpeg", "lat": null, "lng": null}, {"c": "activities", "v": "Guided tours", "n": "Shepherd for one day", "d": "", "m": "https://waytocrete.com/", "i": "f3bbf6_b8c6fcd94dd844038d3059a07d12fbb7~mv2.png", "lat": null, "lng": null}, {"c": "activities", "v": "Guided tours", "n": "Honey tasting", "d": "", "m": "https://waytocrete.com/", "i": "f3bbf6_8f4dda7e4f344effafb8a9131bad1526~mv2.jpeg", "lat": null, "lng": null}, {"c": "activities", "v": "Guided tours", "n": "Wine tasting", "d": "", "m": "https://waytocrete.com/", "i": "f3bbf6_ffef3a6c302f48b287d33fca537de946~mv2.jpeg", "lat": null, "lng": null}, {"c": "activities", "v": "Guided tours", "n": "South Crete Tour", "d": "", "m": "https://waytocrete.com/", "i": "f3bbf6_720cb9ccc996419fa8dff6b82973bffa~mv2.png", "lat": null, "lng": null}, {"c": "wine", "v": "", "n": "Wine Tasting with Iliana Malihin", "d": "please make an appointment via whats app in advance: +30 697 9344044", "m": "https://www.thegreekfoundation.com/gastronomy/iliana-malihin-makes-wines-deeply-rooted-in-the-history-and-terroir-of-rethymnon", "i": "f3bbf6_768b45e2b09f4e0085ebf92822223866~mv2.png", "lat": null, "lng": null, "x": [["WhatsApp", "https://wa.me/306979344044"]]}];
+const CATS = {"neighbourhood": {"t": "The neighbourhood", "s": "Tavernas & restaurants, coffeeshops & ice cream in the area", "col": "#8A7F3E"}, "seaside": {"t": "At the seaside", "s": "Tavernas, restaurants and Bars", "col": "#2F7BC0"}, "beaches": {"t": "Beaches", "s": "life… how it should be!", "col": "#5FA9D6"}, "rethymno": {"t": "Rethymno", "s": "Tavernas, restaurants", "col": "#B0613A"}, "hiking": {"t": "Short and long hiking tours & running routs", "s": "Explore the wild", "col": "#2D3322", "short": "Hiking tours"}, "activities": {"t": "Activities", "s": "own or guided explorations", "col": "#7A5C8E", "note": "WAY TO CRETE\nwe can highly recommend this tour agency; please mention that you come from Meraki studios"}, "wine": {"t": "Wine Tasting with Iliana Malihin", "s": "please make an appointment via whats app in advance: +30 697 9344044", "col": "#8E2F3C", "short": "Wine Tasting"}};
+const ORDER = ["neighbourhood", "seaside", "beaches", "rethymno", "hiking", "activities", "wine"];
+const HOME = [35.1930123, 24.5557285];
+const MOBILE = matchMedia('(max-width: 991px)').matches;
+const T = s => (window.mkT ? window.mkT(s) : s);
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>');
+/* Bilder: zuerst lokal (img/compass/), sonst vom Wix-CDN */
+const local = f => 'img/compass/' + f.replace('~mv2', '');
+const remote = f => `https://static.wixstatic.com/media/${f}/v1/fit/w_900,h_900,q_85/${f}`;
+const imgTag = (f, alt) => `<img src="${local(f)}" data-file="${f}" alt="${String(alt).replace(/"/g, '&quot;')}" loading="lazy" decoding="async">`;
+document.addEventListener('error', e => { const t = e.target; if (t.tagName === 'IMG' && t.dataset.file && !t.src.includes('wixstatic')) t.src = remote(t.dataset.file); }, true);
+const isMaps = u => /maps|g\.co|goo\.gl|share\.google/.test(u);
+const links = p => `<a class="lnk" href="${p.m}" target="_blank" rel="noopener">${isMaps(p.m) ? 'Google Maps' : esc(T('Website'))}</a>` + (p.x || []).map(([l, u]) => `<a class="lnk" href="${u}" target="_blank" rel="noopener">${esc(l)}</a>`).join('');
+
+/* Karte */
+const map = L.map('cpmMap', { zoomControl: false, scrollWheelZoom: true, attributionControl: true, tap: true, minZoom: 8, maxZoom: 15, maxBounds: [[34.6, 23.2], [35.9, 26.6]] });
+L.control.zoom({ position: 'bottomright' }).addTo(map);
+const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+const base = L.tileLayer(ESRI + 'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 15, attribution: 'Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' }).addTo(map);
+const CRETE = [[26.3211,35.3153],[26.3123,35.2969],[26.2979,35.2849],[26.281,35.2743],[26.266,35.26],[26.2839,35.2082],[26.2995,35.1855],[26.3211,35.1979],[26.3118,35.1824],[26.2954,35.1663],[26.285,35.1507],[26.294,35.1365],[26.2869,35.1182],[26.2775,35.1],[26.2669,35.0839],[26.2561,35.0716],[26.251,35.0631],[26.241,35.039],[26.2354,35.0341],[26.2238,35.0324],[26.2051,35.0235],[26.1472,35.0023],[26.133,34.9993],[26.1052,34.9993],[26.1037,35.0021],[26.0891,35.0155],[26.0817,35.0198],[26.058,35.0229],[26.0381,35.0208],[26.0203,35.0209],[26.0022,35.0307],[25.9932,35.0371],[25.9849,35.0391],[25.9767,35.0369],[25.968,35.0307],[25.9603,35.029],[25.9241,35.0341],[25.8815,35.0271],[25.8081,35.0058],[25.6012,35.0136],[25.5381,34.997],[25.5227,34.9894],[25.5062,34.9846],[25.4152,34.9937],[25.3477,34.9915],[25.3285,34.9873],[25.304,34.9848],[25.2798,34.9726],[25.2232,34.9542],[25.2077,34.9515],[25.1509,34.9557],[25.1289,34.9515],[25.1227,34.9482],[25.1145,34.9402],[25.1078,34.9379],[25.0974,34.9379],[25.0853,34.9433],[25.0774,34.9447],[25.0597,34.9436],[25.0449,34.9407],[25.0191,34.9316],[25.0032,34.937],[24.9837,34.9387],[24.7385,34.9316],[24.7385,34.9379],[24.7517,34.9465],[24.7552,34.9579],[24.7521,34.9959],[24.7539,35.008],[24.7599,35.0273],[24.759,35.0415],[24.7559,35.0515],[24.7502,35.0651],[24.7428,35.0772],[24.7297,35.0847],[24.7181,35.094],[24.7075,35.0961],[24.619,35.0974],[24.5947,35.1015],[24.5803,35.1092],[24.574,35.1092],[24.5646,35.1061],[24.5534,35.1146],[24.5324,35.1365],[24.5191,35.1444],[24.5007,35.1524],[24.4812,35.1559],[24.4641,35.1501],[24.4038,35.175],[24.4021,35.1911],[24.2932,35.1823],[24.2178,35.1911],[24.2085,35.1988],[24.2039,35.2054],[24.1973,35.2051],[24.183,35.1979],[24.1113,35.1979],[24.094,35.2047],[24.0846,35.2045],[24.0806,35.1945],[24.0764,35.1955],[24.0498,35.1911],[24.0314,35.1977],[24.0033,35.2267],[23.9876,35.2333],[23.9019,35.2312],[23.8602,35.2363],[23.8267,35.2526],[23.8123,35.2448],[23.8065,35.2446],[23.7995,35.2463],[23.7821,35.2347],[23.7117,35.2367],[23.6834,35.2258],[23.6691,35.2373],[23.6105,35.2349],[23.5872,35.2395],[23.5823,35.2452],[23.5845,35.2543],[23.5803,35.26],[23.573,35.2634],[23.5594,35.2646],[23.553,35.2668],[23.531,35.2885],[23.5182,35.2941],[23.5256,35.301],[23.5193,35.3017],[23.5182,35.3078],[23.5329,35.314],[23.5462,35.3153],[23.5482,35.3215],[23.553,35.3215],[23.5418,35.3364],[23.5408,35.3452],[23.5462,35.3562],[23.5386,35.3741],[23.5493,35.3969],[23.5652,35.4191],[23.5735,35.4348],[23.5715,35.4411],[23.5667,35.4475],[23.562,35.4517],[23.5598,35.4518],[23.5609,35.4584],[23.571,35.4837],[23.5776,35.4929],[23.5785,35.5006],[23.5661,35.507],[23.5661,35.5133],[23.5726,35.5205],[23.5661,35.5275],[23.5812,35.5527],[23.5845,35.5645],[23.5803,35.5759],[23.6004,35.6031],[23.6047,35.6126],[23.6077,35.5925],[23.6082,35.5517],[23.6144,35.5344],[23.6199,35.5241],[23.6237,35.5215],[23.6395,35.519],[23.6404,35.5151],[23.6395,35.5106],[23.6418,35.507],[23.6594,35.5012],[23.6834,35.4996],[23.703,35.5029],[23.7184,35.5128],[23.7279,35.5299],[23.7305,35.5542],[23.7249,35.5736],[23.7161,35.5919],[23.7127,35.607],[23.7236,35.6169],[23.7139,35.6348],[23.7112,35.6489],[23.7158,35.6615],[23.7271,35.675],[23.7415,35.687],[23.75,35.6866],[23.7598,35.6794],[23.779,35.6715],[23.779,35.664],[23.7678,35.6539],[23.7681,35.6411],[23.779,35.6094],[23.7777,35.5837],[23.779,35.5759],[23.7995,35.5446],[23.8171,35.5348],[23.9014,35.5272],[23.929,35.5207],[23.9442,35.525],[24.0005,35.5199],[24.0254,35.5207],[24.0358,35.5234],[24.0447,35.5277],[24.051,35.5344],[24.0532,35.5446],[24.0576,35.5529],[24.0684,35.5555],[24.0941,35.5542],[24.0818,35.5899],[24.1152,35.6013],[24.1604,35.5971],[24.183,35.5856],[24.2033,35.5418],[24.2005,35.5344],[24.1958,35.5316],[24.1878,35.5181],[24.183,35.5133],[24.1736,35.5096],[24.1637,35.5078],[24.1426,35.507],[24.1035,35.514],[24.0812,35.515],[24.0669,35.507],[24.072,35.4984],[24.089,35.4892],[24.1078,35.482],[24.1372,35.4748],[24.1702,35.456],[24.1867,35.4518],[24.2044,35.4544],[24.2225,35.4612],[24.2391,35.47],[24.2525,35.4791],[24.264,35.4332],[24.2655,35.4143],[24.2634,35.3785],[24.2655,35.3699],[24.2731,35.3649],[24.2935,35.3638],[24.303,35.3593],[24.3401,35.3483],[24.4281,35.3697],[24.4641,35.3625],[24.4854,35.3721],[24.5667,35.3842],[24.5936,35.3912],[24.6559,35.4177],[24.6769,35.4235],[24.6985,35.4268],[24.721,35.4272],[24.8202,35.413],[24.8408,35.404],[24.8504,35.4097],[24.8672,35.4165],[24.8955,35.4245],[24.9575,35.404],[24.9696,35.4158],[24.9712,35.4245],[25.0187,35.415],[25.0296,35.4033],[25.0474,35.4055],[25.0532,35.404],[25.0545,35.3974],[25.0487,35.3867],[25.047,35.3804],[25.0553,35.3552],[25.077,35.3445],[25.1068,35.3425],[25.1532,35.3447],[25.1817,35.3501],[25.1971,35.3494],[25.2121,35.3378],[25.2214,35.3357],[25.2518,35.3357],[25.307,35.3432],[25.3317,35.3369],[25.3464,35.3361],[25.3617,35.3432],[25.3685,35.3357],[25.376,35.3432],[25.3942,35.3288],[25.4081,35.3127],[25.4253,35.2995],[25.4536,35.2941],[25.4819,35.2974],[25.6388,35.3459],[25.6599,35.3494],[25.6714,35.3472],[25.6926,35.3378],[25.7078,35.3357],[25.7664,35.3357],[25.7591,35.3221],[25.7477,35.3106],[25.7248,35.2941],[25.7322,35.2879],[25.7261,35.2788],[25.7251,35.2708],[25.7293,35.2646],[25.739,35.26],[25.7378,35.2774],[25.7428,35.2853],[25.751,35.2841],[25.759,35.2743],[25.7537,35.2675],[25.7537,35.2641],[25.759,35.26],[25.7533,35.2526],[25.7446,35.2571],[25.74,35.2544],[25.7322,35.2463],[25.7351,35.2375],[25.7268,35.2263],[25.7195,35.2114],[25.7248,35.1911],[25.7127,35.1828],[25.7141,35.174],[25.7207,35.1643],[25.7248,35.1536],[25.7285,35.1334],[25.7388,35.131],[25.7532,35.1331],[25.7698,35.1265],[25.7829,35.118],[25.7953,35.1151],[25.8176,35.116],[25.8303,35.1224],[25.8477,35.1506],[25.8591,35.157],[25.8733,35.1587],[25.8831,35.1645],[25.8967,35.1849],[25.9085,35.1874],[25.9412,35.1892],[25.9785,35.1955],[25.9854,35.1979],[26.0166,35.2145],[26.0259,35.2219],[26.0332,35.2258],[26.0427,35.2278],[26.055,35.2271],[26.0606,35.2333],[26.0674,35.2333],[26.0814,35.2236],[26.1196,35.2153],[26.1082,35.2054],[26.1297,35.1959],[26.1551,35.1979],[26.1795,35.2072],[26.1978,35.2191],[26.1926,35.2209],[26.1909,35.2258],[26.2184,35.2471],[26.2378,35.2688],[26.2595,35.2845],[26.294,35.2879],[26.2865,35.301],[26.3008,35.301],[26.294,35.3153],[26.3211,35.3153]];
+let ok = 0, bad = 0, fell = false;
+base.on('tileload', () => ok++);
+base.on('tileerror', () => { bad++; if (!fell && bad > 3 && ok === 0) fallback(); });
+setTimeout(() => { if (!fell && ok === 0) fallback(); }, 6000);
+function fallback() {
+  fell = true; map.removeLayer(base);
+  $('#cpmMap').classList.add('cp-sea');
+  L.polygon(CRETE.map(c => [c[1], c[0]]), { color: '#c9c2b3', weight: 1, fillColor: '#f1ede5', fillOpacity: 1, interactive: false }).addTo(map).bringToBack();
+}
+[['Rethymno', 35.375, 24.462, ''], ['Spili', 35.2125, 24.522, 'is-small'], ['Plakias', 35.2005, 24.383, 'is-small'], ['Agia Galini', 35.108, 24.684, 'is-small'], ['Armeni', 35.297, 24.452, 'is-small'], ['Sellia', 35.178, 24.405, 'is-small'], ['Psiloritis', 35.225, 24.77, ''], ['Chania', 35.53, 24.0, ''], ['Heraklion', 35.35, 25.13, ''], ['Libyan Sea', 35.0, 24.5, '']].forEach(([n, a, b, c]) =>
+  L.marker([a, b], { icon: L.divIcon({ className: 'cp-town ' + c, html: n, iconSize: null, iconAnchor: [0, 0] }), interactive: false, keyboard: false, zIndexOffset: -500 }).addTo(map));
+const home = L.marker(HOME, { icon: L.divIcon({ className: '', html: '<div class="cp-home"></div>', iconSize: [22, 22], iconAnchor: [11, 11] }), zIndexOffset: 1000, keyboard: false }).addTo(map);
+home.bindTooltip('Meraki Studios', { permanent: true, direction: 'right', className: 'cp-home-label', offset: [6, 0] });
+
+/* Karte im Popup */
+const card = p => `<div class="cp-card">${p.i ? `<div class="cp-card-img">${imgTag(p.i, p.n)}</div>` : ''}<div class="cp-card-body"><p class="cp-meta" style="--c:${CATS[p.c].col}"><i></i>${esc(p.v ? T(p.v) : T(CATS[p.c].short || CATS[p.c].t))}</p><p class="cp-name">${esc(T(p.n))}</p>${p.d ? `<p class="cp-desc">${esc(T(p.d))}</p>` : ''}<p class="cp-links">${links(p)}</p></div></div>`;
+
+/* Liste, gruppiert nach Kategorie */
+const list = $('.cpm-list');
+let active = -1;
+ORDER.forEach(c => {
+  const head = document.createElement('li');
+  head.className = 'cp-group'; head.dataset.cat = c;
+  head.innerHTML = `<p class="cp-group-t" style="--c:${CATS[c].col}"><i></i>${esc(T(CATS[c].t))}</p><p class="cp-group-s">${esc(T(CATS[c].s))}</p>` + (CATS[c].note ? `<p class="cp-group-n">${esc(T(CATS[c].note))}</p>` : '');
+  list.appendChild(head);
+  PLACES.forEach((p, k) => {
+    if (p.c !== c) return;
+    const li = document.createElement('li');
+    li.className = 'cp-item'; li.dataset.cat = p.c; li.tabIndex = 0;
+    li.innerHTML = `<div class="cp-thumb">${p.i ? imgTag(p.i, p.n) : ''}</div><div><p class="cp-meta" style="--c:${CATS[p.c].col}"><i></i>${esc(p.v ? T(p.v) : T(CATS[p.c].short || CATS[p.c].t))}</p><p class="cp-name">${esc(T(p.n))}</p>${p.d ? `<p class="cp-desc">${esc(T(p.d))}</p>` : ''}<p class="cp-links">${links(p)}${p.lat == null ? '<span class="cp-nopin">' + esc(T('not on the map')) + '</span>' : ''}</p></div>`;
+    list.appendChild(li); p.li = li;
+    if (p.lat != null) {
+      const icon = L.divIcon({ className: '', html: `<div class="cp-pin" style="--c:${CATS[p.c].col}"></div>`, iconSize: [16, 16], iconAnchor: [8, 8] });
+      p.mk = L.marker([p.lat, p.lng], { icon, title: T(p.n), riseOnHover: true }).addTo(map);
+      p.mk.bindPopup(() => card(p), { maxWidth: 320, minWidth: 200, autoPanPadding: [30, 30] });
+      p.mk.on('popupopen', () => setActive(k));
+      p.mk.on('popupclose', () => { if (active === k) setActive(-1); });
+    }
+    const go = e => {
+      if (e.target.closest('a')) return;
+      if (!p.mk) { setActive(k); return; }
+      if (MOBILE) { const w = $('.cpm-map-wrap'); const y = w.getBoundingClientRect().top + scrollY - $('.cpm-filter').offsetHeight - ($('.hdr') ? $('.hdr').offsetHeight : 0); if (Math.abs(scrollY - y) > 40) scrollTo({ top: y, behavior: 'smooth' }); }
+      map.flyTo([p.lat, p.lng], Math.max(map.getZoom(), 13), { duration: .8 });
+      setTimeout(() => p.mk.openPopup(), 650);
+    };
+    li.addEventListener('click', go);
+    li.addEventListener('keydown', e => { if (e.key === 'Enter') go(e); });
+    li.addEventListener('mouseenter', () => p.mk && p.mk.getElement() && p.mk.getElement().firstChild.classList.add('is-active'));
+    li.addEventListener('mouseleave', () => { if (active !== k && p.mk && p.mk.getElement()) p.mk.getElement().firstChild.classList.remove('is-active'); });
+  });
+});
+function setActive(k) {
+  active = k;
+  PLACES.forEach((p, i) => {
+    p.li.classList.toggle('is-active', i === k);
+    if (p.mk && p.mk.getElement()) p.mk.getElement().firstChild.classList.toggle('is-active', i === k);
+  });
+  if (k > -1 && !MOBILE) { const li = PLACES[k].li, pan = $('.cpm-panel'); pan.scrollTo({ top: li.offsetTop - pan.clientHeight / 3, behavior: 'smooth' }); }
+}
+
+/* Filter */
+const filter = $('.cpm-filter');
+const counts = { '': PLACES.length }; PLACES.forEach(p => counts[p.c] = (counts[p.c] || 0) + 1);
+filter.innerHTML = [['', T('All')]].concat(ORDER.map(c => [c, T(CATS[c].short || CATS[c].t)])).map(([c, t]) =>
+  `<button class="cpm-chip" aria-pressed="${c === ''}" data-cat="${c}">${c ? `<i style="--c:${CATS[c].col}"></i>` : ''}${esc(t)} <small>${counts[c] || 0}</small></button>`).join('');
+const chips = $$('.cpm-chip', filter);
+const boundsFor = cat => {
+  const pts = PLACES.filter(p => p.lat != null && (cat ? p.c === cat : !p.far)).map(p => [p.lat, p.lng]);
+  if (!cat || cat === 'neighbourhood' || cat === 'hiking') pts.push(HOME);
+  return L.latLngBounds(pts.length ? pts : [HOME]);
+};
+const fitOpts = { padding: MOBILE ? [30, 30] : [60, 60], maxZoom: 14 };
+const select = cat => {
+  chips.forEach(x => { const on = x.dataset.cat === cat; x.setAttribute('aria-pressed', on); if (on && MOBILE) x.scrollIntoView({ inline: 'center', block: 'nearest' }); });
+  map.closePopup();
+  $$('.cp-group', list).forEach(h => h.classList.toggle('is-hidden', !!cat && h.dataset.cat !== cat));
+  PLACES.forEach(p => { const on = !cat || p.c === cat; p.li.classList.toggle('is-hidden', !on); if (p.mk) on ? p.mk.addTo(map) : p.mk.remove(); });
+  map.flyToBounds(boundsFor(cat), { ...fitOpts, duration: .9 });
+  $('.cpm-panel').scrollTo({ top: 0 });
+  try { history.replaceState(null, '', cat ? '#' + cat : location.pathname); } catch (e) {}
+};
+chips.forEach(c => c.addEventListener('click', () => select(c.dataset.cat)));
+map.fitBounds(boundsFor(''), fitOpts);
+const start = (location.hash || '').slice(1);
+if (CATS[start]) select(start);
+addEventListener('resize', () => map.invalidateSize());
+setTimeout(() => map.invalidateSize(), 400);
+})();
 </script>
 </body>
 </html>

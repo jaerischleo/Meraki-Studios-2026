@@ -6,10 +6,9 @@
 <title>Meraki Studios, Kissos, Crete</title>
 <meta name="description" content="A pure and minimalistic way to stay in the nature of Kissos, Greece.">
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');history.scrollRestoration='manual';</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Exposure";src:url("fonts/exposure.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_3f0ba5ec469544dc84bfbec308f920bf/woff2/file.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_3f0ba5ec469544dc84bfbec308f920bf/woff/file.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"New Edge";src:url("fonts/new-edge-light.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_660f7f5e5e794c9fa425c5c10287f0ee/woff2/file.woff2") format("woff2"),url("https://static.wixstatic.com/ufonts/682cf9_660f7f5e5e794c9fa425c5c10287f0ee/woff/file.woff") format("woff");font-weight:100 900;font-style:normal;font-display:swap}
 /* =========================================================
    TOKENS
    Raster: Design-Canvas 1600 px, 1rem = 1vw (16 px @1600)
@@ -426,6 +425,252 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
 .loc-legend li::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--ink)}
 .loc-legend li:first-child::before{background:var(--flechte);width:.7rem;height:.7rem}
 .unit-dots{display:none}
+
+.ln-mask{display:block;padding:.08em 0 .18em;margin:-.08em 0 -.18em}
+
+/* =========================================================
+   MOBIL VEREINFACHT: keine Pin-Effekte, Bilder im Originalformat
+   ========================================================= */
+.amen-m{display:none;flex-direction:column;gap:3.5rem;padding:5rem var(--pad) 4.5rem}
+.amen-m figure{overflow:hidden;background:var(--beton)}
+.amen-m img{width:100%;height:auto;display:block}
+.amen-m .t-label{opacity:.6;margin:1.1rem 0 .5rem}
+.amen-m .amen-m-text{font-size:1.25rem;font-weight:300;line-height:1.35;letter-spacing:-.01em}
+@media (max-width:991px){
+  .hero{height:auto}
+  .hero-screen{position:relative;height:auto!important;overflow:visible;display:flex;flex-direction:column}
+  .hero-bg{position:relative;height:auto;transform:none!important}
+  .hero-bg img{height:auto;transform:none!important}
+  .hero-bg::after{content:"";position:absolute;left:0;right:0;top:0;height:7rem;background:linear-gradient(180deg,rgba(29,32,25,.5),rgba(29,32,25,0));pointer-events:none}
+  .hero-shade{display:none}
+  .hero-content{position:relative;inset:auto;flex-direction:column-reverse;justify-content:flex-start;gap:1.5rem;padding:2rem 0 4rem;transform:none!important}
+  .hero-cta{margin-top:1.75rem}
+  .intro{height:auto!important}
+  .intro-sticky{position:relative;height:auto!important;padding:6rem 0 5rem;overflow:visible}
+  .intro-word{font-size:5.4rem;letter-spacing:-.04em!important}
+  .intro-quote-row{margin-top:2rem}
+  .card{position:relative;height:auto!important;margin-bottom:0!important}
+  .cards{padding-bottom:0!important}
+  .card-in{height:auto;display:flex;flex-direction:column;gap:1.5rem;padding-top:4.5rem;padding-bottom:4.5rem;transform:none!important;opacity:1!important}
+  .card-fig{height:auto!important;margin:0!important}
+  .fig:not(.unit-main){height:auto!important}
+  .fig:not(.unit-main) img{position:static!important;height:auto!important;top:auto!important;transform:none!important}
+  .concept{padding:6rem 0 5rem}
+  .concept-fig{margin-top:2.5rem}
+  .branch{display:none!important}
+  .loc-p1{padding-top:5rem}
+  .amen{height:auto!important}
+  .amen-screen{display:none}
+  .amen-m{display:flex}
+  .arch{height:auto!important}
+  .arch-screen{position:relative;height:auto!important;overflow:visible;display:flex;flex-direction:column}
+  .arch-fig{position:relative;inset:auto;clip-path:none!important;order:2}
+  .arch-fig img{height:auto;transform:none!important}
+  .arch-grid,.arch-shade{display:none}
+  .arch-copy{position:relative;bottom:auto;color:var(--ink);padding-top:5rem;padding-bottom:2.5rem;order:1}
+  .quote{padding:5rem 0}
+  .unit-main{aspect-ratio:3 / 2}
+  .foot-area{height:auto!important}
+  .foot-screen{position:relative;height:auto!important;overflow:visible}
+  .foot-fig{position:relative;inset:auto;clip-path:none!important}
+  .foot-fig img{height:auto;transform:none!important}
+  .foot-copy{position:relative;inset:auto;padding:4rem var(--pad) 0;opacity:1!important;transform:none!important;align-items:flex-start;text-align:left;gap:1.5rem}
+  .foot-copy .t-h1{text-shadow:none}
+  .foot-info{padding-top:3rem}
+}
+
+/* Units: Pfeile + Vollbild */
+.unit-main{cursor:zoom-in}
+.unit-arrow{position:absolute;top:50%;z-index:3;width:3rem;height:3rem;margin-top:-1.5rem;border-radius:50%;background:rgba(228,225,218,.88);color:var(--ink);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s var(--e-out),background-color .4s var(--e-out)}
+.unit-arrow svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:1.6}
+.unit-prev{left:1rem}.unit-next{right:1rem}
+.unit-main:hover .unit-arrow,.unit-arrow:focus-visible{opacity:1}
+.unit-arrow:hover{background:var(--flechte)}
+.ulb{position:fixed;inset:0;z-index:90;background:var(--olive);color:var(--kalk);display:none}
+.ulb.is-open{display:block}
+.ulb-stage{position:absolute;inset:4.5rem var(--pad) 5rem;display:flex;align-items:center;justify-content:center}
+.ulb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none}
+.ulb-close{position:absolute;right:var(--pad);top:calc(env(safe-area-inset-top,0px) + 1.4rem);font-size:.875rem;font-weight:500;padding:.5rem 0}
+.ulb-bar{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(env(safe-area-inset-bottom,0px) + 1.4rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.875rem;font-weight:500}
+.ulb-count{font-variant-numeric:tabular-nums;opacity:.6}
+.ulb-nav{display:flex;gap:1.5rem}
+.ulb-nav button{padding:.5rem 0}
+@media (max-width:991px){
+  .unit-arrow{opacity:1;width:2.6rem;height:2.6rem;margin-top:-1.3rem}
+  .unit-prev{left:.6rem}.unit-next{right:.6rem}
+  .ulb-stage{inset:4rem 0 6rem}
+  .ulb-bar{flex-wrap:wrap}
+  .ulb-cap{width:100%}
+}
+
+/* =========================================================
+   MARKE: Schriften der Originalseite, kompaktere Größen
+   ========================================================= */
+:root{--font:"New Edge","Helvetica Neue",Helvetica,Arial,sans-serif;--serif:"Exposure","Times New Roman",Georgia,serif}
+body{font-family:var(--font);font-synthesis:none;font-weight:400}
+.t-display,.t-h1,.t-h2,.t-h3,.t-h4,.intro-word,.units-tab,.amen-item,.mnav-links a,.pre-name,.faq-q,.cp-name,.cat-name{font-family:var(--serif);font-weight:400}
+.t-h1,.t-h2,.t-h3{letter-spacing:-.02em}
+.t-h4{letter-spacing:-.01em}
+.t-label{letter-spacing:.02em}
+.hdr-logo svg{display:block;height:2.4rem;width:auto}
+.hdr-word,.hdr-symbol{display:none}
+@media (min-width:992px){
+  .t-h1{font-size:7.5rem;line-height:.98}
+  .t-h2{font-size:5rem;line-height:1}
+  .t-h3{font-size:3.1rem;line-height:1.1}
+  .t-h4{font-size:2rem;line-height:1.2}
+  .t-body{font-size:1rem;line-height:1.62}
+}
+@media (max-width:991px){
+  .t-h1{font-size:2.8rem;line-height:1}
+  .t-h2{font-size:2.25rem;line-height:1.04}
+  .t-h3{font-size:1.65rem;line-height:1.15}
+  .t-h4{font-size:1.3rem;line-height:1.25}
+  .hdr-logo svg{height:2rem}
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.hdr-nav{gap:1.9rem}
+.hdr-nav .lnk.is-current .lnk-in::after{background:var(--flechte);height:2px}
+@media (min-width:992px) and (max-width:1180px){.hdr-nav{gap:1.2rem}.hdr-nav .lnk{font-size:.75rem}}
+.mnav{overflow-y:auto}
+.mnav-links a{font-size:1.75rem;padding:.55rem 0}
+
+/* Hero-Logo */
+.hero-logo{margin:0;line-height:0;color:var(--kalk)}
+.hero-logo svg{display:block;width:100%;height:auto}
+@media (min-width:992px){.hero-title-wrap{width:58vw}}
+.pre-logo svg{display:block;width:16rem;height:auto;color:var(--ink)}
+@media (max-width:991px){.pre-logo svg{width:12rem}}
+
+/* Intro auf Photogramm */
+.intro{background:#918749 url("img/site/bg-photogram-olive.jpg") center / cover no-repeat;color:var(--kalk)}
+.intro-word{color:rgba(228,225,218,.28)}
+.intro-quote{color:var(--kalk)}
+
+/* Kompaktere Bereiche (Desktop) */
+@media (min-width:992px){
+  .hero{height:240vh}
+  .intro{height:180vh}
+  .intro-word{font-size:15rem}
+  .card:not(:last-child){margin-bottom:55vh}
+  .cards{padding-bottom:30vh}
+  .card-in{padding-top:7.5rem}
+  .card-fig{height:62vh}
+  .concept{padding:9rem 0 8rem}
+  .concept-fig{height:32rem;margin-top:4.5rem}
+  .concept-text{margin-top:4.5rem}
+  .loc-p3{width:82vw}
+  .loc-map{height:84vh}
+  .units{padding:8rem 0 7rem}
+  .units-stage{margin-top:3.5rem}
+  .units-tab{font-size:2rem}
+  .amen{height:400vh}
+  .amen-item{font-size:2.1rem}
+  .arch{height:260vh}
+  .quote{padding:8rem 0}
+  .book{padding:8rem 0 7rem}
+  .book-title{margin-bottom:3rem}
+  .foot-area{height:170vh}
+}
+.loc-map text{font-size:17px}
+.loc-map .dot{r:5}
+.loc-map .dot-home{r:8}
+
+/* Familienfoto im Originalformat */
+.quote-fig{height:auto!important;align-self:center}
+.quote-fig img{position:static!important;height:auto!important;width:100%}
+
+/* Partner-Logos in den Amenities */
+.amen-partners{position:absolute;left:0;bottom:calc(100% + 1.5rem);height:3.2rem}
+.amen-partner{position:absolute;left:0;bottom:0;height:100%;width:auto;opacity:0;transition:opacity .6s var(--e-out)}
+.amen-partner[data-partner="cocomat"]{height:2.6rem}
+.amen-partner.is-on{opacity:.92}
+.amen-m .amen-m-partner{height:2.2rem;width:auto;margin-top:1rem;opacity:.9}
+@media (max-width:991px){.amen-partners{display:none}}
+
+/* FAQ */
+.faq{background:var(--kalk);padding:8rem 0 8rem}
+.faq-side{grid-column:1 / span 4;align-self:start;position:sticky;top:7rem}
+.faq-fig{width:12rem;margin-top:2.5rem;overflow:hidden}
+.faq-fig img{width:100%;height:auto;display:block}
+.faq-more{margin-top:2rem;font-size:.875rem}
+.faq-list{grid-column:6 / span 7;border-top:1px solid var(--line-ink)}
+.faq-item{border-bottom:1px solid var(--line-ink)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:2rem;padding:1.35rem 0}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-q{font-size:1.5rem;line-height:1.25}
+.faq-icon{position:relative;flex:0 0 1rem;height:1rem}
+.faq-icon::before,.faq-icon::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:currentColor;transition:transform .5s var(--e-out)}
+.faq-icon::after{transform:rotate(90deg)}
+.faq-item[open] .faq-icon::after{transform:rotate(0)}
+.faq-a{overflow:hidden}
+.faq-a p{padding:0 3rem 1.6rem 0;max-width:60ch;line-height:1.65}
+@media (max-width:991px){
+  .faq{padding:5rem 0}
+  .faq-side,.faq-list{grid-column:1 / -1;position:static}
+  .faq-side{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+  .faq-fig{width:7rem;margin-top:0;order:2}
+  .faq-more{display:none}
+  .faq-q{font-size:1.15rem}
+  .faq-item summary{padding:1.1rem 0;gap:1rem;min-height:3rem}
+  .faq-a p{padding-right:0}
+}
+
+/* Olivenzweig (freigestelltes Video), am Bildschirmrand verankert */
+.branch{position:absolute;pointer-events:none;z-index:3;aspect-ratio:1280 / 508;height:auto!important;display:block}
+.branch > video,.branch > canvas,.branch > img{display:block;width:100%;height:100%;object-fit:contain}
+.branch.flip > *{transform:scaleX(-1)}
+.branch.flip svg{transform:none}
+.br-concept{left:0!important;right:auto!important;top:44%!important;width:44vw!important}
+.br-arch-l{left:0!important;top:9vh!important;width:40vw!important}
+.br-arch-r{right:0!important;left:auto!important;bottom:12vh!important;top:auto!important;width:36vw!important}
+.br-quote{right:0!important;left:auto!important;bottom:2.5rem!important;top:auto!important;width:34vw!important}
+@media (max-width:991px){
+  .branch{display:none!important}
+  .br-concept,.br-quote{display:block!important;width:78vw!important}
+  .br-concept{top:auto!important;bottom:-1rem!important}
+  .br-quote{bottom:.5rem!important}
+  .concept{padding-bottom:9rem!important}
+  .quote{padding-bottom:9rem!important}
+}
+@media (max-width:991px){.loc-map{aspect-ratio:730 / 480!important;height:auto!important}}
+
+/* =========================================================
+   HEADER-BALKEN + SPRACHWAHL
+   ========================================================= */
+.hdr{padding-top:.9rem;padding-bottom:.9rem;background:rgba(228,225,218,.88);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--line-ink);transition:color .45s var(--e-out),background-color .45s var(--e-out),border-color .45s var(--e-out)}
+.hdr[data-theme="dark"]{background:rgba(45,51,34,.8);border-bottom-color:var(--line-kalk)}
+.hdr.menu-open{background:var(--olive);border-bottom-color:var(--line-kalk)}
+.lang-sw{display:inline-flex;align-items:center;gap:.35rem;font-size:.8125rem}
+.lang-sw span{opacity:.4}
+.lang-sw button{padding:.4rem .15rem;opacity:.5;transition:opacity .3s var(--e-out)}
+.lang-sw button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1px}
+.lang-sw button:hover{opacity:1}
+@media (min-width:992px) and (max-width:1199px){
+  .hdr-nav .hide-m{display:none}
+  .hdr .hdr-menu{display:inline-flex}
+  .mnav{display:flex}
+}
+@media (max-width:991px){.hdr{padding-top:.7rem;padding-bottom:.7rem}.hdr-nav{gap:.9rem}.lang-sw{font-size:.75rem}}
+
+/* Zweige: nie über Text */
+.concept-row{position:relative}
+.br-concept{top:-3.5rem!important;bottom:auto!important}
+.br-arch-r{top:8vh!important;bottom:auto!important}
+.br-quote{top:1.5rem!important;bottom:auto!important;width:30vw!important}
+@media (min-width:992px){.quote{padding-top:calc(12vw + 3rem)!important}}
+@media (max-width:991px){
+  .br-concept{top:auto!important;bottom:-2.5rem!important}
+  .concept{padding-bottom:6rem!important}
+  .br-quote{top:1rem!important;width:72vw!important}
+  .quote{padding-top:calc(29vw + 2rem)!important;padding-bottom:5rem!important}
+}
+/* Intro lesbarer */
+.intro{background-image:linear-gradient(rgba(45,51,34,.32),rgba(45,51,34,.32)),url("img/site/bg-photogram-olive.jpg")}
+/* Abstand unter dem Header-Balken */
+.hero-content{padding-top:calc(var(--hdr-h,4.5rem) + 3rem)}
+@media (max-width:991px){.hero-content{padding-top:2rem}}
 </style>
 </head>
 <body>
@@ -434,7 +679,8 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
 <div class="pre" aria-hidden="true">
   <div class="pre-window"><span class="pre-mullion v1"></span><span class="pre-mullion v2"></span><span class="pre-mullion h1"></span></div>
   <div class="pre-text">
-    <p class="pre-name" data-pre="h">Meraki Studios</p>
+    <p class="pre-name pre-logo" data-pre="ctn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="326.027 782.001 1504.94 456.969" fill="currentColor" aria-hidden="true" focusable="false"><path d="M402.18 1057.22c6.7.38 7.66-8.33 1.25-9.77-27.2-6.13-28.06-12.45-24.91-52.97 2.78-35.35 5.94-70.4 10.25-111.59 1.53-12.45 15.8-13.79 20.59-2.78 25.1 61.21 50 120.69 72.32 178.73 2.3 6.04 9.58 6.04 12.17 0 8.43-20.31 17.24-40.71 26.05-60.92 16.47-37.74 33.24-75.09 49.14-111.97 5.17-11.78 20.97-10.73 22.51 3.54 3.54 35.34 6.71 70.02 9.48 104.59 3.16 40.9 1.53 46.74-25.38 52.78-6.51 1.44-5.46 9.96 1.25 9.77 28.64-.77 58.24-.86 87.07.29 5.17.19 7.28-7.76.86-9.39-26.05-6.71-29.88-11.69-33.62-53.06-5.08-56.51-9.77-112.64-12.93-159.67-1.53-19.25 2.59-28.93 26.72-35.63 6.13-1.63 5.27-9.77-.96-9.58-16.28.86-28.74 1.15-46.55.67-4.89-.29-7.19 1.34-8.62 5.17-11.3 28.93-22.8 57.57-34.1 85.53-15.99 39.27-31.8 77.39-46.93 113.5-4.6 11.11-16.19 11.11-20.78 0-24.71-60.73-52.59-127.87-77.97-198.18-1.63-4.41-4.12-6.42-10.15-6.23-18.39.57-31.03.29-45.21-.48-7.86-.38-7.66 7.76-2.49 9.39 23.56 7.09 28.35 13.7 26.53 37.74-1.15 14.65-2.49 30.08-3.83 45.98-2.97 35.63-6.32 73.85-9.86 112.16-3.74 41.47-7.95 46.36-34 52.97-6.51 1.72-4.4 9.58.86 9.39 23.37-.77 47.8-1.53 71.26 0"/><path d="M887.44 1058.95c6.13.19 8.14-2.49 8.62-8.05 1.44-21.36 2.87-36.11 5.08-56.61.86-6.61-7.28-7.66-9.39-1.82-18.2 47.61-27.01 54.88-74.04 54.88h-10.73c-54.12-.38-61.68-9.48-62.45-53.45-.38-20.88-.38-34.19 0-47.51 0-12.07 5.84-19.35 18.68-19.35h20.02c30.94 0 40.71 4.6 51.44 32.57 2.3 6.03 10.63 4.88 9.87-1.92-3.54-30.08-2.97-40.71 0-72.22.67-6.8-7.47-8.05-9.77-2.01-11.01 28.83-20.59 33.24-51.53 33.24h-20.02c-12.84 0-18.68-6.51-18.68-16.95-.38-23.56-.38-45.11 0-82.47 0-10.63 5.08-16.47 17.43-16.47 24.42-.29 44.73-.58 65.04-.48 30.27.1 40.52 6.42 58.24 56.9 2.01 5.84 10.63 5.27 9.77-1.92-2.78-19.73-4.69-37.64-6.23-57.38-.48-6.99-2.97-9-9.58-8.81-15.04.38-25.86.67-36.69.77-21.55.29-42.62.67-64.08.77-29.31.1-59.29-.19-92.62-.77-6.9-.19-7.76 7.18-1.53 9.39 24.33 7.76 28.54 13.41 28.93 38.03.77 61.59.77 108.33 0 156.61-.77 43.58-3.07 46.65-28.93 54.31-6.42 1.92-3.93 9.58 1.34 9.39 17.72-.67 58.05-.67 111.88-.19l32.76.29c19.35.19 39.56.77 57.18 1.25"/><path d="M1322.35 952.63c-20.11.38-41.19.38-63.7 0-10.34 0-15.71-6.32-11.3-17.63l32.09-79.6c4.02-9.87 15.8-10.06 20.02 0 11.4 26.72 25.86 61.2 33.33 78.83 5.07 12.07-.38 18.39-10.44 18.39m-321.47-25.47c-10.53-.67-17.43-6.13-17.43-16.47-.38-29.02-.38-60.82 0-89.46 0-14.18 4.12-20.31 21.17-21.17 45.88-1.63 78.92 23.28 78.92 62.83 0 29.22-18.77 68.49-82.66 64.27m431.33 130.36c7.85.38 7.76-7.85 3.26-9.2-23.56-7.28-26.15-10.34-39.08-41.28-32.18-75.58-61.49-144.83-92.24-220.97-2.11-5.17-8.72-5.75-11.11.29-30.27 77.97-59.87 149.71-89.27 221.16-8.49 20.54-12.29 28.49-21.85 33.6-17.040 7.71-29.7 5.85-37.56 2.69-9.13-3.97-15.17-10.53-24.99-24.41-9.39-13.12-20.78-26.82-51.44-72.13-5.94-8.52-4.41-16.19 4.12-20.11 31.99-14.18 48.37-39.75 48.37-67.81 0-38.41-35.44-72.32-106.61-69.44-28.54 1.05-59.29.96-89.46.19-6.71-.19-7.09 7.47-1.25 9.39 25 7.76 28.64 14.37 29.02 37.83.38 72.22.38 111.49 0 157.37-.38 39.94-2.2 46.55-28.83 53.54-6.42 1.72-3.93 9.58 1.34 9.39 31.61-1.15 54.02-1.05 90.8.1 5.46.19 7.09-7.85 1.05-9.39-30.65-7.85-31.7-12.74-32.85-54.4-.38-14.56-.19-27.68.19-38.7.38-11.11 5.75-17.72 18.39-17.91h2.97c12.74-.19 22.03 2.87 27.97 10.92 21.55 30.17 42.34 62.74 63.98 94.92 6.17 9.05 10.97 12.41 18.47 13.59h134.2c3.95-2.03 3.75-7.91-1.87-9.08-29.89-6.23-39.08-14.46-28.06-43.2 3.54-9.39 7.38-18.39 11.01-27.78 3.54-8.53 9.96-13.6 22.6-13.7 27.3-.1 50.29-.1 77.39 0 9.67.1 15.61 4.6 19.25 13.41 3.83 9.48 7.95 20.21 11.78 29.69 8.81 22.51 7.47 34-20.5 41.95-5.84 1.72-4.4 9.58 1.06 9.39 28.83-1.06 57.28-1.25 89.75.1"/><path d="M1703.58 1057.61c7.47.38 7.95-8.14 2.3-9.39-14.46-3.73-25.86-10.34-42.15-27.58-32.18-34.58-58.43-63.6-89.08-96.55-6.9-7.47-7.18-15.52.19-22.89 26.72-26.63 47.89-46.65 75.77-74.52 11.59-11.78 26.82-21.26 43.87-27.11 6.04-2.11 5.46-9.77-1.92-9.39-23.66 1.15-48.18 1.15-71.55 0-6.99-.38-7.28 7.47-2.01 9.1 21.07 6.99 22.8 16.95 7.38 32.18-29.02 29.02-52.59 52.59-82.57 81.42-9.67 9.19-20.69 5.46-20.69-7.95 0-18.87 0-34 .19-57.76.29-33.43 1.06-38.98 27.97-47.7 6.42-2.11 4.98-9.58-.58-9.39-28.83.77-57.95.77-86.59 0-6.61-.19-7.09 7.47-1.25 9.39 24.14 7.95 28.35 12.64 28.74 37.83.38 67.14.77 105.55 0 156.99-.77 43.2-3.06 46.36-28.54 53.93-6.52 2.11-4.41 9.58.86 9.39 28.74-.77 57.47-.77 86.59 0 6.42.19 7.66-8.14 1.15-9.58-26.72-6.9-28.26-14.37-28.35-58.24l-.1-50.67c0-10.92 11.97-15.61 20.5-6.61 27.97 29.88 49.52 53.45 77.3 84.19 14.85 16.57 9.77 26.82-8.43 31.32-6.61 1.63-5.36 9.77.67 9.58 36.49-.86 63.89-1.15 90.32 0"/><path d="M1737.87 799.47c24.23 7.76 28.35 13.22 28.73 37.83.77 61.59.77 108.33 0 156.61-.77 43.58-2.97 46.65-28.83 54.31-6.42 1.92-3.93 9.58 1.34 9.39 28.83-.77 57.95-.77 86.78 0 5.17.19 7.66-7.47 1.25-9.39-25.86-7.66-27.97-10.73-28.83-54.31-.77-48.28-.77-95.02 0-156.61.38-24.62 3.93-30.08 28.16-37.83 6.03-2.11 5.27-9.58-1.44-9.39-28.26.77-57.47.77-85.73 0-6.610-.19-7.47 7.28-1.44 9.39"/><path d="M734.28 1224.3h-35.45v-112.07h35.45c31.26 0 52.22 20.2 52.22 54.89 0 38.12-23.25 57.18-52.22 57.18m.57-123.89h-49.17v135.71h49.17c34.12 0 65.57-20.2 65.57-69 0-44.79-28.02-66.71-65.57-66.71"/><path d="m819.1 1100.41.19 135.71h13.15l-.19-135.71z"/><path d="M652.52 1184.46c0 25.73-10.1 41.93-35.64 41.93s-35.83-16.2-35.830-41.93v-84.05h-13.34v79.67c0 30.11 6.67 58.13 49.18 58.13s48.98-28.02 48.98-58.13v-79.67h-13.34v84.05Z"/><path d="M912.11 1226.78c-25.54 0-47.08-21.16-47.08-59.09s21.54-57.37 47.08-57.37 47.08 18.87 47.08 57.37-21.54 59.09-47.08 59.09m0-128.66c-38.12 0-60.8 28.4-60.8 69.38s22.68 71.47 60.8 71.47 60.99-28.97 60.99-71.47-22.87-69.38-60.99-69.38"/><path d="M432.56 1112.23h54.51v123.89h13.15v-123.89h54.52v-11.82H432.56z"/><path d="m1048.2 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.31 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.17-12.96 49.17-38.31c0-20.58-12.58-31.83-34.88-37.36"/><path d="m397.68 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.3 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.18-12.96 49.18-38.31c0-20.58-12.58-31.83-34.88-37.36"/></svg>
+<span class="sr-only">Meraki Studios</span></p>
     <p class="pre-loc" data-pre="p">Kissos, Greece</p>
   </div>
   <span class="pre-count">00</span>
@@ -444,20 +690,16 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
 
 <!-- HEADER -->
 <header class="hdr" data-theme="dark">
-  <a href="#top" class="hdr-logo" aria-label="Meraki Studios, to top">
-    <svg class="hdr-symbol" viewBox="0 0 40 40" aria-hidden="true">
-      <rect class="cell" x="14" y="14" width="12" height="12"/>
-      <g fill="none" stroke="currentColor" stroke-width="1.4">
-        <rect x="2" y="2" width="36" height="36"/>
-        <line x1="14" y1="2" x2="14" y2="38"/><line x1="26" y1="2" x2="26" y2="38"/>
-        <line x1="2" y1="14" x2="38" y2="14"/><line x1="2" y1="26" x2="38" y2="26"/>
-      </g>
-    </svg>
-    <span class="hdr-word">Meraki Studios</span>
-  </a>
+  <a href="#top" class="hdr-logo" aria-label="Meraki Studios"><svg xmlns="http://www.w3.org/2000/svg" viewBox="326.027 782.001 1504.94 456.969" fill="currentColor" aria-hidden="true" focusable="false"><path d="M402.18 1057.22c6.7.38 7.66-8.33 1.25-9.77-27.2-6.13-28.06-12.45-24.91-52.97 2.78-35.35 5.94-70.4 10.25-111.59 1.53-12.45 15.8-13.79 20.59-2.78 25.1 61.21 50 120.69 72.32 178.73 2.3 6.04 9.58 6.04 12.17 0 8.43-20.31 17.24-40.71 26.05-60.92 16.47-37.74 33.24-75.09 49.14-111.97 5.17-11.78 20.97-10.73 22.51 3.54 3.54 35.34 6.71 70.02 9.48 104.59 3.16 40.9 1.53 46.74-25.38 52.78-6.51 1.44-5.46 9.96 1.25 9.77 28.64-.77 58.24-.86 87.07.29 5.17.19 7.28-7.76.86-9.39-26.05-6.71-29.88-11.69-33.62-53.06-5.08-56.51-9.77-112.64-12.93-159.67-1.53-19.25 2.59-28.93 26.72-35.63 6.13-1.63 5.27-9.77-.96-9.58-16.28.86-28.74 1.15-46.55.67-4.89-.29-7.19 1.34-8.62 5.17-11.3 28.93-22.8 57.57-34.1 85.53-15.99 39.27-31.8 77.39-46.93 113.5-4.6 11.11-16.19 11.11-20.78 0-24.71-60.73-52.59-127.87-77.97-198.18-1.63-4.41-4.12-6.42-10.15-6.23-18.39.57-31.03.29-45.21-.48-7.86-.38-7.66 7.76-2.49 9.39 23.56 7.09 28.35 13.7 26.53 37.74-1.15 14.65-2.49 30.08-3.83 45.98-2.97 35.63-6.32 73.85-9.86 112.16-3.74 41.47-7.95 46.36-34 52.97-6.51 1.72-4.4 9.58.86 9.39 23.37-.77 47.8-1.53 71.26 0"/><path d="M887.44 1058.95c6.13.19 8.14-2.49 8.62-8.05 1.44-21.36 2.87-36.11 5.08-56.61.86-6.61-7.28-7.66-9.39-1.82-18.2 47.61-27.01 54.88-74.04 54.88h-10.73c-54.12-.38-61.68-9.48-62.45-53.45-.38-20.88-.38-34.19 0-47.51 0-12.07 5.84-19.35 18.68-19.35h20.02c30.94 0 40.71 4.6 51.44 32.57 2.3 6.03 10.63 4.88 9.87-1.92-3.54-30.08-2.97-40.71 0-72.22.67-6.8-7.47-8.05-9.77-2.01-11.01 28.83-20.59 33.24-51.53 33.24h-20.02c-12.84 0-18.68-6.51-18.68-16.95-.38-23.56-.38-45.11 0-82.47 0-10.63 5.08-16.47 17.43-16.47 24.42-.29 44.73-.58 65.04-.48 30.27.1 40.52 6.42 58.24 56.9 2.01 5.84 10.63 5.27 9.77-1.92-2.78-19.73-4.69-37.64-6.23-57.38-.48-6.99-2.97-9-9.58-8.81-15.04.38-25.86.67-36.69.77-21.55.29-42.62.67-64.08.77-29.31.1-59.29-.19-92.62-.77-6.9-.19-7.76 7.18-1.53 9.39 24.33 7.76 28.54 13.41 28.93 38.03.77 61.59.77 108.33 0 156.61-.77 43.58-3.07 46.65-28.93 54.31-6.42 1.92-3.93 9.58 1.34 9.39 17.72-.67 58.05-.67 111.88-.19l32.76.29c19.35.19 39.56.77 57.18 1.25"/><path d="M1322.35 952.63c-20.11.38-41.19.38-63.7 0-10.34 0-15.71-6.32-11.3-17.63l32.09-79.6c4.02-9.87 15.8-10.06 20.02 0 11.4 26.72 25.86 61.2 33.33 78.83 5.07 12.07-.38 18.39-10.44 18.39m-321.47-25.47c-10.53-.67-17.43-6.13-17.43-16.47-.38-29.02-.38-60.82 0-89.46 0-14.18 4.12-20.31 21.17-21.17 45.88-1.63 78.92 23.28 78.92 62.83 0 29.22-18.77 68.49-82.66 64.27m431.33 130.36c7.85.38 7.76-7.85 3.26-9.2-23.56-7.28-26.15-10.34-39.08-41.28-32.18-75.58-61.49-144.83-92.24-220.97-2.11-5.17-8.72-5.75-11.11.29-30.27 77.97-59.87 149.71-89.27 221.16-8.49 20.54-12.29 28.49-21.85 33.6-17.040 7.71-29.7 5.85-37.56 2.69-9.13-3.97-15.17-10.53-24.99-24.41-9.39-13.12-20.78-26.82-51.44-72.13-5.94-8.52-4.41-16.19 4.12-20.11 31.99-14.18 48.37-39.75 48.37-67.81 0-38.41-35.44-72.32-106.61-69.44-28.54 1.05-59.29.96-89.46.19-6.71-.19-7.09 7.47-1.25 9.39 25 7.76 28.64 14.37 29.02 37.83.38 72.22.38 111.49 0 157.37-.38 39.94-2.2 46.55-28.83 53.54-6.42 1.72-3.93 9.58 1.34 9.39 31.61-1.15 54.02-1.05 90.8.1 5.46.19 7.09-7.85 1.05-9.39-30.65-7.85-31.7-12.74-32.85-54.4-.38-14.56-.19-27.68.19-38.7.38-11.11 5.75-17.72 18.39-17.91h2.97c12.74-.19 22.03 2.87 27.97 10.92 21.55 30.17 42.34 62.74 63.98 94.92 6.17 9.05 10.97 12.41 18.47 13.59h134.2c3.95-2.03 3.75-7.91-1.87-9.08-29.89-6.23-39.08-14.46-28.06-43.2 3.54-9.39 7.38-18.39 11.01-27.78 3.54-8.53 9.96-13.6 22.6-13.7 27.3-.1 50.29-.1 77.39 0 9.67.1 15.61 4.6 19.25 13.41 3.83 9.48 7.95 20.21 11.78 29.69 8.81 22.51 7.47 34-20.5 41.95-5.84 1.72-4.4 9.58 1.06 9.39 28.83-1.06 57.28-1.25 89.75.1"/><path d="M1703.58 1057.61c7.47.38 7.95-8.14 2.3-9.39-14.46-3.73-25.86-10.34-42.15-27.58-32.18-34.58-58.43-63.6-89.08-96.55-6.9-7.47-7.18-15.52.19-22.89 26.72-26.63 47.89-46.65 75.77-74.52 11.59-11.78 26.82-21.26 43.87-27.11 6.04-2.11 5.46-9.77-1.92-9.39-23.66 1.15-48.18 1.15-71.55 0-6.99-.38-7.28 7.47-2.01 9.1 21.07 6.99 22.8 16.95 7.38 32.18-29.02 29.02-52.59 52.59-82.57 81.42-9.67 9.19-20.69 5.46-20.69-7.95 0-18.87 0-34 .19-57.76.29-33.43 1.06-38.98 27.97-47.7 6.42-2.11 4.98-9.58-.58-9.39-28.83.77-57.95.77-86.59 0-6.61-.19-7.09 7.47-1.25 9.39 24.14 7.95 28.35 12.64 28.74 37.83.38 67.14.77 105.55 0 156.99-.77 43.2-3.06 46.36-28.54 53.93-6.52 2.11-4.41 9.58.86 9.39 28.74-.77 57.47-.77 86.59 0 6.42.19 7.66-8.14 1.15-9.58-26.72-6.9-28.26-14.37-28.35-58.24l-.1-50.67c0-10.92 11.97-15.61 20.5-6.61 27.97 29.88 49.52 53.45 77.3 84.19 14.85 16.57 9.77 26.82-8.43 31.32-6.61 1.63-5.36 9.77.67 9.58 36.49-.86 63.89-1.15 90.32 0"/><path d="M1737.87 799.47c24.23 7.76 28.35 13.22 28.73 37.83.77 61.59.77 108.33 0 156.61-.77 43.58-2.97 46.65-28.83 54.31-6.42 1.92-3.93 9.58 1.34 9.39 28.83-.77 57.95-.77 86.78 0 5.17.19 7.66-7.47 1.25-9.39-25.86-7.66-27.97-10.73-28.83-54.31-.77-48.28-.77-95.02 0-156.61.38-24.62 3.93-30.08 28.16-37.83 6.03-2.11 5.27-9.58-1.44-9.39-28.26.77-57.47.77-85.73 0-6.610-.19-7.47 7.28-1.44 9.39"/><path d="M734.28 1224.3h-35.45v-112.07h35.45c31.26 0 52.22 20.2 52.22 54.89 0 38.12-23.25 57.18-52.22 57.18m.57-123.89h-49.17v135.71h49.17c34.12 0 65.57-20.2 65.57-69 0-44.79-28.02-66.71-65.57-66.71"/><path d="m819.1 1100.41.19 135.71h13.15l-.19-135.71z"/><path d="M652.52 1184.46c0 25.73-10.1 41.93-35.64 41.93s-35.83-16.2-35.830-41.93v-84.05h-13.34v79.67c0 30.11 6.67 58.13 49.18 58.13s48.98-28.02 48.98-58.13v-79.67h-13.34v84.05Z"/><path d="M912.11 1226.78c-25.54 0-47.08-21.16-47.08-59.09s21.54-57.37 47.08-57.37 47.08 18.87 47.08 57.37-21.54 59.09-47.08 59.09m0-128.66c-38.12 0-60.8 28.4-60.8 69.38s22.68 71.47 60.8 71.47 60.99-28.97 60.99-71.47-22.87-69.38-60.99-69.38"/><path d="M432.56 1112.23h54.51v123.89h13.15v-123.89h54.52v-11.82H432.56z"/><path d="m1048.2 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.31 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.17-12.96 49.17-38.31c0-20.58-12.58-31.83-34.88-37.36"/><path d="m397.68 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.3 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.18-12.96 49.18-38.31c0-20.58-12.58-31.83-34.88-37.36"/></svg>
+</a>
   <nav class="hdr-nav" aria-label="Main">
-    <a class="lnk hide-m" href="#units">Apartments and Studios</a>
+    <a class="lnk hide-m" href="#studios" data-nav="studios">The Studios</a>
+    <a class="lnk hide-m" href="#location" data-nav="location">Location</a>
+    <a class="lnk hide-m" href="#units" data-nav="units">Apartments</a>
+    <a class="lnk hide-m" href="#amenities" data-nav="amenities">Amenities</a>
+    <a class="lnk hide-m" href="#faq" data-nav="faq">FAQ</a>
     <a class="lnk hide-m" href="compass.html">Guest Compass</a>
+    <div class="lang-sw" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-lang="de">DE</button></div>
     <a class="pill" href="#book">Book your stay</a>
     <button class="pill hdr-menu" aria-expanded="false" aria-controls="mnav">Menu</button>
   </nav>
@@ -465,8 +707,12 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
 
 <nav class="mnav" id="mnav" aria-label="Menu">
   <div class="mnav-links">
-    <a href="#units">Apartments and Studios</a>
+    <a href="#studios">The Studios</a>
     <a href="#location">Location</a>
+    <a href="#units">Apartments and Studios</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#faq">FAQ</a>
     <a href="compass.html">Guest Compass</a>
     <a href="floorplan.html">Floorplan</a>
     <a href="#book">Book your stay</a>
@@ -494,13 +740,14 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
         <p class="t-h4 hero-lead" data-reveal="p" data-manual>A pure and minimalistic way to stay in the nature of Kissos, Greece.</p>
         <a class="circle-btn hero-cta" href="#book" data-magnetic><span>Be our guest.</span></a>
       </div>
-      <div class="hero-title-wrap"><h1 class="t-display hero-title" data-fit data-reveal="h" data-manual>meraki</h1></div>
+      <div class="hero-title-wrap"><h1 class="hero-title hero-logo" data-reveal="ctn" data-manual><svg xmlns="http://www.w3.org/2000/svg" viewBox="326.027 782.001 1504.94 456.969" fill="currentColor" aria-hidden="true" focusable="false"><path d="M402.18 1057.22c6.7.38 7.66-8.33 1.25-9.77-27.2-6.13-28.06-12.45-24.91-52.97 2.78-35.35 5.94-70.4 10.25-111.59 1.53-12.45 15.8-13.79 20.59-2.78 25.1 61.21 50 120.69 72.32 178.73 2.3 6.04 9.58 6.04 12.17 0 8.43-20.31 17.24-40.71 26.05-60.92 16.47-37.74 33.24-75.09 49.14-111.97 5.17-11.78 20.97-10.73 22.51 3.54 3.54 35.34 6.71 70.02 9.48 104.59 3.16 40.9 1.53 46.74-25.38 52.78-6.51 1.44-5.46 9.96 1.25 9.77 28.64-.77 58.24-.86 87.07.29 5.17.19 7.28-7.76.86-9.39-26.05-6.71-29.88-11.69-33.62-53.06-5.08-56.51-9.77-112.64-12.93-159.67-1.53-19.25 2.59-28.93 26.72-35.63 6.13-1.63 5.27-9.77-.96-9.58-16.28.86-28.74 1.15-46.55.67-4.89-.29-7.19 1.34-8.62 5.17-11.3 28.93-22.8 57.57-34.1 85.53-15.99 39.27-31.8 77.39-46.93 113.5-4.6 11.11-16.19 11.11-20.78 0-24.71-60.73-52.59-127.87-77.97-198.18-1.63-4.41-4.12-6.42-10.15-6.23-18.39.57-31.03.29-45.21-.48-7.86-.38-7.66 7.76-2.49 9.39 23.56 7.09 28.35 13.7 26.53 37.74-1.15 14.65-2.49 30.08-3.83 45.98-2.97 35.63-6.32 73.85-9.86 112.16-3.74 41.47-7.95 46.36-34 52.97-6.51 1.72-4.4 9.58.86 9.39 23.37-.77 47.8-1.53 71.26 0"/><path d="M887.44 1058.95c6.13.19 8.14-2.49 8.62-8.05 1.44-21.36 2.87-36.11 5.08-56.61.86-6.61-7.28-7.66-9.39-1.82-18.2 47.61-27.01 54.88-74.04 54.88h-10.73c-54.12-.38-61.68-9.48-62.45-53.45-.38-20.88-.38-34.19 0-47.51 0-12.07 5.84-19.35 18.68-19.35h20.02c30.94 0 40.71 4.6 51.44 32.57 2.3 6.03 10.63 4.88 9.87-1.92-3.54-30.08-2.97-40.71 0-72.22.67-6.8-7.47-8.05-9.77-2.01-11.01 28.83-20.59 33.24-51.53 33.24h-20.02c-12.84 0-18.68-6.51-18.68-16.95-.38-23.56-.38-45.11 0-82.47 0-10.63 5.08-16.47 17.43-16.47 24.42-.29 44.73-.58 65.04-.48 30.27.1 40.52 6.42 58.24 56.9 2.01 5.84 10.63 5.27 9.77-1.92-2.78-19.73-4.69-37.64-6.23-57.38-.48-6.99-2.97-9-9.58-8.81-15.04.38-25.86.67-36.69.77-21.55.29-42.62.67-64.08.77-29.31.1-59.29-.19-92.62-.77-6.9-.19-7.76 7.18-1.53 9.39 24.33 7.76 28.54 13.41 28.93 38.03.77 61.59.77 108.33 0 156.61-.77 43.58-3.07 46.65-28.93 54.31-6.42 1.92-3.93 9.58 1.34 9.39 17.72-.67 58.05-.67 111.88-.19l32.76.29c19.35.19 39.56.77 57.18 1.25"/><path d="M1322.35 952.63c-20.11.38-41.19.38-63.7 0-10.34 0-15.71-6.32-11.3-17.63l32.09-79.6c4.02-9.87 15.8-10.06 20.02 0 11.4 26.72 25.86 61.2 33.33 78.83 5.07 12.07-.38 18.39-10.44 18.39m-321.47-25.47c-10.53-.67-17.43-6.13-17.43-16.47-.38-29.02-.38-60.82 0-89.46 0-14.18 4.12-20.31 21.17-21.17 45.88-1.63 78.92 23.28 78.92 62.83 0 29.22-18.77 68.49-82.66 64.27m431.33 130.36c7.85.38 7.76-7.85 3.26-9.2-23.56-7.28-26.15-10.34-39.08-41.28-32.18-75.58-61.49-144.83-92.24-220.97-2.11-5.17-8.72-5.75-11.11.29-30.27 77.97-59.87 149.71-89.27 221.16-8.49 20.54-12.29 28.49-21.85 33.6-17.040 7.71-29.7 5.85-37.56 2.69-9.13-3.97-15.17-10.53-24.99-24.41-9.39-13.12-20.78-26.82-51.44-72.13-5.94-8.52-4.41-16.19 4.12-20.11 31.99-14.18 48.37-39.75 48.37-67.81 0-38.41-35.44-72.32-106.61-69.44-28.54 1.05-59.29.96-89.46.19-6.71-.19-7.09 7.47-1.25 9.39 25 7.76 28.64 14.37 29.02 37.83.38 72.22.38 111.49 0 157.37-.38 39.94-2.2 46.55-28.83 53.54-6.42 1.72-3.93 9.58 1.34 9.39 31.61-1.15 54.02-1.05 90.8.1 5.46.19 7.09-7.85 1.05-9.39-30.65-7.85-31.7-12.74-32.85-54.4-.38-14.56-.19-27.68.19-38.7.38-11.11 5.75-17.72 18.39-17.91h2.97c12.74-.19 22.03 2.87 27.97 10.92 21.55 30.17 42.34 62.74 63.98 94.92 6.17 9.05 10.97 12.41 18.47 13.59h134.2c3.95-2.03 3.75-7.91-1.87-9.08-29.89-6.23-39.08-14.46-28.06-43.2 3.54-9.39 7.38-18.39 11.01-27.78 3.54-8.53 9.96-13.6 22.6-13.7 27.3-.1 50.29-.1 77.39 0 9.67.1 15.61 4.6 19.25 13.41 3.83 9.48 7.95 20.21 11.78 29.69 8.81 22.51 7.47 34-20.5 41.95-5.84 1.72-4.4 9.58 1.06 9.39 28.83-1.06 57.28-1.25 89.75.1"/><path d="M1703.58 1057.61c7.47.38 7.95-8.14 2.3-9.39-14.46-3.73-25.86-10.34-42.15-27.58-32.18-34.58-58.43-63.6-89.08-96.55-6.9-7.47-7.18-15.52.19-22.89 26.72-26.63 47.89-46.65 75.77-74.52 11.59-11.78 26.82-21.26 43.87-27.11 6.04-2.11 5.46-9.77-1.92-9.39-23.66 1.15-48.18 1.15-71.55 0-6.99-.38-7.28 7.47-2.01 9.1 21.07 6.99 22.8 16.95 7.38 32.18-29.02 29.02-52.59 52.59-82.57 81.42-9.67 9.19-20.69 5.46-20.69-7.95 0-18.87 0-34 .19-57.76.29-33.43 1.06-38.98 27.97-47.7 6.42-2.11 4.98-9.58-.58-9.39-28.83.77-57.95.77-86.59 0-6.61-.19-7.09 7.47-1.25 9.39 24.14 7.95 28.35 12.64 28.74 37.83.38 67.14.77 105.55 0 156.99-.77 43.2-3.06 46.36-28.54 53.93-6.52 2.11-4.41 9.58.86 9.39 28.74-.77 57.47-.77 86.59 0 6.42.19 7.66-8.14 1.15-9.58-26.72-6.9-28.26-14.37-28.35-58.24l-.1-50.67c0-10.92 11.97-15.61 20.5-6.61 27.97 29.88 49.52 53.45 77.3 84.19 14.85 16.57 9.77 26.82-8.43 31.32-6.61 1.63-5.36 9.77.67 9.58 36.49-.86 63.89-1.15 90.32 0"/><path d="M1737.87 799.47c24.23 7.76 28.35 13.22 28.73 37.83.77 61.59.77 108.33 0 156.61-.77 43.58-2.97 46.65-28.83 54.31-6.42 1.92-3.93 9.58 1.34 9.39 28.83-.77 57.95-.77 86.78 0 5.17.19 7.66-7.47 1.25-9.39-25.86-7.66-27.97-10.73-28.83-54.31-.77-48.28-.77-95.02 0-156.61.38-24.62 3.93-30.08 28.16-37.83 6.03-2.11 5.27-9.58-1.44-9.39-28.26.77-57.47.77-85.73 0-6.610-.19-7.47 7.28-1.44 9.39"/><path d="M734.28 1224.3h-35.45v-112.07h35.45c31.26 0 52.22 20.2 52.22 54.89 0 38.12-23.25 57.18-52.22 57.18m.57-123.89h-49.17v135.71h49.17c34.12 0 65.57-20.2 65.57-69 0-44.79-28.02-66.71-65.57-66.71"/><path d="m819.1 1100.41.19 135.71h13.15l-.19-135.71z"/><path d="M652.52 1184.46c0 25.73-10.1 41.93-35.64 41.93s-35.83-16.2-35.830-41.93v-84.05h-13.34v79.67c0 30.11 6.67 58.13 49.18 58.13s48.98-28.02 48.98-58.13v-79.67h-13.34v84.05Z"/><path d="M912.11 1226.78c-25.54 0-47.08-21.16-47.08-59.09s21.54-57.37 47.08-57.37 47.08 18.87 47.08 57.37-21.54 59.09-47.08 59.09m0-128.66c-38.12 0-60.8 28.4-60.8 69.38s22.68 71.47 60.8 71.47 60.99-28.97 60.99-71.47-22.87-69.38-60.99-69.38"/><path d="M432.56 1112.23h54.51v123.89h13.15v-123.89h54.52v-11.82H432.56z"/><path d="m1048.2 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.31 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.17-12.96 49.17-38.31c0-20.58-12.58-31.83-34.88-37.36"/><path d="m397.68 1162.54-18.49-4.57c-19.82-4.57-31.07-10.67-31.07-24.59 0-12.96 12.39-23.25 32.02-23.25 25.16 0 34.12 11.25 34.12 27.64h13.91c-.38-27.26-18.49-39.45-46.89-39.45-30.3 0-46.89 15.06-46.89 36.4 0 17.73 10.86 28.59 33.93 34.31l21.92 5.53c18.68 4.38 28.59 12.39 28.59 26.49 0 16.2-14.49 25.16-35.45 25.16-23.06 0-37.17-9.91-37.17-31.83h-14.49c0 32.21 23.06 43.84 51.65 43.84s49.18-12.96 49.18-38.31c0-20.58-12.58-31.83-34.88-37.36"/></svg>
+<span class="sr-only">Meraki Studios</span></h1></div>
     </div>
   </div>
 </section>
 
 <!-- INTRO -->
-<section class="intro" data-bg="light">
+<section class="intro" data-bg="dark">
   <div class="intro-sticky">
     <p class="intro-word" aria-hidden="true">meraki</p>
     <div class="grid intro-quote-row">
@@ -510,11 +757,11 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
 </section>
 
 <!-- CARDS -->
-<section class="cards">
+<section class="cards" id="studios">
   <article class="card" data-bg="light">
     <div class="grid card-in">
       <h2 class="t-h1 card-title" data-reveal="h">The Studios</h2>
-      <figure class="fig card-fig" data-par><img data-wix="f3bbf6_6f9a0df94d834c2289f6347ba28f42a0" data-size="1200x1500" alt="" loading="lazy"></figure>
+      <figure class="fig card-fig" data-par><img src="img/site/studios-night.jpg" alt="Meraki Studios at night" loading="lazy"></figure>
       <p class="t-body card-text" data-reveal="p">In the quiet of the valley six intimate Studios await, each with a great vista of the ever-changing beauty of Crete’s nature. Here, simplicity equals luxury.</p>
     </div>
   </article>
@@ -527,8 +774,8 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
   </article>
   <article class="card" data-bg="light">
     <div class="grid card-in">
-      <h2 class="t-h1 card-title" data-reveal="h">Tsikalaria</h2>
-      <figure class="fig card-fig" data-par><img data-wix="682cf9_c6e3fc8e17ae47a199d3a3955666b845" data-size="1200x1500" alt="" loading="lazy"></figure>
+      <h2 class="t-h1 card-title" data-reveal="h">Nature</h2>
+      <figure class="fig card-fig" data-par><img src="img/site/nature-pomegranate.jpg" alt="Pomegranate blossoms in front of Meraki Studios" loading="lazy"></figure>
       <p class="t-body card-text" data-reveal="p">Among the locals the plot goes by the name of Tsikalaria. It used to be cultivated by a man who had a reputation to be particularly knowledgeable of plants. We want to honour this heritage.</p>
     </div>
   </article>
@@ -541,10 +788,9 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
   </div>
   <div class="grid concept-row">
     <p class="t-body concept-text" data-reveal="p">Each studio has a large partly shaded patio and the transition between indoor and outdoor living is seamless. The building is organically integrated in the surrounding nature and invites you to appreciate the moment – enjoy tranquility and connect with the land.</p>
-    <figure class="fig concept-fig" data-par><img data-wix="f3bbf6_8fc264a25305404ebe552712f83c1b39" data-size="2000x1333" alt="" loading="lazy"></figure>
+    <div class="branch br-concept" data-branch></div>
+    <figure class="fig concept-fig" data-par><img src="img/site/olive-grove.jpg" alt="Meraki Studios between olive trees" loading="lazy"></figure>
   </div>
-  <!-- Alpha-Video-Slot: statt SVG <video muted loop playsinline><source src="olive_01.webm" type="video/webm"><source src="olive_01.mov" type='video/mp4; codecs="hvc1"'></video> einsetzen -->
-  <div class="branch br-concept" data-branch data-video="assets/olive-branch" data-branch-par></div>
 </section>
 
 <!-- LOCATION -->
@@ -555,12 +801,11 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
         <h2 class="t-h1 loc-title"><span class="loc-line">Kissos</span><span class="loc-line">Rethymno</span><span class="loc-line">Crete</span></h2>
       </div>
       <div class="loc-panel loc-p2">
-        <figure class="fig loc-fig-tall"><img data-wix="682cf9_be65d1d88d984bbf8867cdd85ec2db22" data-size="1200x1600" alt="" loading="lazy"></figure>
+        <figure class="fig loc-fig-tall"><img src="img/site/dusk-path.jpg" alt="Stone path at Meraki Studios at dusk" loading="lazy"></figure>
         <p class="t-body" data-reveal="p">Nestled in the beautiful landscape just a short stroll away from the charming village of Kissos, this spot is a quiet escape into traditional Crete. Surrounded by a tapestry of traditionally cultivated land with olive groves, small vineyards, vegetable gardens and wild nature it’s a world away from mass tourism.</p>
-        <div class="branch br-loc" data-branch data-video="assets/olive-branch" data-flip></div>
       </div>
       <div class="loc-panel loc-p3">
-        <svg class="loc-map" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map: Meraki Studios near Spili, Rethymno, Ligres and Triopetra, Psiloritis National Park">
+        <svg class="loc-map" viewBox="120 70 730 480" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map: Meraki Studios near Spili, Rethymno, Ligres and Triopetra, Psiloritis National Park">
           <path class="route" d="M290,391 C250,300 205,220 165,114"/>
           <path class="route" d="M290,391 C282,378 270,366 258,353"/>
           <path class="route" d="M290,391 C302,432 288,470 272,505"/>
@@ -605,7 +850,11 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
     </div>
   </div>
   <div class="grid units-stage">
-    <figure class="fig unit-main"><img class="unit-a" alt=""><img class="unit-b" alt="" style="opacity:0"></figure>
+    <figure class="fig unit-main" role="button" tabindex="0" aria-label="Open image">
+      <img class="unit-a" alt="" decoding="async"><img class="unit-b" alt="" decoding="async" style="opacity:0">
+      <button class="unit-arrow unit-prev" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="unit-arrow unit-next" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </figure>
     <div class="unit-side">
       <p class="t-label unit-cap" aria-live="polite"></p>
       <div class="unit-thumbs"></div>
@@ -615,23 +864,31 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
   </div>
 </section>
 
+<div class="ulb" role="dialog" aria-modal="true" aria-label="Apartments and Studios" aria-hidden="true">
+  <button class="ulb-close">Close</button>
+  <div class="ulb-stage"><img alt="" decoding="async"></div>
+  <div class="ulb-bar">
+    <span class="ulb-cap"></span>
+    <span class="ulb-count"></span>
+    <div class="ulb-nav"><button class="ulb-prev">Previous</button><button class="ulb-next">Next</button></div>
+  </div>
+</div>
+
 <!-- AMENITIES -->
-<section class="amen" data-bg="dark">
+<section class="amen" id="amenities" data-bg="dark">
   <div class="amen-screen">
     <div class="amen-media">
-      <img data-wix="f3bbf6_a6a2c5caa37a41168fe49786c586e7ae" data-size="2400x1600" alt="" loading="lazy">
+      <img data-wix="f3bbf6_41fcb0ae36814d998b819aa0555763e8" data-size="2400x1600" alt="Infinity pool" loading="lazy">
       <img data-wix="f3bbf6_c826ee3f00434b11898e6f292711e249" data-size="2400x1600" alt="" loading="lazy">
-      <img data-wix="f3bbf6_41fcb0ae36814d998b819aa0555763e8" data-size="2400x1600" alt="" loading="lazy">
       <img data-wix="f3bbf6_910fd91976434d0b9a6bbcb8085ebfae" data-size="2400x1600" alt="" loading="lazy">
-      <img data-wix="f3bbf6_59ae6195919446aca31291a3df369d3c" data-size="2400x1600" alt="" loading="lazy">
+      <img data-wix="f3bbf6_a6a2c5caa37a41168fe49786c586e7ae" data-size="2400x1600" alt="Meraki Studios building" loading="lazy">
     </div>
     <div class="amen-shade"></div>
     <div class="grid amen-ui">
       <ul class="amen-list">
         <li><button class="amen-item is-active">Pool</button></li>
-        <li><button class="amen-item">Comfort</button></li>
-        <li><button class="amen-item">Yoga</button></li>
-        <li><button class="amen-item">Laundry</button></li>
+        <li><button class="amen-item" data-partner="cocomat">Comfort</button></li>
+        <li><button class="amen-item" data-partner="hejhej">Yoga</button></li>
         <li><button class="amen-item">Groups</button></li>
         <span class="amen-hl"></span>
       </ul>
@@ -639,20 +896,23 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
         <p class="t-h4 amen-text">In the large 12 by 5 meters infinity pool you can start the day with a swim or cool down on hot summer days.</p>
         <p class="t-h4 amen-text">The studios and apartments offer a balance of comfort and function with cocomat mattresses and pillows, small well equipped kitchens providing everything to prepare simple meals.</p>
         <p class="t-h4 amen-text">For those who appreciate the virtues of Yoga each unit is provided with hey hey yoga mats.</p>
-        <p class="t-h4 amen-text">We have a washing machine so you can stay fresh and clean even if you travel light (5 euros per load)</p>
         <p class="t-h4 amen-text">The building with all six units is also perfect to be rented entirely by a group.</p>
+        <div class="amen-partners" aria-label="Partners">
+          <img class="amen-partner" data-partner="cocomat" src="img/partners/cocomat-kalk.png" alt="COCO-MAT">
+          <img class="amen-partner" data-partner="hejhej" src="img/partners/hejhej-kalk.png" alt="hejhej">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ARCHITECTURE -->
-<section class="arch" data-bg="stone">
+<section class="arch" id="architecture" data-bg="stone">
   <div class="arch-screen">
     <figure class="arch-fig"><img data-wix="682cf9_feb55f3730d74ae1a580b016db5d923a" data-size="2400x1600" alt="Concrete structure of Meraki Studios" loading="lazy"><div class="arch-shade"></div></figure>
     <svg class="arch-grid" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
-    <div class="branch br-arch-l" data-branch data-video="assets/olive-branch"></div>
-    <div class="branch br-arch-r" data-branch data-video="assets/olive-branch" data-flip></div>
+    <div class="branch br-arch-l" data-branch></div>
+    <div class="branch br-arch-r" data-branch data-flip></div>
     <div class="grid arch-copy">
       <p class="t-label arch-by" data-reveal="ctn" data-manual>Architecture</p>
       <h2 class="t-h2 arch-name" data-reveal="h" data-manual>Sigurd Larsen</h2>
@@ -664,13 +924,13 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
 <!-- QUOTE -->
 <section class="quote" data-bg="dark">
   <div class="grid">
-    <figure class="fig quote-fig" data-par><img data-wix="682cf9_0afe47d489b748cd950c3bd33e6465ad" data-size="1400x1800" alt="Jan and Vanessa with their family" loading="lazy"></figure>
+    <figure class="fig quote-fig"><img data-wix="682cf9_0afe47d489b748cd950c3bd33e6465ad" data-size="1400x1800" alt="Jan and Vanessa with their family" loading="lazy"></figure>
     <div class="quote-body">
       <blockquote class="t-h4" data-reveal="p">“For years, we talked about leaving the hustle of city life behind. In 2022, we made the move to Crete with our children, and our vision was simple: to create a space that allows you to reconnect with mother nature, that nurtures us, our family, and our guests. Crete, with its natural beauty, offered the perfect place to bring our dream to life.”</blockquote>
       <p class="t-label quote-who" data-reveal="ctn">Jan &amp; Vanessa</p>
     </div>
   </div>
-  <div class="branch br-quote" data-branch data-video="assets/olive-branch" data-flip data-branch-par></div>
+  <div class="branch br-quote" data-branch data-flip></div>
 </section>
 
 <!-- BOOKING (Bookingmood) -->
@@ -712,8 +972,35 @@ html.rm .foot-area{height:auto}html.rm .foot-screen{position:relative}
         <div class="book-block"><dt>Included in the price:</dt><dd>- final cleaning<br>- accommodation tax<br>- energy &amp; water<br>- WiFi</dd></div>
         <div class="book-block"><dt>Minimum stay:</dt><dd>3 nights</dd></div>
       </dl>
+      <dl data-reveal="ctn">
+        <div class="book-block"><dt>Laundry</dt><dd>We have a washing machine so you can stay fresh and clean even if you travel light (5 euros per load)</dd></div>
+      </dl>
       <div class="book-cta"><a class="circle-btn" href="mailto:booking@merakistudios.gr" data-magnetic><span>Feel free to get in touch.</span></a></div>
     </aside>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq" data-bg="light">
+  <div class="grid">
+    <div class="faq-side">
+      <h2 class="t-h2" data-reveal="h">FAQ</h2>
+      <figure class="faq-fig"><img src="img/site/architecture-column.jpg" alt="Light and shadow on the concrete structure" loading="lazy"></figure>
+      <p class="faq-more"><a class="lnk" href="terms.html">Terms and Conditions</a></p>
+    </div>
+    <div class="faq-list" data-reveal="ctn">
+      <details class="faq-item"><summary><span class="faq-q">When can I check in and check out?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>The rent will become effective on the first day of the agreed rental period at 15.00 hours local time and ends on the last day of the agreed rental period at 12.00 hours local time. Special agreements to the check-in and check- out time can be agreed in advance with the lessor due to availability.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">Is there a minimum stay?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>3 nights</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">What is included in the price?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>The rent includes the expenses for electricity and water use, all taxes final cleaning and wifi.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">How do I pay?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Within three (3) working days after the booking the lessee must have transferred 50% of the total amount to the bank account of the lessor. This will serve to confirm the booking, making it peremptory.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">What if I need to cancel?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>The deposit is refundable until 30 days before arrival. At 30 days before arrival, the balance is due and the total payment is non-refundable. sole exception: In case we can rent out the apartment/studio within this time of 30 days we refund the sum paid minus 200 Euros cancellation fee.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">Is there a washing machine?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>We have a washing machine so you can stay fresh and clean even if you travel light (5 euros per load)</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">Can we rent the whole house?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>The building with all six units is also perfect to be rented entirely by a group.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">How do we get there?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>The house is accessible with car or scooter, taxi or public transport.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">Are pets allowed? Can I smoke?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Pets are not allowed. Inside the apartment(s) smoking is not allowed.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">Can we barbecue?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Open fires are not allowed by law. No BBQ/ grill charcoal or grill coal can be used.</p></div></details>
+      <details class="faq-item"><summary><span class="faq-q">Can children use the pool?</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Children should not use the swimming pool unattended</p></div></details>
+    </div>
   </div>
 </section>
 
@@ -770,6 +1057,50 @@ const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const html = document.documentElement;
 
+/* ---------- Sprache EN / DE ---------- */
+const LANG = (() => {
+  let l = null;
+  try { l = localStorage.getItem('mk-lang'); } catch (e) {}
+  if (!l) l = new URLSearchParams(location.search).get('lang');
+  if (!l) l = (navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en';
+  return l === 'de' ? 'de' : 'en';
+})();
+const DE = {"The Studios": "Die Studios", "Location": "Lage", "Apartments": "Apartments", "Amenities": "Ausstattung", "FAQ": "FAQ", "Book your stay": "Aufenthalt buchen", "Menu": "Menü", "Close": "Schließen", "Apartments and Studios": "Apartments und Studios", "Architecture": "Architektur", "Floorplan": "Grundriss", "Floorplans": "Grundrisse", "Kissos, Greece": "Kissos, Griechenland", "Previous": "Zurück", "Next": "Weiter", "Contact": "Kontakt", "Imprint": "Impressum", "Terms and Conditions": "Mietbedingungen", "Photos & Videos:": "Fotos & Videos:", "Contents": "Inhalt", "Language": "Sprache", "A pure and minimalistic way to stay in the nature of Kissos, Greece.": "Ein klarer, minimalistischer Ort zum Wohnen inmitten der Natur von Kissos, Griechenland.", "Be our guest.": "Seien Sie unser Gast.", "The word “Meraki” means doing something with love and care – and that’s the spirit of this place.": "Das Wort „Meraki“ bedeutet, etwas mit Liebe und Hingabe zu tun. Genau das ist der Geist dieses Ortes.", "In the quiet of the valley six intimate Studios await, each with a great vista of the ever-changing beauty of Crete’s nature. Here, simplicity equals luxury.": "In der Stille des Tals warten sechs intime Studios, jedes mit weitem Blick auf die sich stets wandelnde Schönheit der kretischen Natur. Hier ist Einfachheit Luxus.", "The Garden": "Der Garten", "The large 6500 m² garden surrounding the building is a green paradise, filled with old olive, oak, fig, nut and all kinds of fruit trees.": "Der 6500 m² große Garten rund um das Gebäude ist ein grünes Paradies voller alter Oliven-, Eichen-, Feigen- und Nussbäume und Obstbäume aller Art.", "Nature": "Natur", "Among the locals the plot goes by the name of Tsikalaria. It used to be cultivated by a man who had a reputation to be particularly knowledgeable of plants. We want to honour this heritage.": "Bei den Einheimischen heißt das Grundstück Tsikalaria. Früher bewirtschaftete es ein Mann, der als besonders kundig in Pflanzen galt. Dieses Erbe möchten wir ehren.", "We believe in the power of simplicity, living in harmony with nature and focusing on essentials.": "Wir glauben an die Kraft der Einfachheit, an ein Leben im Einklang mit der Natur und an die Konzentration auf das Wesentliche.", "Each studio has a large partly shaded patio and the transition between indoor and outdoor living is seamless. The building is organically integrated in the surrounding nature and invites you to appreciate the moment – enjoy tranquility and connect with the land.": "Jedes Studio hat eine große, teils beschattete Terrasse, drinnen und draußen gehen nahtlos ineinander über. Das Gebäude fügt sich organisch in die umgebende Natur ein und lädt dazu ein, den Moment zu genießen: Ruhe finden und sich mit dem Land verbinden.", "Crete": "Kreta", "Nestled in the beautiful landscape just a short stroll away from the charming village of Kissos, this spot is a quiet escape into traditional Crete. Surrounded by a tapestry of traditionally cultivated land with olive groves, small vineyards, vegetable gardens and wild nature it’s a world away from mass tourism.": "Eingebettet in eine wunderschöne Landschaft, nur einen kurzen Spaziergang vom charmanten Dorf Kissos entfernt, ist dieser Ort ein stiller Rückzug ins traditionelle Kreta. Umgeben von traditionell bewirtschaftetem Land mit Olivenhainen, kleinen Weinbergen, Gemüsegärten und wilder Natur, liegt er weit entfernt vom Massentourismus.", "Psiloritis National Park": "Psiloritis-Nationalpark", "Explore some of the most beautiful beaches on the rural south coast like Ligres and Triopetra about a 25 minute drive away, or dive into Rethymno’s vibrant dining and culture in half an hour. You can wander nearby villages or hike the stunning Psiloritis National Park.": "Entdecken Sie einige der schönsten Strände der ursprünglichen Südküste wie Ligres und Triopetra, etwa 25 Autominuten entfernt, oder tauchen Sie in einer halben Stunde in Rethymnos lebendige Gastronomie und Kultur ein. Streifen Sie durch die umliegenden Dörfer oder wandern Sie im beeindruckenden Psiloritis-Nationalpark.", "We are located in 74053 Kissos, Rethymno.": "Sie finden uns in 74053 Kissos, Rethymno.", "Comfort": "Komfort", "Groups": "Gruppen", "In the large 12 by 5 meters infinity pool you can start the day with a swim or cool down on hot summer days.": "Im großen, 12 mal 5 Meter messenden Infinity-Pool beginnen Sie den Tag mit ein paar Zügen oder kühlen sich an heißen Sommertagen ab.", "The studios and apartments offer a balance of comfort and function with cocomat mattresses and pillows, small well equipped kitchens providing everything to prepare simple meals.": "Die Studios und Apartments verbinden Komfort und Funktion: mit Matratzen und Kissen von COCO-MAT und kleinen, gut ausgestatteten Küchen mit allem, was man für einfache Mahlzeiten braucht.", "For those who appreciate the virtues of Yoga each unit is provided with hey hey yoga mats.": "Für alle, die Yoga schätzen, liegen in jeder Wohneinheit Yogamatten von hejhej bereit.", "The building with all six units is also perfect to be rented entirely by a group.": "Das Haus mit allen sechs Einheiten eignet sich auch perfekt, um es als Gruppe komplett zu mieten.", "At Meraki Studios, Sigurd Larsen’s vision is brought to life through the raw elegance of concrete, an exposed skeleton that stands proudly as a three-dimensional grid. This structure, shaped by the land, mirrors the rugged form of an abstract rock, it’s cool stone walls crafted from the earth itself, offering a refuge from the Mediterranean sun.": "Bei Meraki Studios wird Sigurd Larsens Vision durch die rohe Eleganz von Beton lebendig: ein freiliegendes Skelett, das selbstbewusst als dreidimensionales Raster dasteht. Die vom Gelände geformte Struktur spiegelt die zerklüftete Form eines abstrakten Felsens, ihre kühlen Steinmauern stammen aus der Erde selbst und bieten Zuflucht vor der Mittelmeersonne.", "“For years, we talked about leaving the hustle of city life behind. In 2022, we made the move to Crete with our children, and our vision was simple: to create a space that allows you to reconnect with mother nature, that nurtures us, our family, and our guests. Crete, with its natural beauty, offered the perfect place to bring our dream to life.”": "„Jahrelang haben wir davon gesprochen, die Hektik des Stadtlebens hinter uns zu lassen. 2022 sind wir mit unseren Kindern nach Kreta gezogen, und unsere Vision war einfach: einen Ort zu schaffen, an dem man wieder zu Mutter Natur findet und der uns, unsere Familie und unsere Gäste nährt. Kreta bot mit seiner natürlichen Schönheit den perfekten Ort, um unseren Traum wahr werden zu lassen.“", "Jan & Vanessa": "Jan & Vanessa", "Check-in": "Anreise", "Checkout": "Abreise", "All": "Alle", "4 Guests": "4 Gäste", "2 Guests": "2 Gäste", "Loading availability": "Verfügbarkeit wird geladen", "The booking calendar could not be loaded.": "Der Buchungskalender konnte nicht geladen werden.", "Discounts:": "Rabatte:", "15% for 7 days and more": "15 % ab 7 Tagen", "5% for one person in a studio": "5 % für eine Person im Studio", "5% for two persons in an apartment": "5 % für zwei Personen im Apartment", "Included in the price:": "Im Preis enthalten:", "- final cleaning": "- Endreinigung", "- accommodation tax": "- Übernachtungssteuer", "- energy & water": "- Strom & Wasser", "- WiFi": "- WLAN", "Minimum stay:": "Mindestaufenthalt:", "3 nights": "3 Nächte", "10% for one person": "10 % für eine Person", "Laundry": "Wäsche", "We have a washing machine so you can stay fresh and clean even if you travel light (5 euros per load)": "Wir haben eine Waschmaschine, damit Sie auch mit leichtem Gepäck frisch bleiben (5 Euro pro Ladung)", "Feel free to get in touch.": "Schreiben Sie uns gern.", "When can I check in and check out?": "Wann kann ich an- und abreisen?", "The rent will become effective on the first day of the agreed rental period at 15.00 hours local time and ends on the last day of the agreed rental period at 12.00 hours local time. Special agreements to the check-in and check- out time can be agreed in advance with the lessor due to availability.": "Die Miete beginnt am ersten Tag des vereinbarten Mietzeitraums um 15.00 Uhr Ortszeit und endet am letzten Tag um 12.00 Uhr Ortszeit. Abweichende An- und Abreisezeiten können je nach Verfügbarkeit vorab mit der Vermieterin vereinbart werden.", "Is there a minimum stay?": "Gibt es einen Mindestaufenthalt?", "What is included in the price?": "Was ist im Preis enthalten?", "The rent includes the expenses for electricity and water use, all taxes final cleaning and wifi.": "Die Miete umfasst Strom und Wasser, alle Steuern, die Endreinigung und WLAN.", "How do I pay?": "Wie bezahle ich?", "Within three (3) working days after the booking the lessee must have transferred 50% of the total amount to the bank account of the lessor. This will serve to confirm the booking, making it peremptory.": "Innerhalb von drei (3) Werktagen nach der Buchung überweisen Sie 50 % des Gesamtbetrags auf das Konto der Vermieterin. Damit ist die Buchung bestätigt und verbindlich.", "What if I need to cancel?": "Was passiert, wenn ich stornieren muss?", "The deposit is refundable until 30 days before arrival. At 30 days before arrival, the balance is due and the total payment is non-refundable. sole exception: In case we can rent out the apartment/studio within this time of 30 days we refund the sum paid minus 200 Euros cancellation fee.": "Die Anzahlung wird bis 30 Tage vor Anreise erstattet. 30 Tage vor Anreise ist der Restbetrag fällig, die Gesamtzahlung ist dann nicht mehr erstattbar. Einzige Ausnahme: Können wir das Apartment oder Studio innerhalb dieser 30 Tage anderweitig vermieten, erstatten wir den gezahlten Betrag abzüglich 200 Euro Stornogebühr.", "Is there a washing machine?": "Gibt es eine Waschmaschine?", "Can we rent the whole house?": "Können wir das ganze Haus mieten?", "How do we get there?": "Wie kommen wir hin?", "The house is accessible with car or scooter, taxi or public transport.": "Das Haus ist mit Auto oder Roller, Taxi oder öffentlichen Verkehrsmitteln erreichbar.", "Are pets allowed? Can I smoke?": "Sind Haustiere erlaubt? Darf man rauchen?", "Pets are not allowed. Inside the apartment(s) smoking is not allowed.": "Haustiere sind nicht erlaubt. In den Apartments ist das Rauchen nicht gestattet.", "Can we barbecue?": "Dürfen wir grillen?", "Open fires are not allowed by law. No BBQ/ grill charcoal or grill coal can be used.": "Offenes Feuer ist gesetzlich verboten. Grillkohle darf nicht verwendet werden.", "Can children use the pool?": "Dürfen Kinder den Pool nutzen?", "Children should not use the swimming pool unattended": "Kinder sollten den Pool nicht unbeaufsichtigt nutzen.", "Main": "Hauptmenü", "Meraki Studios in the valley of Kissos": "Meraki Studios im Tal von Kissos", "Meraki Studios at night": "Meraki Studios bei Nacht", "Pomegranate blossoms in front of Meraki Studios": "Granatapfelblüten vor Meraki Studios", "Meraki Studios between olive trees": "Meraki Studios zwischen Olivenbäumen", "Stone path at Meraki Studios at dusk": "Steinweg bei Meraki Studios in der Dämmerung", "Units": "Wohneinheiten", "Open image": "Bild öffnen", "Previous image": "Vorheriges Bild", "Next image": "Nächstes Bild", "Infinity pool": "Infinity-Pool", "Meraki Studios building": "Gebäude von Meraki Studios", "Partners": "Partner", "Concrete structure of Meraki Studios": "Betonstruktur von Meraki Studios", "Jan and Vanessa with their family": "Jan und Vanessa mit ihrer Familie", "Booking Form": "Buchungsformular", "Light and shadow on the concrete structure": "Licht und Schatten auf der Betonstruktur", "Legal": "Rechtliches", "Breadcrumb": "Pfad", "Categories": "Kategorien", "Map of Crete with all places": "Karte von Kreta mit allen Orten", "Open floorplan 1": "Grundriss 1 öffnen", "Open floorplan 2": "Grundriss 2 öffnen", "Open floorplan 3": "Grundriss 3 öffnen", "I hope nothing.": "Ich erhoffe nichts.", "I fear nothing.": "Ich fürchte nichts.", "I am free.": "Ich bin frei.", "handpicked selection of authentic places, tavernas and hidden corners of Crete - gathered with patience, curiosity and a quiet love for detail": "handverlesene Auswahl authentischer Orte, Tavernen und versteckter Winkel Kretas - gesammelt mit Geduld, Neugier und einer stillen Liebe zum Detail", "The neighbourhood": "Die Nachbarschaft", "At the seaside": "Am Meer", "Hiking tours": "Wanderungen", "Short and long hiking tours & running routs": "Kurze und lange Wanderungen & Laufstrecken", "Tavernas & restaurants, coffeeshops & ice cream in the area": "Tavernen & Restaurants, Cafés & Eis in der Umgebung", "Tavernas, restaurants and Bars": "Tavernen, Restaurants und Bars", "Explore the wild": "Die Wildnis entdecken", "not on the map": "nicht auf der Karte", "in the village of Meraki Studios": "im Dorf von Meraki Studios", "village close to a canyon for hiking": "Dorf nahe einer Schlucht zum Wandern", "village close to Kissos": "Dorf nahe Kissos", "village 5 km drive from Kissos. tip: order half portion": "Dorf, 5 km Fahrt von Kissos. Tipp: halbe Portion bestellen", "we love this place! also for breakfast": "wir lieben diesen Ort! auch zum Frühstück", "quick Greek food near Kissos (5 km)": "schnelles griechisches Essen nahe Kissos (5 km)", "cretan natural products, food, coffeeshop and breakfast": "kretische Naturprodukte, Essen, Café und Frühstück", "traditional cretan food": "traditionelle kretische Küche", "quick breakfast or take away": "schnelles Frühstück oder zum Mitnehmen", "village close to Kissos on the way to Rethymno": "Dorf nahe Kissos auf dem Weg nach Rethymno", "near Kissos, on the way to Rethymno": "nahe Kissos, auf dem Weg nach Rethymno", "A family-run eco taverna in the hills above Plakias and Ammoudi": "Familiengeführte Öko-Taverne in den Hügeln über Plakias und Ammoudi", "stunning beach Taverna, excellent food": "traumhafte Strandtaverne, ausgezeichnetes Essen", "relaxed Taverna directly at the beach": "entspannte Taverne direkt am Strand", "sea view taverna": "Taverne mit Meerblick", "village above the sea in the mountains": "Dorf in den Bergen über dem Meer", "at the beach of Plakias": "am Strand von Plakias", "with stunning sea view in a small village": "mit traumhaftem Meerblick in einem kleinen Dorf", "relaxed beach taverna (~30 min drive)": "entspannte Strandtaverne (ca. 30 Min. Fahrt)", "authentic tiny beach bar with its own beach and signature drinks": "authentische kleine Strandbar mit eigenem Strand und Signature-Drinks", "Kourtaliotiko Gorge": "Kourtaliotiko-Schlucht", "just start this adventure very early in the morning": "starten Sie dieses Abenteuer am besten sehr früh am Morgen", "hiking from Plakias to Kalypso beach": "Wanderung von Plakias zum Kalypso-Strand", "when you make a route go from Plakias beach to:": "für die Route am Strand von Plakias starten, Ziel:", "Myli Gorge – easy to hike": "Myli-Schlucht – leicht zu wandern", "take the second, less well-known entrance a little further along the road": "nehmen Sie den zweiten, weniger bekannten Eingang etwas weiter die Straße entlang", "Patsos Gorge": "Patsos-Schlucht", "8 km and the last part is recommended for advanced hikers only": "8 km, der letzte Abschnitt nur für geübte Wanderer", "Stunning plateau above Kissos": "Traumhafte Hochebene über Kissos", "Kissos-Kentrochori-Monastery Agia pnevma-Kissos": "Kissos-Kentrochori-Kloster Agia Pnevma-Kissos", "beautiful run or walk": "schöne Lauf- oder Wanderstrecke", "VAT: EL174532803": "USt-IdNr.: EL174532803", "We are located outside the village of Kissos, Agios Vasilios, Crete, Greece. Coordinates: (35.1930123, 24.5557285)": "Wir befinden uns außerhalb des Dorfes Kissos, Agios Vasilios, Kreta, Griechenland. Koordinaten: (35.1930123, 24.5557285)", "Meraki Studios, Kissos, Crete": "Meraki Studios, Kissos, Kreta", "Floorplan | Meraki Studios": "Grundriss | Meraki Studios", "Terms and Conditions | Meraki Studios": "Mietbedingungen | Meraki Studios", "Imprint | Meraki Studios": "Impressum | Meraki Studios"};
+const DE_CAP = {"2 bed apartment": "Apartment mit 2 Schlafzimmern", "terrace": "Terrasse", "bedroom 1": "Schlafzimmer 1", "bathroom": "Bad", "outside view": "Außenansicht", "living area": "Wohnbereich", "view": "Aussicht", "kitchenette": "Küchenzeile", "studio for 2 persons": "Studio für 2 Personen"};
+const norm = s => s.replace(/\s+/g, ' ').trim();
+const mkT = s => LANG === 'de' ? (DE[norm(s)] || s) : s;
+window.mkT = mkT; window.mkLang = LANG;
+window.mkCap = s => LANG === 'de' ? s.replace(/ - (.+)$/, (m, x) => ' - ' + (DE_CAP[x] || x)) : s;
+html.lang = LANG;
+if (LANG === 'de') {
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement && n.parentElement.closest('script,style,svg') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const nodes = []; let nd; while ((nd = w.nextNode())) nodes.push(nd);
+  nodes.forEach(n => { const raw = n.nodeValue, k = norm(raw); if (k && DE[k]) n.nodeValue = raw.replace(raw.trim(), DE[k]); });
+  document.querySelectorAll('[alt],[aria-label],[title]').forEach(e => ['alt', 'aria-label', 'title'].forEach(a => { const v = e.getAttribute(a); if (v && DE[norm(v)]) e.setAttribute(a, DE[norm(v)]); }));
+  if (DE[document.title]) document.title = DE[document.title];
+}
+document.querySelectorAll('.lang-sw [data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === LANG));
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-lang]'); if (!b) return;
+  const l = b.dataset.lang; if (l === LANG) return;
+  try { localStorage.setItem('mk-lang', l); } catch (er) {}
+  const y = String(window.__mkLenis ? window.__mkLenis.scroll : scrollY);
+  try {
+    if (document.body.dataset.page) sessionStorage.setItem('mk-sub-y:' + location.pathname, y);
+    else { sessionStorage.setItem('mk-return', '1'); sessionStorage.setItem('mk-y', y); }
+  } catch (er) {}
+  location.reload();
+});
+/* Unterseiten: nach Sprachwechsel an derselben Stelle bleiben */
+if (document.body.dataset.page) addEventListener('load', () => {
+  let y = null; try { y = sessionStorage.getItem('mk-sub-y:' + location.pathname); sessionStorage.removeItem('mk-sub-y:' + location.pathname); } catch (e) {}
+  if (y) setTimeout(() => { window.__mkLenis ? window.__mkLenis.scrollTo(+y, { immediate: true }) : scrollTo(0, +y); }, 120);
+});
+/* Höhe des Headers als CSS-Variable */
+const setHdrH = () => { const h = document.querySelector('.hdr'); h && html.style.setProperty('--hdr-h', h.offsetHeight + 'px'); };
+setHdrH(); addEventListener('resize', setHdrH);
+
+
 /* ---------- Bilder (Wix CDN) ---------- */
 const WIX = 'https://static.wixstatic.com/media/';
 /* Bilder liegen lokal in img/. Fehlt eine Datei, wird sie automatisch vom Wix-CDN geladen. */
@@ -779,9 +1110,9 @@ const wixRemote = f => `${WIX}${wixFile(f)}/v1/fit/w_2400,h_2400,q_85/${wixFile(
 const wixSrc = file => IMG_DIR + wixFile(file).replace('~mv2', '');
 document.addEventListener('error', e => {
   const t = e.target;
-  if (!t || t.tagName !== 'IMG' || t.dataset.remote) return;
-  const m = (t.getAttribute('src') || '').match(/^img\/(.+)$/); if (!m) return;
-  t.dataset.remote = '1';
+  if (!t || t.tagName !== 'IMG') return;
+  /* nur lokale Wix-Kopien (img/<id>.<ext>) auf das CDN umleiten; schlägt das CDN fehl, endet es hier */
+  const m = (t.getAttribute('src') || '').match(/^img\/([0-9a-f]{6}_[0-9a-f]{32}\.\w+)$/); if (!m) return;
   t.src = wixRemote(m[1].replace(/(\.\w+)$/, '~mv2$1'));
 }, true);
 $$('img[data-wix]').forEach(img => {
@@ -923,6 +1254,46 @@ function initMobile(getLenis) {
   }
 }
 
+
+/* ---------- Amenities mobil: einfache Liste ---------- */
+(() => {
+  const amen = $('.amen'); if (!amen) return;
+  const imgs = $$('.amen-media img'), items = $$('.amen-item'), texts = $$('.amen-text');
+  const wrap = document.createElement('div'); wrap.className = 'amen-m';
+  items.forEach((b, i) => {
+    const art = document.createElement('article');
+    const fig = document.createElement('figure');
+    const im = imgs[i].cloneNode(); im.removeAttribute('style'); im.loading = 'lazy'; fig.appendChild(im);
+    art.appendChild(fig);
+    art.insertAdjacentHTML('beforeend', `<p class="t-label">${b.textContent}</p><p class="amen-m-text">${texts[i].textContent}</p>` + (b.dataset.partner ? `<img class="amen-m-partner" src="img/partners/${b.dataset.partner}-kalk.png" alt="${b.dataset.partner === 'cocomat' ? 'COCO-MAT' : 'hejhej'}" loading="lazy">` : ''));
+    wrap.appendChild(art);
+  });
+  amen.appendChild(wrap);
+})();
+
+/* Mobil: natives Scrollen statt Lenis (gleiche Schnittstelle) */
+const nativeScroll = () => {
+  const subs = [];
+  addEventListener('scroll', () => subs.forEach(f => f({ velocity: 0, scroll: scrollY })), { passive: true });
+  const yOf = t => typeof t === 'number' ? t : (typeof t === 'string' ? ($(t) ? $(t).getBoundingClientRect().top + scrollY : 0) : t.getBoundingClientRect().top + scrollY);
+  return { get scroll() { return scrollY; }, on(ev, f) { if (ev === 'scroll') subs.push(f); }, raf() {},
+    stop() { document.documentElement.style.overflow = 'hidden'; }, start() { document.documentElement.style.overflow = ''; },
+    scrollTo(t, o = {}) { window.scrollTo({ top: Math.max(0, yOf(t) - (o.offset || 0)), behavior: o.immediate ? 'auto' : 'smooth' }); } };
+};
+
+/* ---------- Rückkehr von Unterseiten ---------- */
+const SS = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }, del(k) { try { sessionStorage.removeItem(k); } catch (e) {} } };
+const RETURN_Y = (() => { const f = SS.get('mk-return'); SS.del('mk-return'); if (f !== '1' || location.hash) return null; const y = parseFloat(SS.get('mk-y')); return isFinite(y) ? y : null; })();
+const QUIET = RETURN_Y !== null || (!!location.hash && SS.get('mk-visited') === '1');
+const rememberPos = () => { SS.set('mk-y', String(window.__mkLenis ? window.__mkLenis.scroll : scrollY)); };
+addEventListener('pagehide', rememberPos);
+document.addEventListener('click', e => {
+  const a = e.target.closest('a'); if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (/^[\w\-]+\.html/.test(href) && !/^index\.html/.test(href)) { rememberPos(); SS.set('mk-return', '1'); }
+}, true);
+if (QUIET) { const pre = $('.pre'); pre && pre.remove(); }
+
 const reduce = html.classList.contains('rm');
 if (!window.gsap || !window.ScrollTrigger) { html.classList.add('rm'); initUnits(null); initBooking(); initMobile(() => null); return; }
 
@@ -936,6 +1307,8 @@ CustomEase.create('loaderEase', 'M0,0 C0.12,0.3 0.2,0.42 0.36,0.46 0.52,0.5 0.58
 
 const D = { s: .4, m: .8, l: 1.2 }, ST = .1, BP = 992;
 const desk = () => innerWidth >= BP;
+const MOB = innerWidth < BP;
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (MOB !== (innerWidth < BP)) location.reload(); }, 300); });
 let lenis = null;
 
 /* ---------- Text-Reveals ---------- */
@@ -958,7 +1331,7 @@ const R = {
     hide: (el, d = 0) => gsap.to(el, { opacity: 0, duration: D.s, delay: d, ease: 'In', overwrite: true })
   }
 };
-const rv = (el, action, d) => R[el.dataset.reveal || el.dataset.pre][action](el, d);
+const rv = (el, action, d) => R[MOB ? 'ctn' : (el.dataset.reveal || el.dataset.pre)][action](el, d);
 
 /* ---------- Fit-Text (in rem, skaliert mit vw) ---------- */
 function fitText() {
@@ -981,83 +1354,103 @@ function bezD(p, t) {
   const u = 1 - t;
   return [0, 1].map(i => 3*u*u*(p[1][i]-p[0][i]) + 6*u*t*(p[2][i]-p[1][i]) + 3*t*t*(p[3][i]-p[2][i]));
 }
-/* Alpha-Video: Safari bekommt HEVC mit Alpha (.mov), alle anderen VP9 mit Alpha (.webm).
-   Fehlt die Datei, wird automatisch der SVG-Zweig gezeichnet. */
+/* Olivenzweig: Chrome/Firefox VP9 mit Alpha, Safari gestapeltes MP4 über WebGL, sonst Standbild */
 const IS_SAFARI = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
-function buildBranch(host, seed) {
-  const vsrc = host.dataset.video;
-  if (vsrc && !host._fallback) {
-    const v = document.createElement('video');
-    v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'metadata';
-    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
-    const ctl = { active: false, tw: [],
-      pause() { this.active = false; v.isConnected ? v.pause() : this.tw.forEach(t => t.pause()); },
-      resume() { this.active = true; v.isConnected ? v.play().catch(() => {}) : this.tw.forEach(t => t.resume()); } };
-    v.addEventListener('error', () => {
-      v.remove(); host._fallback = true;
-      ctl.tw = buildBranch(host, seed);
-      ctl.tw.forEach(t => ctl.active ? t.resume() : t.pause());
-    }, { once: true });
-    v.src = vsrc + (IS_SAFARI ? '.mov' : '.webm');
-    if (host.hasAttribute('data-flip')) host.classList.add('flip');
-    host.appendChild(v);
-    return [ctl];
-  }
-  const rnd = gsap.utils.random;
-  const svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('viewBox', '0 0 500 500');
-  const P = [[30, 480], [150, 400], [300, 230], [470, 40]];
-  const stem = document.createElementNS(NS, 'path');
-  stem.setAttribute('d', `M${P[0]} C${P[1]} ${P[2]} ${P[3]}`);
-  stem.setAttribute('fill', 'none'); stem.setAttribute('stroke', 'var(--stem)'); stem.setAttribute('stroke-width', '3'); stem.setAttribute('stroke-linecap', 'round');
-  const g = document.createElementNS(NS, 'g');
-  g.appendChild(stem);
-  const leaves = [];
-  let side = seed % 2 ? 1 : -1;
-  for (let t = .07; t < .99; t += .062) {
-    const [x, y] = bez(P, t), [dx, dy] = bezD(P, t);
-    const ang = Math.atan2(dy, dx) * 180 / Math.PI;
-    const s = 1.25 - t * .55;
-    const wrap = document.createElementNS(NS, 'g');
-    wrap.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(ang + side * rnd(32, 52)).toFixed(1)}) scale(${s.toFixed(2)})`);
-    const leaf = document.createElementNS(NS, 'path');
-    leaf.setAttribute('d', 'M0 0 C18 -9 54 -10 78 0 C54 9 18 9 0 0 Z');
-    leaf.setAttribute('fill', Math.random() > .38 ? 'var(--leaf)' : 'var(--sage)');
-    wrap.appendChild(leaf); g.appendChild(wrap); leaves.push(leaf);
-    side *= -1;
-  }
-  [[.42, 1], [.46, -1], [.66, 1]].forEach(([t, sd]) => {
-    const [x, y] = bez(P, t);
-    const o = document.createElementNS(NS, 'ellipse');
-    o.setAttribute('cx', (x + sd * 14).toFixed(1)); o.setAttribute('cy', (y + 16).toFixed(1));
-    o.setAttribute('rx', '7'); o.setAttribute('ry', '9.5'); o.setAttribute('fill', '#3A402A');
-    g.appendChild(o);
-  });
-  svg.appendChild(g); host.appendChild(svg);
+const BR = { webm: 'assets/olive-branch.webm', stacked: 'assets/olive-branch-stacked.mp4', poster: 'assets/olive-branch-poster.webp' };
+function branchPoster(host) {
+  host.innerHTML = `<img src="${BR.poster}" alt="" aria-hidden="true">`;
+}
+function stackedCanvas(host) {
+  const v = document.createElement('video');
+  v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
+  v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+  v.src = BR.stacked;
+  const c = document.createElement('canvas'); c.width = 1280; c.height = 508;
+  const gl = c.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
+  if (!gl) return null;
+  const sh = (t, src) => { const o = gl.createShader(t); gl.shaderSource(o, src); gl.compileShader(o); return o; };
+  const pr = gl.createProgram();
+  gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'attribute vec2 p;varying vec2 u;void main(){u=vec2((p.x+1.)*.5,(1.-p.y)*.5);gl_Position=vec4(p,0.,1.);}'));
+  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, 'precision mediump float;varying vec2 u;uniform sampler2D t;void main(){vec3 c=texture2D(t,vec2(u.x,u.y*.5)).rgb;float a=texture2D(t,vec2(u.x,.5+u.y*.5)).r;gl_FragColor=vec4(c*a,a);}'));
+  gl.linkProgram(pr); gl.useProgram(pr);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+  [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  let on = false, raf = 0, failed = false;
+  const draw = () => {
+    if (!on) return;
+    if (v.readyState >= 2) {
+      try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, v); gl.viewport(0, 0, c.width, c.height); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); }
+      catch (e) { failed = true; on = false; branchPoster(host); return; }
+    }
+    raf = requestAnimationFrame(draw);
+  };
+  v.addEventListener('error', () => { failed = true; branchPoster(host); }, { once: true });
+  host.appendChild(c);
+  return { pause() { on = false; cancelAnimationFrame(raf); v.pause(); }, resume() { if (failed) return; on = true; v.play().catch(() => {}); cancelAnimationFrame(raf); draw(); } };
+}
+function buildBranch(host) {
   if (host.hasAttribute('data-flip')) host.classList.add('flip');
-  if (reduce) return [];
-  const tw = [gsap.to(g, { rotation: 2.4, transformOrigin: '6% 96%', duration: rnd(3, 4.2), yoyo: true, repeat: -1, ease: 'sine.inOut' })];
-  leaves.forEach(l => tw.push(gsap.to(l, { rotation: rnd(-14, 14), transformOrigin: '0% 50%', duration: rnd(1.6, 3.2), yoyo: true, repeat: -1, ease: 'sine.inOut', delay: rnd(0, 1.5) })));
-  return tw;
+  if (reduce) { branchPoster(host); return []; }
+  if (IS_SAFARI) {
+    const ctl = stackedCanvas(host);
+    if (ctl) return [ctl];
+    branchPoster(host); return [];
+  }
+  const v = document.createElement('video');
+  v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
+  v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+  v.poster = BR.poster;
+  v.addEventListener('error', () => branchPoster(host), { once: true });
+  v.src = BR.webm;
+  host.appendChild(v);
+  return [{ pause() { v.isConnected && v.pause(); }, resume() { v.isConnected && v.play().catch(() => {}); } }];
 }
 
 /* ---------- Units: Tabs + Überblendung ---------- */
 function initUnits(gs) {
   const tabs = $$('.units-tab'), hl = $('.units-hl'), cap = $('.unit-cap'), thumbs = $('.unit-thumbs');
-  const A = $('.unit-a'), B = $('.unit-b');
-  let front = A, busy = false, curUnit = null;
-  const setMain = (id, text, instant) => {
-    const back = front === A ? B : A;
-    const src = wixSrc(id, 1800, 1200);
-    if (instant || !gs) { front.src = src; cap.textContent = text; return; }
-    busy = true;
-    back.onload = () => {
-      gs.set(back, { zIndex: 2 }); gs.set(front, { zIndex: 1 });
-      gs.fromTo(back, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: D.m, ease: 'InOut', onComplete: () => { gs.set(front, { opacity: 0 }); front = back; busy = false; } });
+  const A = $('.unit-a'), B = $('.unit-b'), mainFig = $('.unit-main');
+  let front = A, token = 0, curUnit = null, idx = 0;
+  const cache = new Map();
+  /* Bild vorladen und dekodieren, damit der Wechsel sofort passiert */
+  /* Bild laden: zuerst lokal, sonst Wix-CDN. Das Ergebnis wird je Bild gemerkt. */
+  const remoteIds = new Set();
+  const srcFor = id => remoteIds.has(id) ? wixRemote(id) : wixSrc(id);
+  const tryLoad = src => new Promise((res, rej) => {
+    const im = new Image(); im.decoding = 'async';
+    im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(res);
+    im.onerror = rej; im.src = src;
+  });
+  const preload = id => {
+    if (!cache.has(id)) cache.set(id, tryLoad(wixSrc(id)).catch(() => { remoteIds.add(id); return tryLoad(wixRemote(id)); }).catch(() => {}));
+    return cache.get(id);
+  };
+  const showMain = (id, text, instant) => {
+    const my = ++token;
+    cap.textContent = window.mkCap ? window.mkCap(text) : text;
+    if (instant || !gs) { front.src = srcFor(id); preload(id); return; }
+    const go = () => {
+      if (my !== token) return;
+      const back = front === A ? B : A, old = front;
+      gs.killTweensOf([A, B]);
+      back.src = srcFor(id);
+      gs.set(old, { zIndex: 1 });
+      gs.set(back, { zIndex: 2, opacity: 0 });
+      gs.to(back, { opacity: 1, duration: .35, ease: 'Out', onComplete: () => { if (my === token) gs.set(old, { opacity: 0 }); } });
+      front = back;
     };
-    back.onerror = () => { busy = false; };
-    back.src = src;
-    cap.textContent = text;
+    /* höchstens 250 ms auf das Dekodieren warten, dann trotzdem wechseln */
+    Promise.race([preload(id), new Promise(r => setTimeout(r, 250))]).then(go);
+  };
+  const select = (i, instant) => {
+    const list = UNITS[curUnit];
+    idx = (i + list.length) % list.length;
+    $$('.unit-thumb', thumbs).forEach((t, k) => t.classList.toggle('is-active', k === idx));
+    showMain(list[idx][0], list[idx][1], instant);
   };
   const moveHl = btn => {
     if (!hl) return;
@@ -1065,35 +1458,85 @@ function initUnits(gs) {
     gs ? gs.to(hl, { ...box, duration: D.m, ease: 'InOut' }) : Object.assign(hl.style, { left: box.x + 'px', width: box.width + 'px' });
   };
   const setUnit = (key, instant) => {
-    if (key === curUnit || busy) return;
+    if (key === curUnit) return;
     curUnit = key;
     $('.units').dataset.current = key;
     tabs.forEach(t => { const on = t.dataset.unit === key; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on); if (on) moveHl(t); });
     const list = UNITS[key];
-    setMain(list[0][0], list[0][1], instant);
+    list.forEach(([id]) => preload(id));
     thumbs.innerHTML = '';
     list.forEach(([id, text], i) => {
       const b = document.createElement('button');
-      b.className = 'unit-thumb' + (i === 0 ? ' is-active' : '');
-      b.setAttribute('aria-label', text);
-      b.innerHTML = `<img src="${wixSrc(id, 600, 400)}" alt="" loading="lazy">`;
-      b.addEventListener('click', () => { if (busy) return; $$('.unit-thumb', thumbs).forEach(x => x.classList.toggle('is-active', x === b)); setMain(id, text); });
+      b.className = 'unit-thumb';
+      b.setAttribute('aria-label', window.mkCap ? window.mkCap(text) : text);
+      b.innerHTML = `<img src="${srcFor(id)}" alt="" decoding="async">`;
+      b.addEventListener('click', () => select(i));
       thumbs.appendChild(b);
     });
-    if (gs && !instant) gs.fromTo(thumbs.children, { opacity: 0, y: '1rem' }, { opacity: 1, y: 0, duration: D.m, stagger: ST * .6, ease: 'Out', clearProps: 'opacity,transform' });
+    select(0, instant);
+    if (gs && !instant) gs.fromTo(thumbs.children, { opacity: 0, y: '1rem' }, { opacity: 1, y: 0, duration: D.m, stagger: ST * .5, ease: 'Out', clearProps: 'opacity,transform' });
   };
   tabs.forEach(t => t.addEventListener('click', () => setUnit(t.dataset.unit)));
-  // Wischen auf dem großen Bild: nächstes / vorheriges Bild
-  const mainFig = $('.unit-main'); let sx = null, sy = null;
-  mainFig.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
-  mainFig.addEventListener('touchend', e => {
-    if (sx === null) return;
-    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
-    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    const th = $$('.unit-thumb', thumbs), i = th.findIndex(t => t.classList.contains('is-active'));
-    const n = th[(i + (dx < 0 ? 1 : -1) + th.length) % th.length]; n && n.click();
+  $('.unit-prev').addEventListener('click', e => { e.stopPropagation(); select(idx - 1); });
+  $('.unit-next').addEventListener('click', e => { e.stopPropagation(); select(idx + 1); });
+
+  /* Wischen auf dem großen Bild */
+  const swipe = (el, fn) => {
+    let sx = null, sy = null;
+    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    el.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      el._swiped = Date.now(); fn(dx < 0 ? 1 : -1);
+    });
+  };
+  swipe(mainFig, d => select(idx + d));
+
+  /* Vollbild-Ansicht */
+  const lb = $('.ulb'), lbImg = $('.ulb-stage img'), lbCap = $('.ulb-cap'), lbCount = $('.ulb-count');
+  let lastFocus = null;
+  const lbShow = i => {
+    select(i, true);
+    const list = UNITS[curUnit];
+    lbImg.src = srcFor(list[idx][0]);
+    lbCap.textContent = window.mkCap ? window.mkCap(list[idx][1]) : list[idx][1];
+    lbCount.textContent = `${idx + 1} / ${list.length}`;
+    gs && gs.fromTo(lbImg, { opacity: .4 }, { opacity: 1, duration: .3, ease: 'Out' });
+  };
+  const lbOpen = () => {
+    if (mainFig._swiped && Date.now() - mainFig._swiped < 400) return;
+    lastFocus = document.activeElement;
+    lbShow(idx);
+    lb.classList.add('is-open'); lb.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    window.__mkLenis && window.__mkLenis.stop();
+    gs && gs.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: .35, ease: 'Out' });
+    $('.ulb-close').focus();
+  };
+  const lbClose = () => {
+    const done = () => { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true'); document.documentElement.style.overflow = ''; window.__mkLenis && window.__mkLenis.start(); lastFocus && lastFocus.focus(); };
+    gs ? gs.to(lb, { opacity: 0, duration: .25, ease: 'In', onComplete: done }) : done();
+  };
+  mainFig.addEventListener('click', lbOpen);
+  mainFig.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target === mainFig) { e.preventDefault(); lbOpen(); } });
+  $('.ulb-close').addEventListener('click', lbClose);
+  $('.ulb-prev').addEventListener('click', () => lbShow(idx - 1));
+  $('.ulb-next').addEventListener('click', () => lbShow(idx + 1));
+  $('.ulb-stage').addEventListener('click', e => { if (e.target === e.currentTarget) lbClose(); });
+  swipe($('.ulb-stage'), d => lbShow(idx + d));
+  addEventListener('keydown', e => {
+    if (lb.classList.contains('is-open')) {
+      if (e.key === 'Escape') lbClose();
+      if (e.key === 'ArrowRight') lbShow(idx + 1);
+      if (e.key === 'ArrowLeft') lbShow(idx - 1);
+    }
   });
+
   setUnit('nero', true);
+  /* restliche Units im Leerlauf vorladen */
+  const idle = window.requestIdleCallback || (f => setTimeout(f, 1500));
+  idle(() => Object.values(UNITS).forEach(list => list.forEach(([id]) => preload(id))));
   addEventListener('resize', () => { const a = $('.units-tab.is-active'); a && moveHl(a); });
 }
 
@@ -1116,7 +1559,7 @@ document.fonts.ready.then(start);
 function start() {
   fitText();
   const branchTweens = [];
-  $$('[data-branch]').forEach((h, i) => branchTweens.push({ host: h, tw: buildBranch(h, i) }));
+  $$('[data-branch]').forEach(h => { if (getComputedStyle(h).display !== 'none') branchTweens.push({ host: h, tw: buildBranch(h) }); });
   initUnits(gsap);
   initBooking();
 
@@ -1129,18 +1572,22 @@ function start() {
   }
 
   /* Lenis */
-  lenis = new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  lenis = MOB ? nativeScroll() : new Lenis({ duration: 1.2, smoothWheel: true, touchMultiplier: 2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   ScrollTrigger.config({ ignoreMobileResize: true });
   lenis.on('scroll', ScrollTrigger.update);
   lenis.on('scroll', updateTheme);
-  gsap.ticker.add(t => lenis.raf(t * 1000));
+  window.__mkLenis = lenis;
+  if (!MOB) gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
   initMobile(() => lenis);
 
   /* initial states */
-  $$('[data-reveal]').forEach(el => rv(el, 'init'));
-  $$('[data-pre]').forEach(el => rv(el, 'init'));
-  gsap.set([hdr, sbar, '.hero-cta'], { opacity: 0 });
+  if (QUIET) { $$('[data-reveal]').forEach(el => el.style.opacity = 1); }
+  else {
+    $$('[data-reveal]').forEach(el => rv(el, 'init'));
+    $$('[data-pre]').forEach(el => rv(el, 'init'));
+    gsap.set([hdr, sbar, '.hero-cta'], { opacity: 0 });
+  }
 
   const mm = gsap.matchMedia();
 
@@ -1152,13 +1599,13 @@ function start() {
   });
 
   /* Parallax Bilder */
-  $$('.fig[data-par]').forEach(fig => {
+  if (!MOB) $$('.fig[data-par]').forEach(fig => {
     const img = fig.querySelector('img');
     gsap.fromTo(img, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: fig, start: 'top bottom', end: 'bottom top', scrub: .5 } });
   });
 
   /* HERO */
-  (() => {
+  if (!MOB) (() => {
     const hero = $('.hero'), bg = $('.hero-bg'), content = $('.hero-content'), shade = $('.hero-shade');
     const tl = gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true } });
     tl.to(content, { y: () => -innerHeight * .75, ease: 'Ease', duration: .6 })
@@ -1168,11 +1615,11 @@ function start() {
   })();
 
   /* INTRO: Buchstaben laufen auseinander */
-  gsap.fromTo('.intro-word', { letterSpacing: '-0.04em' }, { letterSpacing: () => desk() ? '0.34em' : '0.06em', ease: 'none', scrollTrigger: { trigger: '.intro', start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
+  if (!MOB) gsap.fromTo('.intro-word', { letterSpacing: '-0.04em' }, { letterSpacing: () => desk() ? '0.34em' : '0.06em', ease: 'none', scrollTrigger: { trigger: '.intro', start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
 
   /* CARDS: Stapel */
   const cards = $$('.card');
-  cards.forEach((c, i) => {
+  if (!MOB) cards.forEach((c, i) => {
     if (i === cards.length - 1) return;
     gsap.to(c.querySelector('.card-in'), { scale: .9, opacity: .3, ease: 'none', scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top top', scrub: true } });
   });
@@ -1191,7 +1638,13 @@ function start() {
     return () => { loc.style.height = ''; locTween = null; };
   });
   mm.add(`(max-width: ${BP - 1}px)`, () => {
-    drawMap({ trigger: $('.loc-map'), start: 'top 80%', end: 'bottom 60%', scrub: true });
+    const routes = $$('.loc-map .route');
+    routes.forEach(p => { const L = p.getTotalLength(); gsap.set(p, { strokeDasharray: L, strokeDashoffset: L }); });
+    gsap.set('.loc-map .dot, .loc-map .ring, .loc-map .dot-home', { opacity: 0 });
+    ScrollTrigger.create({ trigger: $('.loc-map'), start: 'top 85%', once: true, onEnter: () => {
+      gsap.to(routes, { strokeDashoffset: 0, duration: 1.6, stagger: .12, ease: 'InOut' });
+      gsap.to('.loc-map .dot, .loc-map .ring, .loc-map .dot-home', { opacity: 1, duration: .6, stagger: .08, delay: .4 });
+    } });
     $$('.loc-track [data-reveal]').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => rv(el, 'show') }));
   });
   function drawMap(st) {
@@ -1203,13 +1656,13 @@ function start() {
   }
 
   /* Allgemeine Scroll-Reveals (außer manuell gesteuerte und im Location-Track) */
-  $$('[data-reveal]:not([data-manual])').forEach(el => {
+  $$(MOB ? '[data-reveal]:not(.hero [data-reveal])' : '[data-reveal]:not([data-manual])').forEach(el => {
     if (el.closest('.loc-track')) return;
     ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => rv(el, 'show') });
   });
 
   /* AMENITIES */
-  (() => {
+  if (!MOB) (() => {
     const amen = $('.amen'), imgs = $$('.amen-media img'), items = $$('.amen-item'), texts = $$('.amen-text'), hl = $('.amen-hl');
     const N = items.length; let cur = -1;
     texts.forEach(t => R.p.init(t));
@@ -1218,6 +1671,7 @@ function start() {
       const prev = cur; cur = i;
       imgs.forEach((im, k) => gsap.to(im, { opacity: k === i ? 1 : 0, scale: k === i ? 1 : 1.06, duration: D.m, ease: 'InOut', overwrite: 'auto' }));
       items.forEach((b, k) => b.classList.toggle('is-active', k === i));
+      $$('.amen-partner').forEach(pl => pl.classList.toggle('is-on', pl.dataset.partner === items[i].dataset.partner));
       if (prev > -1) R.p.hide(texts[prev]);
       R.p.show(texts[i], prev > -1 ? D.s * .6 : 0);
       if (hl && desk()) gsap.to(hl, { y: items[i].offsetTop, height: items[i].offsetHeight, duration: D.m, ease: 'InOut' });
@@ -1236,7 +1690,7 @@ function start() {
   })();
 
   /* ARCHITECTURE: Fenster im Raster */
-  (() => {
+  if (!MOB) (() => {
     const arch = $('.arch'), fig = $('.arch-fig'), img = $('.arch-fig img'), grid = $('.arch-grid'), shade = $('.arch-shade');
     const bl = $('.br-arch-l'), br = $('.br-arch-r');
     const copy = [$('.arch-by'), $('.arch-name'), $('.arch-text')];
@@ -1255,8 +1709,9 @@ function start() {
       tl.fromTo(fig, { clipPath: `inset(${iy}% ${ix}% ${iy}% ${ix}%)` }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'InOut', duration: .5 }, 0)
         .fromTo(img, { scale: 1.4 }, { scale: 1, ease: 'InOut', duration: .5 }, 0)
         .fromTo(grid, { scale: 1, opacity: 1 }, { scale: 3.4, opacity: 0, ease: 'In', duration: .5 }, 0)
-        .to(bl, { xPercent: -90, scale: 1.4, ease: 'InOut', duration: .45 }, 0)
-        .to(br, { xPercent: 90, scale: 1.4, ease: 'InOut', duration: .45 }, 0)
+        .to(bl, { xPercent: -140, scale: 1.3, ease: 'InOut', duration: .42 }, 0)
+        .to(br, { xPercent: 140, scale: 1.3, ease: 'InOut', duration: .42 }, 0)
+        .to([bl, br], { autoAlpha: 0, ease: 'In', duration: .14 }, .3)
         .to(shade, { opacity: 1, duration: .15 }, .42)
         .to(img, { yPercent: 8, ease: 'none', duration: .5 }, .5);
     });
@@ -1266,7 +1721,7 @@ function start() {
   })();
 
   /* FOOTER: Bild wird zum Fenster */
-  (() => {
+  if (!MOB) (() => {
     const area = $('.foot-area');
     mm.add({ d: `(min-width: ${BP}px)`, m: `(max-width: ${BP - 1}px)` }, ctx => {
       const inset = ctx.conditions.d ? 'inset(12% 26% 12% 26%)' : 'inset(14% 8% 14% 8%)';
@@ -1294,6 +1749,7 @@ function start() {
   /* Logo: dreht, Scroll beschleunigt */
   (() => {
     const sym = $('.hdr-symbol'), state = { speed: 24 }; let rot = 0, dir = 1, to;
+    if (!sym) return;
     gsap.ticker.add((t, dt) => { rot += state.speed * Math.min(dt, 100) / 1000; gsap.set(sym, { rotation: rot, transformOrigin: '50% 50%' }); });
     lenis.on('scroll', ({ velocity }) => {
       if (velocity !== 0) dir = velocity > 0 ? 1 : -1;
@@ -1340,6 +1796,15 @@ function start() {
   /* Resize */
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { ScrollTrigger.refresh(true); updateTheme(); }, 60); });
 
+  /* Aktiver Menüpunkt */
+  $$('.hdr-nav [data-nav]').forEach(a => {
+    const sec = $('#' + a.dataset.nav); if (!sec) return;
+    ScrollTrigger.create({ trigger: sec, start: 'top 45%', end: 'bottom 45%', onToggle: st => a.classList.toggle('is-current', st.isActive) });
+  });
+  /* nachladende Bilder verschieben das Layout: Trigger neu vermessen */
+  let imgT; const reMeasure = () => { clearTimeout(imgT); imgT = setTimeout(() => ScrollTrigger.refresh(), 250); };
+  $$('img').forEach(im => { if (!im.complete) im.addEventListener('load', reMeasure, { once: true }); });
+  addEventListener('load', reMeasure);
   ScrollTrigger.refresh();
   updateTheme();
   preloader();
@@ -1353,9 +1818,21 @@ function preloader() {
     rv($('.hero-lead'), 'show', .25);
     gsap.to([hdr, sbar, '.hero-cta'], { opacity: 1, duration: D.l, ease: 'Out', delay: .5 });
   };
+  if (QUIET) {
+    ScrollTrigger.refresh();
+    const target = RETURN_Y !== null ? RETURN_Y : ($(location.hash) || 0);
+    requestAnimationFrame(() => { lenis.scrollTo(target, { immediate: true }); if (typeof target === 'number') window.scrollTo(0, target); ScrollTrigger.update(); updateTheme(); });
+    return;
+  }
   if (!pre) { heroIn(); return; }
   let visited = false;
   try { visited = sessionStorage.getItem('mk-visited'); sessionStorage.setItem('mk-visited', '1'); } catch (e) {}
+  if (MOB) {
+    window.scrollTo(0, 0);
+    gsap.to(pre, { opacity: 0, duration: .7, ease: 'Out', delay: visited ? .1 : .5, onComplete: () => { pre.remove(); ScrollTrigger.refresh(); const h = location.hash && $(location.hash); if (h) lenis.scrollTo(h); } });
+    gsap.delayedCall(visited ? .2 : .6, heroIn);
+    return;
+  }
   const win = $('.pre-window'), count = $('.pre-count'), mull = $$('.pre-mullion'), heroImg = $('.hero-bg img');
   const vw = innerWidth, vh = innerHeight, d = desk();
   const w0 = d ? vw * .14 : vw * .38, h0 = d ? vw * .2 : vw * .54;
