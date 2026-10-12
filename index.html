@@ -671,6 +671,20 @@ body{font-family:var(--font);font-synthesis:none;font-weight:400}
 /* Abstand unter dem Header-Balken */
 .hero-content{padding-top:calc(var(--hdr-h,4.5rem) + 3rem)}
 @media (max-width:991px){.hero-content{padding-top:2rem}}
+
+/* Hero: Desktop ein Bild, mobil automatischer Slider */
+.hero-dots{display:none}
+@media (min-width:992px){.hero-slide:not(:first-child){display:none}}
+@media (max-width:991px){
+  .hero-bg{aspect-ratio:15 / 11;overflow:hidden}
+  .hero .hero-bg img.hero-slide{position:absolute!important;inset:0;width:100%;height:100%!important;object-fit:cover;opacity:0;transition:opacity 1.2s var(--e-io)}
+  .hero .hero-bg img.hero-slide.is-on{opacity:1;animation:mkKen 6.5s linear both}
+  .hero-dots{display:flex;gap:.4rem;position:absolute;left:var(--pad);bottom:1rem;z-index:2}
+  .hero-dots i{display:block;width:1.1rem;height:2px;background:rgba(255,255,255,.45);transition:width .5s var(--e-out),background-color .5s}
+  .hero-dots i.is-on{width:2.2rem;background:#fff}
+}
+@keyframes mkKen{from{scale:1.07}to{scale:1}}
+.branch > video.br-src{position:absolute!important;width:2px!important;height:2px!important;opacity:0;pointer-events:none;left:0;top:0}
 </style>
 </head>
 <body>
@@ -733,7 +747,15 @@ body{font-family:var(--font);font-synthesis:none;font-weight:400}
 <!-- HERO -->
 <section class="hero" id="top" data-bg="dark">
   <div class="hero-screen">
-    <div class="hero-bg"><img data-wix="f3bbf6_1d208a7918024156b50afa1eccb61e7c" data-size="2400x1600" alt="Meraki Studios in the valley of Kissos" loading="eager"></div>
+    <div class="hero-bg">
+      <img class="hero-slide is-on" data-wix="f3bbf6_1d208a7918024156b50afa1eccb61e7c" data-size="2400x1600" alt="Meraki Studios in the valley of Kissos" loading="eager">
+      <img class="hero-slide" data-wix="f3bbf6_1c1fe08b97a94287a2385f23d38a8971" data-size="1600x1200" alt="" loading="lazy">
+      <img class="hero-slide" data-wix="f3bbf6_cc564ac96b0345439aa8645cbb7beec9" data-size="1600x1200" alt="" loading="lazy">
+      <img class="hero-slide" data-wix="f3bbf6_a6a2c5caa37a41168fe49786c586e7ae" data-size="1600x1200" alt="" loading="lazy">
+      <img class="hero-slide" data-wix="f3bbf6_41fcb0ae36814d998b819aa0555763e8" data-size="1600x1200" alt="" loading="lazy">
+      <img class="hero-slide" data-wix="f3bbf6_299ac3a94f7a4b2f9ae334772a6c6a03" data-size="1600x1200" alt="" loading="lazy">
+      <div class="hero-dots" aria-hidden="true"></div>
+    </div>
     <div class="hero-shade"></div>
     <div class="hero-content">
       <div class="grid">
@@ -1389,6 +1411,7 @@ function stackedCanvas(host) {
     raf = requestAnimationFrame(draw);
   };
   v.addEventListener('error', () => { failed = true; branchPoster(host); }, { once: true });
+  v.className = 'br-src'; host.appendChild(v);
   host.appendChild(c);
   return { pause() { on = false; cancelAnimationFrame(raf); v.pause(); }, resume() { if (failed) return; on = true; v.play().catch(() => {}); cancelAnimationFrame(raf); draw(); } };
 }
@@ -1401,8 +1424,8 @@ function buildBranch(host) {
     branchPoster(host); return [];
   }
   const v = document.createElement('video');
-  v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
-  v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+  v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto'; v.autoplay = true;
+  v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); v.setAttribute('autoplay', ''); v.setAttribute('aria-hidden', 'true');
   v.poster = BR.poster;
   v.addEventListener('error', () => branchPoster(host), { once: true });
   v.src = BR.webm;
@@ -1597,6 +1620,10 @@ function start() {
     ScrollTrigger.create({ trigger: host, start: 'top bottom', end: 'bottom top', onToggle: s => tw.forEach(t => s.isActive ? t.resume() : t.pause()) });
     if (host.hasAttribute('data-branch-par')) gsap.fromTo(host, { yPercent: 12 }, { yPercent: -12, ease: 'none', scrollTrigger: { trigger: host.parentElement, start: 'top bottom', end: 'bottom top', scrub: .5 } });
   });
+  /* Manche mobilen Browser (z.B. Brave, Energiesparmodus) starten Videos erst nach einer Berührung */
+  const kickBranches = () => branchTweens.forEach(({ host, tw }) => { const r = host.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) tw.forEach(t => t.resume()); });
+  ['touchend', 'click', 'keydown'].forEach(ev => addEventListener(ev, kickBranches, { passive: true }));
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) kickBranches(); });
 
   /* Parallax Bilder */
   if (!MOB) $$('.fig[data-par]').forEach(fig => {
@@ -1795,6 +1822,26 @@ function start() {
 
   /* Resize */
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { ScrollTrigger.refresh(true); updateTheme(); }, 60); });
+
+  /* Hero-Slider mobil */
+  if (MOB) (() => {
+    const slides = $$('.hero-slide'); if (slides.length < 2) return;
+    const dots = $('.hero-dots'); dots.innerHTML = slides.map((_, i) => `<i${i ? '' : ' class="is-on"'}></i>`).join('');
+    let si = 0, timer = null;
+    const show = n => {
+      slides[si].classList.remove('is-on'); dots.children[si].classList.remove('is-on');
+      si = n; slides[si].classList.add('is-on'); dots.children[si].classList.add('is-on');
+      const nx = slides[(si + 1) % slides.length]; nx.loading = 'eager';
+    };
+    const run = on => { clearInterval(timer); timer = on ? setInterval(() => show((si + 1) % slides.length), 4800) : null; };
+    ScrollTrigger.create({ trigger: '.hero', start: 'top bottom', end: 'bottom top', onToggle: st => run(st.isActive) });
+    run(true);
+    let sx = null;
+    const bg = $('.hero-bg');
+    bg.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    bg.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 40) { show((si + (dx < 0 ? 1 : -1) + slides.length) % slides.length); run(true); } });
+    document.addEventListener('visibilitychange', () => run(!document.hidden));
+  })();
 
   /* Aktiver Menüpunkt */
   $$('.hdr-nav [data-nav]').forEach(a => {

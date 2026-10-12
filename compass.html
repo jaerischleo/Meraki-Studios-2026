@@ -443,6 +443,28 @@ body{font-family:var(--font);font-synthesis:none;font-weight:400}
   .cpm-chip{padding:.4rem .75rem;min-height:2.1rem;font-size:.75rem}
   .cpm-chip small{font-size:.6875rem}
 }
+
+.cp-sheet{display:none}
+@media (max-width:991px){
+  .mbook{display:none!important}
+  .cpm-map-wrap{position:relative!important;top:auto!important;height:58svh!important;z-index:1}
+  .cp-sheet{display:grid;grid-template-columns:7.5rem 1fr;position:absolute;left:.6rem;right:.6rem;bottom:.6rem;z-index:800;background:var(--kalk);box-shadow:0 .8rem 2.4rem rgba(29,32,25,.28);transform:translateY(calc(100% + 1rem));transition:transform .45s var(--e-out);max-height:calc(100% - 1.2rem);overflow:hidden}
+  .cp-sheet.is-open{transform:none}
+  .cp-sheet-img{position:relative;background:var(--beton);min-height:100%}
+  .cp-sheet-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .cp-sheet-body{padding:.85rem 2.6rem .9rem .9rem;min-width:0}
+  .cp-sheet .cp-name{font-size:1.15rem;line-height:1.2;margin-bottom:.25rem}
+  .cp-sheet .cp-desc{font-size:.8125rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .cp-sheet .cp-links{margin-top:.5rem;flex-wrap:wrap;gap:.4rem 1rem}
+  .cp-sheet-x{position:absolute;top:.35rem;right:.35rem;width:2.3rem;height:2.3rem;border-radius:50%;background:var(--kalk)}
+  .cp-sheet-x::before,.cp-sheet-x::after{content:"";position:absolute;left:30%;right:30%;top:50%;height:1.5px;background:var(--ink);transform:rotate(45deg)}
+  .cp-sheet-x::after{transform:rotate(-45deg)}
+  .cp-item{grid-template-columns:6.5rem 1fr;padding-top:1.2rem;padding-bottom:1.2rem}
+  .cp-thumb{width:6.5rem}
+  .cp-name{font-size:1.2rem}
+  .cpm-panel{padding-bottom:2rem}
+  .leaflet-control-zoom{display:none}
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
@@ -483,7 +505,6 @@ body{font-family:var(--font);font-synthesis:none;font-weight:400}
     <a href="https://www.instagram.com/meraki_studios_kissos/" target="_blank" rel="noopener">@meraki_studios_kissos</a>
   </div>
 </nav>
-<a class="mbook" href="index.html#book">Book your stay</a>
 
 <div class="sbar" aria-hidden="true"><span class="sbar-thumb"></span><span class="sbar-label">00</span></div>
 
@@ -1085,14 +1106,17 @@ ORDER.forEach(c => {
     if (p.lat != null) {
       const icon = L.divIcon({ className: '', html: `<div class="cp-pin" style="--c:${CATS[p.c].col}"></div>`, iconSize: [16, 16], iconAnchor: [8, 8] });
       p.mk = L.marker([p.lat, p.lng], { icon, title: T(p.n), riseOnHover: true }).addTo(map);
-      p.mk.bindPopup(() => card(p), { maxWidth: 320, minWidth: 200, autoPanPadding: [30, 30] });
-      p.mk.on('popupopen', () => setActive(k));
-      p.mk.on('popupclose', () => { if (active === k) setActive(-1); });
+      if (MOBILE) p.mk.on('click', () => focusPlace(k, false));
+      else {
+        p.mk.bindPopup(() => card(p), { maxWidth: 320, minWidth: 200, autoPanPadding: [30, 30] });
+        p.mk.on('popupopen', () => setActive(k));
+        p.mk.on('popupclose', () => { if (active === k) setActive(-1); });
+      }
     }
     const go = e => {
       if (e.target.closest('a')) return;
       if (!p.mk) { setActive(k); return; }
-      if (MOBILE) { const w = $('.cpm-map-wrap'); const y = w.getBoundingClientRect().top + scrollY - $('.cpm-filter').offsetHeight - ($('.hdr') ? $('.hdr').offsetHeight : 0); if (Math.abs(scrollY - y) > 40) scrollTo({ top: y, behavior: 'smooth' }); }
+      if (MOBILE) { focusPlace(k, true); return; }
       map.flyTo([p.lat, p.lng], Math.max(map.getZoom(), 13), { duration: .8 });
       setTimeout(() => p.mk.openPopup(), 650);
     };
@@ -1111,6 +1135,29 @@ function setActive(k) {
   if (k > -1 && !MOBILE) { const li = PLACES[k].li, pan = $('.cpm-panel'); pan.scrollTo({ top: li.offsetTop - pan.clientHeight / 3, behavior: 'smooth' }); }
 }
 
+/* Mobil: Karte als Bühne, Ort als Karte am unteren Rand (passt immer in den Ausschnitt) */
+const wrap = $('.cpm-map-wrap');
+const sheet = document.createElement('div'); sheet.className = 'cp-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-live', 'polite');
+wrap.appendChild(sheet);
+const closeSheet = () => { sheet.classList.remove('is-open'); setActive(-1); };
+function focusPlace(k, scrollUp) {
+  const p = PLACES[k];
+  sheet.innerHTML = `<button class="cp-sheet-x" type="button" aria-label="${esc(T('Close'))}"></button>${p.i ? `<div class="cp-sheet-img">${imgTag(p.i, p.n)}</div>` : ''}<div class="cp-sheet-body"><p class="cp-meta" style="--c:${CATS[p.c].col}"><i></i>${esc(p.v ? T(p.v) : T(CATS[p.c].short || CATS[p.c].t))}</p><p class="cp-name">${esc(T(p.n))}</p>${p.d ? `<p class="cp-desc">${esc(T(p.d))}</p>` : ''}<p class="cp-links">${links(p)}</p></div>`;
+  sheet.querySelector('.cp-sheet-x').addEventListener('click', closeSheet);
+  sheet.classList.add('is-open'); setActive(k);
+  if (scrollUp) {
+    const off = ($('.hdr') ? $('.hdr').offsetHeight : 0) + $('.cpm-filter').offsetHeight;
+    const y = wrap.getBoundingClientRect().top + scrollY - off;
+    if (Math.abs(scrollY - y) > 20) scrollTo({ top: y, behavior: 'smooth' });
+  }
+  requestAnimationFrame(() => {
+    const z = Math.max(map.getZoom(), 13), h = sheet.offsetHeight + 16;
+    const pt = map.project([p.lat, p.lng], z).add([0, h / 2]);
+    map.flyTo(map.unproject(pt, z), z, { duration: .8 });
+  });
+}
+if (MOBILE) map.on('click', closeSheet);
+
 /* Filter */
 const filter = $('.cpm-filter');
 const counts = { '': PLACES.length }; PLACES.forEach(p => counts[p.c] = (counts[p.c] || 0) + 1);
@@ -1125,7 +1172,7 @@ const boundsFor = cat => {
 const fitOpts = { padding: MOBILE ? [30, 30] : [60, 60], maxZoom: 14 };
 const select = cat => {
   chips.forEach(x => { const on = x.dataset.cat === cat; x.setAttribute('aria-pressed', on); if (on && MOBILE) x.scrollIntoView({ inline: 'center', block: 'nearest' }); });
-  map.closePopup();
+  map.closePopup(); if (MOBILE) closeSheet();
   $$('.cp-group', list).forEach(h => h.classList.toggle('is-hidden', !!cat && h.dataset.cat !== cat));
   PLACES.forEach(p => { const on = !cat || p.c === cat; p.li.classList.toggle('is-hidden', !on); if (p.mk) on ? p.mk.addTo(map) : p.mk.remove(); });
   map.flyToBounds(boundsFor(cat), { ...fitOpts, duration: .9 });
